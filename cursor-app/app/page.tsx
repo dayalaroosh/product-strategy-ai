@@ -49,6 +49,9 @@ export default function Home() {
             <Link href="/council" className="px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50">
               Strategy Council
             </Link>
+            <Link href="/debate" className="px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 border-l border-gray-200">
+              🎭 Celebrity Debates
+            </Link>
           </div>
         </div>
 
@@ -73,6 +76,27 @@ export default function Home() {
                   Want deeper insights? Try our <Link href="/council" className="font-medium underline">Product Strategy Council</Link> for multi-expert analysis.
                 </p>
               </div>
+            </div>
+          </div>
+
+          {/* Phase 2 New Feature Banner */}
+          <div className="mt-4 p-6 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl shadow-lg text-white">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="flex items-center">
+                  <span className="bg-white text-purple-600 px-2 py-1 rounded-full text-xs font-bold mr-3">NEW</span>
+                  <h3 className="text-lg font-bold">🎭 Phase 2: Celebrity AI Debates</h3>
+                </div>
+                <p className="text-purple-100 mt-2">
+                  Watch Elon Musk, Steve Jobs, Warren Buffett, and more debate trending topics. Generate viral content instantly!
+                </p>
+              </div>
+              <Link 
+                href="/debate" 
+                className="bg-white hover:bg-gray-100 text-purple-600 font-bold py-3 px-6 rounded-lg transition-colors ml-4"
+              >
+                Try It Now →
+              </Link>
             </div>
           </div>
         </div>

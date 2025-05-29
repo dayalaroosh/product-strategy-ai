@@ -7,6 +7,7 @@ import json
 import re
 import asyncio
 from agents.council import ProductStrategyCouncil
+from agents.debate_engine import DebateEngine
 
 # Load environment variables
 load_dotenv()
@@ -19,6 +20,9 @@ client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
 # Initialize Product Strategy Council
 council = ProductStrategyCouncil()
+
+# Initialize Debate Engine
+debate_engine = DebateEngine()
 
 def extract_json_from_response(response_text):
     """Extract JSON from OpenAI response that might have markdown formatting"""
@@ -53,7 +57,10 @@ def health_check():
         "status": "Backend is running!",
         "openai_configured": bool(os.getenv('OPENAI_API_KEY')),
         "council_available": True,
-        "agents_count": len(council.agents)
+        "agents_count": len(council.agents),
+        "debate_engine_available": True,
+        "celebrities_count": len(debate_engine.celebrities),
+        "phase_2_features": ["Celebrity Debates", "Viral Content Generation", "Trending Conversations"]
     })
 
 @app.route('/api/council/info', methods=['GET'])
@@ -183,6 +190,107 @@ def analyze_product():
     except Exception as e:
         print(f"Error: {str(e)}")  # For debugging
         return jsonify({"error": f"Analysis failed: {str(e)}"}), 500
+
+# CELEBRITY DEBATE ENGINE ENDPOINTS
+
+@app.route('/api/debate/celebrities', methods=['GET'])
+def get_available_celebrities():
+    """Get all available celebrity agents"""
+    try:
+        celebrities = debate_engine.get_available_celebrities()
+        return jsonify({"celebrities": celebrities})
+    except Exception as e:
+        return jsonify({"error": f"Failed to get celebrities: {str(e)}"}), 500
+
+@app.route('/api/debate/start', methods=['POST'])
+def start_celebrity_debate():
+    """Start a new celebrity debate/conversation"""
+    try:
+        data = request.get_json()
+        
+        # Check if OpenAI API key is configured
+        if not os.getenv('OPENAI_API_KEY'):
+            return jsonify({"error": "OpenAI API key not configured"}), 500
+        
+        topic = data.get('topic', '')
+        participant_ids = data.get('participants', [])
+        conversation_style = data.get('style', 'debate')
+        
+        if not topic:
+            return jsonify({"error": "Topic is required"}), 400
+        
+        if len(participant_ids) < 2:
+            return jsonify({"error": "At least 2 participants required"}), 400
+        
+        # Start the conversation
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        try:
+            result = loop.run_until_complete(
+                debate_engine.start_conversation(topic, participant_ids, conversation_style)
+            )
+        finally:
+            loop.close()
+        
+        return jsonify(result)
+    
+    except Exception as e:
+        print(f"Start Debate Error: {str(e)}")
+        return jsonify({"error": f"Failed to start debate: {str(e)}"}), 500
+
+@app.route('/api/debate/round', methods=['POST'])
+def add_debate_round():
+    """Add a new round to an existing conversation"""
+    try:
+        data = request.get_json()
+        conversation_id = data.get('conversation_id', '')
+        
+        if not conversation_id:
+            return jsonify({"error": "Conversation ID is required"}), 400
+        
+        # Add conversation round
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        try:
+            result = loop.run_until_complete(
+                debate_engine.add_conversation_round(conversation_id)
+            )
+        finally:
+            loop.close()
+        
+        return jsonify(result)
+    
+    except Exception as e:
+        print(f"Add Round Error: {str(e)}")
+        return jsonify({"error": f"Failed to add round: {str(e)}"}), 500
+
+@app.route('/api/debate/conversation/<conversation_id>', methods=['GET'])
+def get_conversation(conversation_id):
+    """Get a specific conversation by ID"""
+    try:
+        conversation = debate_engine.get_conversation(conversation_id)
+        return jsonify(conversation)
+    except Exception as e:
+        return jsonify({"error": f"Failed to get conversation: {str(e)}"}), 500
+
+@app.route('/api/debate/trending', methods=['GET'])
+def get_trending_conversations():
+    """Get recent/trending conversations"""
+    try:
+        limit = request.args.get('limit', 10, type=int)
+        trending = debate_engine.get_recent_conversations(limit)
+        return jsonify({"trending": trending})
+    except Exception as e:
+        return jsonify({"error": f"Failed to get trending: {str(e)}"}), 500
+
+@app.route('/api/debate/social-content/<conversation_id>', methods=['GET'])
+def generate_social_content(conversation_id):
+    """Generate social media content from a conversation"""
+    try:
+        content = debate_engine.generate_social_media_content(conversation_id)
+        return jsonify(content)
+    except Exception as e:
+        return jsonify({"error": f"Failed to generate content: {str(e)}"}), 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8001, debug=True) 
