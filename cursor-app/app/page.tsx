@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { api, ProductAnalysis } from '../lib/api';
+import Link from 'next/link';
 
 export default function Home() {
   const [productData, setProductData] = useState({
@@ -38,6 +39,19 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100">
       <div className="max-w-3xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
+        
+        {/* Navigation */}
+        <div className="flex justify-center mb-8">
+          <div className="bg-white rounded-lg shadow-sm p-1 flex">
+            <button className="px-4 py-2 rounded-md text-sm font-medium bg-blue-600 text-white">
+              Quick Analysis
+            </button>
+            <Link href="/council" className="px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50">
+              Strategy Council
+            </Link>
+          </div>
+        </div>
+
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 sm:text-4xl">
             AI Product Strategy Analysis
@@ -45,6 +59,22 @@ export default function Home() {
           <p className="mt-4 text-xl text-gray-600">
             Get instant AI-powered insights for your product strategy
           </p>
+          
+          {/* Upgrade Notice */}
+          <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <div className="flex items-center justify-center">
+              <div className="flex-shrink-0">
+                <svg className="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <p className="text-sm text-blue-700">
+                  Want deeper insights? Try our <Link href="/council" className="font-medium underline">Product Strategy Council</Link> for multi-expert analysis.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="bg-white shadow sm:rounded-lg">
@@ -153,6 +183,22 @@ export default function Home() {
                       <li key={index}>{opportunity}</li>
                     ))}
                   </ul>
+                </div>
+              </div>
+              
+              {/* Upgrade CTA */}
+              <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-lg">
+                <div className="text-center">
+                  <h3 className="text-sm font-medium text-gray-900 mb-2">Want More Detailed Analysis?</h3>
+                  <p className="text-xs text-gray-600 mb-3">
+                    Get insights from 5 expert perspectives including technical feasibility, financial viability, and UX analysis.
+                  </p>
+                  <Link 
+                    href="/council" 
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+                  >
+                    Try Strategy Council →
+                  </Link>
                 </div>
               </div>
             </div>

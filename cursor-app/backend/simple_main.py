@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 from openai import OpenAI
 import json
 import re
+import asyncio
+from agents.council import ProductStrategyCouncil
 
 # Load environment variables
 load_dotenv()
@@ -14,6 +16,9 @@ CORS(app)  # Enable CORS for all routes
 
 # Initialize OpenAI client
 client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+
+# Initialize Product Strategy Council
+council = ProductStrategyCouncil()
 
 def extract_json_from_response(response_text):
     """Extract JSON from OpenAI response that might have markdown formatting"""
@@ -46,8 +51,68 @@ def extract_json_from_response(response_text):
 def health_check():
     return jsonify({
         "status": "Backend is running!",
-        "openai_configured": bool(os.getenv('OPENAI_API_KEY'))
+        "openai_configured": bool(os.getenv('OPENAI_API_KEY')),
+        "council_available": True,
+        "agents_count": len(council.agents)
     })
+
+@app.route('/api/council/info', methods=['GET'])
+def get_council_info():
+    """Get information about all council members"""
+    try:
+        council_info = council.get_council_info()
+        return jsonify({
+            "council_members": council_info,
+            "total_agents": len(council_info)
+        })
+    except Exception as e:
+        return jsonify({"error": f"Failed to get council info: {str(e)}"}), 500
+
+@app.route('/api/council/agents', methods=['GET'])
+def get_available_agents():
+    """Get available agents for selection"""
+    try:
+        agents_info = council.get_available_agents()
+        return jsonify({"available_agents": agents_info})
+    except Exception as e:
+        return jsonify({"error": f"Failed to get agents info: {str(e)}"}), 500
+
+@app.route('/api/council/analyze', methods=['POST'])
+def analyze_with_council():
+    """Analyze product using the Product Strategy Council"""
+    try:
+        data = request.get_json()
+        
+        # Check if OpenAI API key is configured
+        if not os.getenv('OPENAI_API_KEY'):
+            return jsonify({"error": "OpenAI API key not configured"}), 500
+        
+        # Extract product data
+        product_data = {
+            "name": data.get('name', ''),
+            "description": data.get('description', ''),
+            "target_market": data.get('target_market', ''),
+            "key_features": data.get('key_features', '')
+        }
+        
+        # Get selected agents (optional)
+        selected_agents = data.get('selected_agents', None)
+        
+        # Run the council analysis
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        try:
+            analysis_result = loop.run_until_complete(
+                council.analyze_product(product_data, selected_agents)
+            )
+        finally:
+            loop.close()
+        
+        return jsonify({"council_analysis": analysis_result})
+    
+    except Exception as e:
+        print(f"Council Analysis Error: {str(e)}")  # For debugging
+        return jsonify({"error": f"Council analysis failed: {str(e)}"}), 500
 
 @app.route('/api/analyze', methods=['POST'])
 def analyze_product():
