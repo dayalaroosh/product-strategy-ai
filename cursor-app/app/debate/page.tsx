@@ -23,6 +23,8 @@ interface TrendingConversation {
   preview: string;
 }
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8001';
+
 export default function DebatePage() {
   const [celebrities, setCelebrities] = useState<Record<string, Celebrity>>({});
   const [selectedCelebrities, setSelectedCelebrities] = useState<string[]>([]);
@@ -38,7 +40,7 @@ export default function DebatePage() {
 
   const fetchCelebrities = async () => {
     try {
-      const response = await fetch('http://localhost:8001/api/debate/celebrities');
+      const response = await fetch(`${API_BASE_URL}/api/debate/celebrities`);
       const data = await response.json();
       setCelebrities(data.celebrities || {});
     } catch (error) {
@@ -48,7 +50,7 @@ export default function DebatePage() {
 
   const fetchTrending = async () => {
     try {
-      const response = await fetch('http://localhost:8001/api/debate/trending');
+      const response = await fetch(`${API_BASE_URL}/api/debate/trending`);
       const data = await response.json();
       setTrending(data.trending || []);
     } catch (error) {
@@ -72,7 +74,7 @@ export default function DebatePage() {
 
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:8001/api/debate/start', {
+      const response = await fetch(`${API_BASE_URL}/api/debate/start`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

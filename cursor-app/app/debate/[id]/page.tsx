@@ -4,8 +4,10 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 
+
 interface Message {
   round: number;
+  
   participant: string;
   profession: string;
   content: string;
@@ -55,6 +57,8 @@ interface SocialContent {
   generated_at: string;
 }
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8001';
+
 export default function DebateRoom() {
   const params = useParams();
   const router = useRouter();
@@ -74,7 +78,7 @@ export default function DebateRoom() {
 
   const fetchConversation = async () => {
     try {
-      const response = await fetch(`http://localhost:8001/api/debate/conversation/${conversationId}`);
+      const response = await fetch(`${API_BASE_URL}/api/debate/conversation/${conversationId}`);
       const data = await response.json();
       
       if (data.error) {
@@ -85,6 +89,8 @@ export default function DebateRoom() {
     } catch (error) {
       console.error('Failed to fetch conversation:', error);
       setError('Failed to load conversation');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -93,7 +99,7 @@ export default function DebateRoom() {
     
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:8001/api/debate/round', {
+      const response = await fetch(`${API_BASE_URL}/api/debate/round`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ conversation_id: conversationId })
@@ -119,7 +125,7 @@ export default function DebateRoom() {
     if (!conversation) return;
     
     try {
-      const response = await fetch(`http://localhost:8001/api/debate/social-content/${conversationId}`);
+      const response = await fetch(`${API_BASE_URL}/api/debate/social-content/${conversationId}`);
       const data = await response.json();
       
       if (data.error) {

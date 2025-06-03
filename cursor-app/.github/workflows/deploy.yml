@@ -1,0 +1,111 @@
+name: Deploy to Cloud
+
+on:
+  push:
+    branches:
+      - main      # Triggers production deployment
+      - develop   # Triggers development deployment
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  deploy-backend:
+    name: Deploy Backend
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install Railway CLI
+      run: |
+        curl -fsSL https://railway.app/install.sh | sh
+        echo "$HOME/.local/bin" >> $GITHUB_PATH
+        
+    - name: Deploy to Railway (Development)
+      if: github.ref == 'refs/heads/develop'
+      env:
+        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN_DEV }}
+      run: |
+        cd backend
+        railway deploy --service backend-dev
+        
+    - name: Deploy to Railway (Production)
+      if: github.ref == 'refs/heads/main'
+      env:
+        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN_PROD }}
+      run: |
+        cd backend
+        railway deploy --service backend-prod
+
+  deploy-frontend:
+    name: Deploy Frontend
+    runs-on: ubuntu-latest
+    needs: deploy-backend
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Run tests
+      run: npm test -- --passWithNoTests
+      
+    - name: Deploy to Vercel (Development)
+      if: github.ref == 'refs/heads/develop'
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+        VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_DEV }}
+      run: |
+        npx vercel --token $VERCEL_TOKEN --scope $VERCEL_ORG_ID
+        
+    - name: Deploy to Vercel (Production)
+      if: github.ref == 'refs/heads/main'
+      env:
+        VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+        VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_PROD }}
+      run: |
+        npx vercel --prod --token $VERCEL_TOKEN --scope $VERCEL_ORG_ID
+
+  health-check:
+    name: Health Check
+    runs-on: ubuntu-latest
+    needs: [deploy-backend, deploy-frontend]
+    
+    steps:
+    - name: Check Backend Health (Development)
+      if: github.ref == 'refs/heads/develop'
+      run: |
+        sleep 30  # Wait for deployment
+        curl -f ${{ secrets.BACKEND_URL_DEV }}/ || exit 1
+        
+    - name: Check Backend Health (Production)
+      if: github.ref == 'refs/heads/main'
+      run: |
+        sleep 30  # Wait for deployment
+        curl -f ${{ secrets.BACKEND_URL_PROD }}/ || exit 1
+        
+    - name: Notify on Success
+      if: success()
+      run: echo "✅ Deployment successful and health checks passed!"
+      
+    - name: Notify on Failure
+      if: failure()
+      run: echo "❌ Deployment failed or health checks failed!" 

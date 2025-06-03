@@ -49,6 +49,9 @@ export default function Home() {
             <Link href="/council" className="px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50">
               Strategy Council
             </Link>
+            <Link href="/voice" className="px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 border-l border-gray-200">
+              🎤 Voice Interface
+            </Link>
             <Link href="/debate" className="px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 border-l border-gray-200">
               🎭 Celebrity Debates
             </Link>
