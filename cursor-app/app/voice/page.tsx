@@ -20,6 +20,7 @@ export default function VoicePage() {
   const audioRefs = useRef<{ [key: string]: HTMLAudioElement }>({});
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
+  const [error, setError] = useState('');
 
   const startRecording = async () => {
     try {
@@ -76,25 +77,28 @@ export default function VoicePage() {
 
   const handleAudioRecorded = async (audioBlob: Blob) => {
     setIsProcessing(true);
+    setError('');
+    
     try {
-      // Step 1: Convert speech to text
+      // Convert audio to FormData for upload
       const formData = new FormData();
       formData.append('audio', audioBlob, 'recording.webm');
-
-      const transcriptResponse = await fetch(`${API_BASE_URL}/api/voice/speech-to-text`, {
+      
+      // Send to backend for speech-to-text
+      const response = await fetch('https://product-strategy-ai-production.up.railway.app/api/voice/speech-to-text', {
         method: 'POST',
         body: formData,
       });
 
-      if (!transcriptResponse.ok) {
+      if (!response.ok) {
         throw new Error('Failed to transcribe audio');
       }
 
-      const { transcript: audioTranscript } = await transcriptResponse.json();
+      const { transcript: audioTranscript } = await response.json();
       setTranscript(audioTranscript);
 
       // Step 2: Analyze with voice-enabled council
-      const analysisResponse = await fetch(`${API_BASE_URL}/api/voice/council-analyze`, {
+      const analysisResponse = await fetch('https://product-strategy-ai-production.up.railway.app/api/voice/council-analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
