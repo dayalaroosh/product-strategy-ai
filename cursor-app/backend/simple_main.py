@@ -568,4 +568,4 @@ def add_audio_responses(analysis_result):
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 8001))
-    app.run(host='0.0.0.0', port=port, debug=True) 
+    app.run(host='0.0.0.0', port=port, debug=False) 
