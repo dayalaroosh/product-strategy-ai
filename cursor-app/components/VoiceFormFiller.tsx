@@ -19,12 +19,45 @@ export default function VoiceFormFiller({ onFieldUpdate, fields, isGlobalMode = 
   const [isProcessing, setIsProcessing] = useState(false);
   const [currentField, setCurrentField] = useState<string | null>(null);
   const [transcript, setTranscript] = useState('');
+  const [liveTranscript, setLiveTranscript] = useState(''); // Real-time transcription
   const [previewContent, setPreviewContent] = useState<{field: string, content: string} | null>(null);
   const [voiceMode, setVoiceMode] = useState<'command' | 'dictation'>('command');
   
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const recognitionRef = useRef<any>(null);
+
+  // Initialize Web Speech API for real-time transcription
+  useEffect(() => {
+    if (typeof window !== 'undefined' && 'webkitSpeechRecognition' in window) {
+      const SpeechRecognition = (window as any).webkitSpeechRecognition;
+      recognitionRef.current = new SpeechRecognition();
+      recognitionRef.current.continuous = true;
+      recognitionRef.current.interimResults = true;
+      recognitionRef.current.lang = 'en-US';
+
+      recognitionRef.current.onresult = (event: any) => {
+        let interim = '';
+        let final = '';
+        
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          const transcript = event.results[i][0].transcript;
+          if (event.results[i].isFinal) {
+            final += transcript;
+          } else {
+            interim += transcript;
+          }
+        }
+        
+        setLiveTranscript(final + interim);
+      };
+
+      recognitionRef.current.onerror = (event: any) => {
+        console.log('Speech recognition error:', event.error);
+      };
+    }
+  }, []);
 
   // Global hotkey listener
   useEffect(() => {
@@ -58,7 +91,15 @@ export default function VoiceFormFiller({ onFieldUpdate, fields, isGlobalMode = 
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       
+      // Reset transcripts
+      setLiveTranscript('');
+      setTranscript('');
       audioChunksRef.current = [];
+      
+      // Start real-time recognition if available
+      if (recognitionRef.current) {
+        recognitionRef.current.start();
+      }
       
       const options = {
         mimeType: 'audio/webm;codecs=opus'
@@ -80,6 +121,11 @@ export default function VoiceFormFiller({ onFieldUpdate, fields, isGlobalMode = 
         const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
         processVoiceInput(audioBlob);
         stream.getTracks().forEach(track => track.stop());
+        
+        // Stop real-time recognition
+        if (recognitionRef.current) {
+          recognitionRef.current.stop();
+        }
       };
 
       mediaRecorderRef.current.start();
@@ -94,6 +140,10 @@ export default function VoiceFormFiller({ onFieldUpdate, fields, isGlobalMode = 
     if (mediaRecorderRef.current && isListening) {
       mediaRecorderRef.current.stop();
       setIsListening(false);
+    }
+    
+    if (recognitionRef.current) {
+      recognitionRef.current.stop();
     }
   };
 
@@ -117,7 +167,7 @@ export default function VoiceFormFiller({ onFieldUpdate, fields, isGlobalMode = 
       const { transcript: audioTranscript } = await response.json();
       setTranscript(audioTranscript);
       
-      // Parse voice command
+      // Parse voice command with improved logic
       const command = parseVoiceCommand(audioTranscript);
       handleVoiceCommand(command, audioTranscript);
 
@@ -132,23 +182,31 @@ export default function VoiceFormFiller({ onFieldUpdate, fields, isGlobalMode = 
   const parseVoiceCommand = (transcript: string): VoiceCommand => {
     const lowercaseTranscript = transcript.toLowerCase().trim();
     
-    // Command patterns
+    // Enhanced command patterns with more variations
     const fillPatterns = [
-      /fill\s+(.+?)\s+with\s+(.+)/i,
-      /set\s+(.+?)\s+to\s+(.+)/i,
-      /(.+?)\s+is\s+(.+)/i
+      /(?:fill|set)\s+(?:the\s+)?(.+?)\s+(?:with|to|as)\s+(.+)/i,
+      /(?:put|enter)\s+(.+?)\s+in(?:to)?\s+(.+)/i,
+      /(.+?)\s+(?:should be|is|equals?)\s+(.+)/i
     ];
     
-    // Check for fill commands
+    // Check for fill commands first
     for (const pattern of fillPatterns) {
       const match = lowercaseTranscript.match(pattern);
       if (match) {
-        const fieldName = findMatchingField(match[1]);
+        let fieldName = findMatchingField(match[1]);
+        let content = match[2];
+        
+        // If no field found in first group, try swapping
+        if (!fieldName) {
+          fieldName = findMatchingField(match[2]);
+          content = match[1];
+        }
+        
         if (fieldName) {
           return {
             action: 'fill',
             field: fieldName,
-            content: match[2]
+            content: content.trim()
           };
         }
       }
@@ -165,49 +223,54 @@ export default function VoiceFormFiller({ onFieldUpdate, fields, isGlobalMode = 
       return { action: 'clear', field: currentField || undefined };
     }
     
-    // Default to dictation for current field
-    if (currentField) {
-      return {
-        action: 'fill',
-        field: currentField,
-        content: transcript
-      };
-    }
-    
-    // If no current field, try to infer
+    // Smart field inference for natural speech
     const inferredField = inferFieldFromContent(transcript);
     if (inferredField) {
       return {
         action: 'fill',
         field: inferredField,
-        content: transcript
+        content: transcript.trim()
       };
     }
     
-    return { action: 'fill', content: transcript };
+    // Default to current field if set
+    if (currentField) {
+      return {
+        action: 'fill',
+        field: currentField,
+        content: transcript.trim()
+      };
+    }
+    
+    return { action: 'fill', content: transcript.trim() };
   };
 
   const findMatchingField = (fieldQuery: string): string | null => {
-    const query = fieldQuery.toLowerCase();
+    const query = fieldQuery.toLowerCase().trim();
     
     // Direct field name matches
     const directMatch = fields.find(field => 
+      field.name.toLowerCase() === query ||
+      field.label.toLowerCase() === query ||
       field.name.toLowerCase().includes(query) || 
       field.label.toLowerCase().includes(query)
     );
     
     if (directMatch) return directMatch.name;
     
-    // Fuzzy matching
-    const fuzzyMatches = {
-      'name': ['name', 'title', 'product'],
-      'description': ['description', 'desc', 'about', 'details'],
-      'target_market': ['target', 'market', 'audience', 'customers'],
-      'key_features': ['features', 'functionality', 'capabilities']
+    // Enhanced fuzzy matching with more keywords
+    const fuzzyMatches: {[key: string]: string[]} = {
+      'name': ['name', 'title', 'product name', 'product title', 'called', 'named'],
+      'description': ['description', 'desc', 'about', 'details', 'explain', 'describe', 'what is'],
+      'target_market': ['target', 'market', 'audience', 'customers', 'users', 'who', 'demographic'],
+      'key_features': ['features', 'functionality', 'capabilities', 'functions', 'what does', 'can do'],
+      'business_model': ['business', 'model', 'revenue', 'money', 'monetize', 'pricing', 'cost'],
+      'competitive_advantage': ['advantage', 'competitive', 'unique', 'different', 'better', 'special']
     };
     
+    // Check each field's keywords
     for (const [fieldName, keywords] of Object.entries(fuzzyMatches)) {
-      if (keywords.some(keyword => query.includes(keyword))) {
+      if (keywords.some(keyword => query.includes(keyword) || keyword.includes(query))) {
         return fieldName;
       }
     }
@@ -218,21 +281,40 @@ export default function VoiceFormFiller({ onFieldUpdate, fields, isGlobalMode = 
   const inferFieldFromContent = (content: string): string | null => {
     const lower = content.toLowerCase();
     
-    // Smart field inference based on content
-    if (lower.length < 30 && !lower.includes(' ')) {
-      return 'name'; // Short single words likely product names
+    // Content-based inference with better logic
+    
+    // Business model keywords
+    if (lower.includes('saas') || lower.includes('subscription') || lower.includes('freemium') || 
+        lower.includes('b2b') || lower.includes('revenue') || lower.includes('pricing')) {
+      return 'business_model';
     }
     
-    if (lower.includes('target') || lower.includes('customer') || lower.includes('audience')) {
+    // Target market keywords
+    if (lower.includes('enterprise') || lower.includes('small business') || lower.includes('consumers') ||
+        lower.includes('professionals') || lower.includes('students') || lower.includes('aged') ||
+        lower.includes('demographic') || lower.includes('audience')) {
       return 'target_market';
     }
     
-    if (lower.includes('feature') || lower.includes('function') || lower.includes('capability')) {
+    // Features keywords
+    if (lower.includes('feature') || lower.includes('function') || lower.includes('capability') ||
+        lower.includes('can') || lower.includes('allows') || lower.includes('enables')) {
       return 'key_features';
     }
     
+    // Competitive advantage keywords
+    if (lower.includes('unique') || lower.includes('different') || lower.includes('better') ||
+        lower.includes('advantage') || lower.includes('special') || lower.includes('innovative')) {
+      return 'competitive_advantage';
+    }
+    
+    // Name inference - short, single concepts
+    if (lower.length < 30 && !lower.includes('.') && !lower.includes(',')) {
+      return 'name';
+    }
+    
     // Default longer content to description
-    if (lower.length > 50) {
+    if (lower.length > 30) {
       return 'description';
     }
     
@@ -248,6 +330,19 @@ export default function VoiceFormFiller({ onFieldUpdate, fields, isGlobalMode = 
             content: command.content
           });
           setShowConfirmation(true);
+        } else {
+          // If no field detected, show error or default to first empty field
+          const firstEmptyField = fields.find(f => {
+            const element = document.getElementById(f.name) as HTMLInputElement;
+            return !element?.value;
+          });
+          if (firstEmptyField && command.content) {
+            setPreviewContent({
+              field: firstEmptyField.name,
+              content: command.content
+            });
+            setShowConfirmation(true);
+          }
         }
         break;
         
@@ -340,6 +435,17 @@ export default function VoiceFormFiller({ onFieldUpdate, fields, isGlobalMode = 
         </div>
       </div>
 
+      {/* Live Transcription */}
+      {isListening && liveTranscript && (
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+          <div className="flex items-center mb-2">
+            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse mr-2"></div>
+            <span className="text-sm font-medium text-yellow-900">Live transcription:</span>
+          </div>
+          <p className="text-yellow-800 italic">"{liveTranscript}"</p>
+        </div>
+      )}
+
       {/* Current Status */}
       {(transcript || currentField) && (
         <div className="bg-blue-50 rounded-lg p-4 mb-4">
@@ -367,7 +473,7 @@ export default function VoiceFormFiller({ onFieldUpdate, fields, isGlobalMode = 
               <p className="text-sm text-gray-600 mb-2">
                 Fill <strong>{fields.find(f => f.name === previewContent.field)?.label}</strong> with:
               </p>
-              <div className="bg-gray-50 rounded p-3 text-gray-800">
+              <div className="bg-gray-50 rounded p-3 text-gray-800 max-h-32 overflow-y-auto">
                 "{previewContent.content}"
               </div>
             </div>
@@ -393,11 +499,12 @@ export default function VoiceFormFiller({ onFieldUpdate, fields, isGlobalMode = 
       <div className="bg-gray-50 rounded-lg p-4 text-sm">
         <h4 className="font-medium text-gray-900 mb-2">Voice Commands:</h4>
         <ul className="space-y-1 text-gray-600">
-          <li>• "Fill [field] with [content]"</li>
-          <li>• "Set [field] to [content]"</li>
-          <li>• "Next field" / "Previous field"</li>
-          <li>• "Clear [field]"</li>
-          <li>• Or just speak content for current field</li>
+          <li>• "Fill product name with TaskFlow"</li>
+          <li>• "Set description to A project management tool"</li>
+          <li>• "Target market is small businesses"</li>
+          <li>• "The features include task tracking"</li>
+          <li>• "Business model is SaaS subscription"</li>
+          <li>• Or just speak naturally!</li>
         </ul>
       </div>
     </div>
