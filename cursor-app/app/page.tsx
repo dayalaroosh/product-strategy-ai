@@ -49,8 +49,11 @@ export default function Home() {
             <Link href="/council" className="px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50">
               Strategy Council
             </Link>
+            <Link href="/voice-form" className="px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 border-l border-gray-200">
+              🎤 Smart Forms
+            </Link>
             <Link href="/voice" className="px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 border-l border-gray-200">
-              🎤 Voice Interface
+              🎙️ Voice Analysis
             </Link>
             <Link href="/debate" className="px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 border-l border-gray-200">
               🎭 Celebrity Debates
@@ -79,6 +82,27 @@ export default function Home() {
                   Want deeper insights? Try our <Link href="/council" className="font-medium underline">Product Strategy Council</Link> for multi-expert analysis.
                 </p>
               </div>
+            </div>
+          </div>
+
+          {/* Phase 1 New Feature Banner */}
+          <div className="mt-4 p-6 bg-gradient-to-r from-green-600 to-blue-600 rounded-xl shadow-lg text-white">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="flex items-center">
+                  <span className="bg-white text-green-600 px-2 py-1 rounded-full text-xs font-bold mr-3">PHASE 1</span>
+                  <h3 className="text-lg font-bold">🎤 Smart Voice Forms - Just Launched!</h3>
+                </div>
+                <p className="text-green-100 mt-2">
+                  Fill any form using voice commands! Say "Fill product name with TaskFlow" or just speak naturally.
+                </p>
+              </div>
+              <Link 
+                href="/voice-form" 
+                className="bg-white hover:bg-gray-100 text-green-600 font-bold py-3 px-6 rounded-lg transition-colors ml-4"
+              >
+                Try It Now →
+              </Link>
             </div>
           </div>
 

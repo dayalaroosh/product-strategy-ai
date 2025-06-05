@@ -1,0 +1,17 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "NIXPACKS",
+    "buildCommand": "pip install -r requirements.txt"
+  },
+  "deploy": {
+    "startCommand": "python simple_main.py",
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 10
+  },
+  "env": {
+    "NODE_ENV": "production",
+    "OPENAI_API_KEY": "${{OPENAI_API_KEY}}",
+    "PORT": "8001"
+  }
+} 
