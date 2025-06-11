@@ -155,7 +155,8 @@ export default function VoiceFormFiller({ onFieldUpdate, fields, isGlobalMode = 
       const formData = new FormData();
       formData.append('audio', audioBlob, 'recording.webm');
       
-      const response = await fetch('https://product-strategy-ai-production.up.railway.app/api/voice/speech-to-text', {
+      const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.NEXT_PUBLIC_BACKEND_URL || 'https://product-strategy-ai-production.up.railway.app';
+      const response = await fetch(`${API_BASE_URL}/api/voice/speech-to-text`, {
         method: 'POST',
         body: formData,
       });
