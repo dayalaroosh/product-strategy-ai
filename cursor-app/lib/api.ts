@@ -63,7 +63,31 @@ export interface AvailableAgentsResponse {
   }>;
 }
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:8001';
+// Enhanced API base URL logic with fallback and debugging
+const getApiBaseUrl = () => {
+  // Check environment variables
+  const envUrl = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.NEXT_PUBLIC_BACKEND_URL;
+  
+  // Production fallback - always use Railway in production
+  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+    return 'https://product-strategy-ai-production.up.railway.app';
+  }
+  
+  // Development fallback
+  return envUrl || 'http://localhost:8001';
+};
+
+const API_BASE_URL = getApiBaseUrl();
+
+// Debug logging
+if (typeof window !== 'undefined') {
+  console.log('API Configuration:', {
+    NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL,
+    NEXT_PUBLIC_BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND_URL,
+    calculated_API_BASE_URL: API_BASE_URL,
+    hostname: window.location.hostname
+  });
+}
 
 export const api = {
   async analyzeProduct(data: any): Promise<AnalysisResponse> {
@@ -94,9 +118,11 @@ export const api = {
   },
 
   async getAvailableAgents(): Promise<AvailableAgentsResponse> {
+    console.log('Calling getAvailableAgents with URL:', `${API_BASE_URL}/api/council/agents`);
     const response = await fetch(`${API_BASE_URL}/api/council/agents`);
     
     if (!response.ok) {
+      console.error('Failed to fetch agents:', response.status, response.statusText);
       throw new Error('Failed to get available agents');
     }
     
