@@ -1598,7 +1598,7 @@ export default function PresentationPage() {
             About the Creator
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-            Built by an IIM Ahmedabad graduate and product leader who scaled products from 1 to 7 customers achieving $12Mn+ ARR.
+            An engineer turned product manager who understands the early-stage PM struggle from personal experience.
           </p>
         </div>
 
@@ -1611,22 +1611,22 @@ export default function PresentationPage() {
               </div>
               <div className="flex-1">
                 <h3 className="text-3xl font-bold text-gray-900 mb-4">Aroosh Dayal</h3>
-                <p className="text-xl text-blue-600 font-semibold mb-4">Senior Product Manager & AI Product Strategist</p>
+                <p className="text-xl text-blue-600 font-semibold mb-4">Senior Product Manager</p>
                 <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                  IIM Ahmedabad graduate with 7+ years of product management experience across enterprise SaaS, gaming, telecom, and fintech. Currently at Eightfold AI, where I've scaled Resource Management from 1 to 7 customers achieving $12Mn+ ARR. Having lived the early-stage PM struggle firsthand, I built this AI council to democratize access to expert product strategy.
+                  Started as a software developer at Oracle, transitioned through business school to become a data scientist at American Express, and evolved into product management across telecom, gaming, and AI. Currently working on Resource Management at Eightfold AI, where I've experienced firsthand the challenges of building products with limited customer feedback.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <div className="flex items-center gap-2 bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
                     <GraduationCap className="h-4 w-4" />
-                    <span className="text-sm font-medium">IIM Ahmedabad PGDM</span>
+                    <span className="text-sm font-medium">IIM Ahmedabad</span>
                   </div>
                   <div className="flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full">
-                    <Award className="h-4 w-4" />
-                    <span className="text-sm font-medium">IIT Guwahati B.Tech</span>
+                    <Code className="h-4 w-4" />
+                    <span className="text-sm font-medium">IIT Guwahati</span>
                   </div>
                   <div className="flex items-center gap-2 bg-purple-100 text-purple-800 px-3 py-1 rounded-full">
-                    <TrendingUp className="h-4 w-4" />
-                    <span className="text-sm font-medium">$12Mn+ ARR Growth</span>
+                    <Briefcase className="h-4 w-4" />
+                    <span className="text-sm font-medium">7+ Years Product</span>
                   </div>
                 </div>
               </div>
@@ -1634,45 +1634,129 @@ export default function PresentationPage() {
           </Card>
         </div>
 
-        {/* Experience & Achievements */}
+        {/* Career Journey */}
+        <div className="mb-16">
+          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Career Journey</h3>
+          <div className="max-w-5xl mx-auto">
+            <div className="relative">
+              {/* Timeline line */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-200"></div>
+              
+              {/* Timeline items */}
+              <div className="space-y-12">
+                {/* Engineering Foundation */}
+                <div className="flex items-center">
+                  <div className="w-1/2 pr-8 text-right">
+                    <Card className="p-6 shadow-lg border-0 bg-green-50">
+                      <h4 className="text-lg font-bold text-gray-900 mb-2">Engineering Foundation</h4>
+                      <p className="text-green-600 font-medium mb-2">IIT Guwahati (2010-2014)</p>
+                      <p className="text-sm text-gray-600">B.Tech in Electronics & Communication Engineering</p>
+                    </Card>
+                  </div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full border-4 border-white"></div>
+                  <div className="w-1/2 pl-8">
+                    <Card className="p-6 shadow-lg border-0 bg-blue-50">
+                      <h4 className="text-lg font-bold text-gray-900 mb-2">Software Developer</h4>
+                      <p className="text-blue-600 font-medium mb-2">Oracle (2014-2015)</p>
+                      <p className="text-sm text-gray-600">Developed enhancements to Oracle CPQ software, topped product training with 95% score</p>
+                    </Card>
+                  </div>
+                </div>
+
+                {/* Business Transition */}
+                <div className="flex items-center">
+                  <div className="w-1/2 pr-8 text-right">
+                    <Card className="p-6 shadow-lg border-0 bg-purple-50">
+                      <h4 className="text-lg font-bold text-gray-900 mb-2">Business School</h4>
+                      <p className="text-purple-600 font-medium mb-2">IIM Ahmedabad (2015-2017)</p>
+                      <p className="text-sm text-gray-600">PGDM with student exchange at EM Lyon Business School, France</p>
+                    </Card>
+                  </div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-purple-500 rounded-full border-4 border-white"></div>
+                  <div className="w-1/2 pl-8">
+                    <Card className="p-6 shadow-lg border-0 bg-orange-50">
+                      <h4 className="text-lg font-bold text-gray-900 mb-2">Data Scientist</h4>
+                      <p className="text-orange-600 font-medium mb-2">American Express (2017-2019)</p>
+                      <p className="text-sm text-gray-600">Built XGBoost models for business targeting, contributed to $23M+ revenue impact</p>
+                    </Card>
+                  </div>
+                </div>
+
+                {/* Product Management Evolution */}
+                <div className="flex items-center">
+                  <div className="w-1/2 pr-8 text-right">
+                    <Card className="p-6 shadow-lg border-0 bg-indigo-50">
+                      <h4 className="text-lg font-bold text-gray-900 mb-2">Product Analytics</h4>
+                      <p className="text-indigo-600 font-medium mb-2">Bharti Airtel (2019-2021)</p>
+                      <p className="text-sm text-gray-600">Led analytics for Airtel Thanks App (100M+ MAU), improved digital leads by 140%</p>
+                    </Card>
+                  </div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-indigo-500 rounded-full border-4 border-white"></div>
+                  <div className="w-1/2 pl-8">
+                    <Card className="p-6 shadow-lg border-0 bg-red-50">
+                      <h4 className="text-lg font-bold text-gray-900 mb-2">Senior Product Manager</h4>
+                      <p className="text-red-600 font-medium mb-2">Bharti Airtel (2021-2023)</p>
+                      <p className="text-sm text-gray-600">Managed Field Service Management platform, won Chairman Award 2022</p>
+                    </Card>
+                  </div>
+                </div>
+
+                {/* Current Role */}
+                <div className="flex items-center">
+                  <div className="w-1/2 pr-8 text-right">
+                    <Card className="p-6 shadow-lg border-0 bg-yellow-50">
+                      <h4 className="text-lg font-bold text-gray-900 mb-2">Gaming Product</h4>
+                      <p className="text-yellow-600 font-medium mb-2">Zynga (2023)</p>
+                      <p className="text-sm text-gray-600">Compliance & Social products for 119+ game studios, saved $3M+ revenue</p>
+                    </Card>
+                  </div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-yellow-500 rounded-full border-4 border-white"></div>
+                  <div className="w-1/2 pl-8">
+                    <Card className="p-6 shadow-lg border-0 bg-teal-50">
+                      <h4 className="text-lg font-bold text-gray-900 mb-2">AI Product Management</h4>
+                      <p className="text-teal-600 font-medium mb-2">Eightfold AI (2024-Current)</p>
+                      <p className="text-sm text-gray-600">Resource Management product, scaled from 1 to 7 customers</p>
+                    </Card>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Skills & Expertise */}
         <div className="grid md:grid-cols-2 gap-12 mb-16">
           <Card className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                <Briefcase className="h-6 w-6 text-blue-600" />
+                <Code className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">Professional Experience</h3>
+              <h3 className="text-2xl font-bold text-gray-900">Technical Background</h3>
             </div>
-            <div className="space-y-6">
-              <div className="border-l-4 border-blue-500 pl-4">
-                <h4 className="text-lg font-bold text-gray-900 mb-2">Senior Product Manager</h4>
-                <p className="text-blue-600 font-medium mb-2">Eightfold AI (Jan 2024 - Current)</p>
-                <ul className="text-gray-600 space-y-1 text-sm">
-                  <li>• Scaled Resource Management from 1 to 7 customers achieving $12Mn+ ARR</li>
-                  <li>• Launched 15+ critical features across 4 key personas</li>
-                  <li>• Managed 24+ stakeholders across Engineering, GTM, Design & Analytics</li>
-                  <li>• Received 50+ shoutouts for Extreme Ownership & Excellence</li>
-                </ul>
+            <div className="space-y-4">
+              <div>
+                <h4 className="font-bold text-gray-900 mb-2">Engineering & Development</h4>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Oracle CPQ</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Software Development</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Electronics Engineering</span>
+                </div>
               </div>
-              <div className="border-l-4 border-purple-500 pl-4">
-                <h4 className="text-lg font-bold text-gray-900 mb-2">Senior Product Manager</h4>
-                <p className="text-purple-600 font-medium mb-2">Zynga (Feb 2023 - Sep 2023)</p>
-                <ul className="text-gray-600 space-y-1 text-sm">
-                  <li>• Redesigned opt-out flows saving $3Mn+ revenue</li>
-                  <li>• Built Abuse Reporting service integrating 10+ APIs</li>
-                  <li>• Improved Gaming Guilds adoption (~5Mn users)</li>
-                  <li>• Increased website traffic by 25% via Web Push Notifications</li>
-                </ul>
+              <div>
+                <h4 className="font-bold text-gray-900 mb-2">Data Science & Analytics</h4>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">XGBoost</span>
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Machine Learning</span>
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Customer Analytics</span>
+                </div>
               </div>
-              <div className="border-l-4 border-green-500 pl-4">
-                <h4 className="text-lg font-bold text-gray-900 mb-2">Senior Product Manager</h4>
-                <p className="text-green-600 font-medium mb-2">Bharti Airtel (Jun 2021 - Feb 2023)</p>
-                <ul className="text-gray-600 space-y-1 text-sm">
-                  <li>• Led Field Service Management platform (100K+ users, ₹700Cr+ account)</li>
-                  <li>• Achieved 20% fleet productivity increase via ML-driven features</li>
-                  <li>• Won Chairman Award 2022 for 'Win with Digital' category</li>
-                  <li>• Skip-level reporting to Airtel's Chief Product Officer</li>
-                </ul>
+              <div>
+                <h4 className="font-bold text-gray-900 mb-2">Current AI/ML Work</h4>
+                <div className="flex flex-wrap gap-2">
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">AutoGen</span>
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Multi-Agent Systems</span>
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">OpenAI GPT-4</span>
+                </div>
               </div>
             </div>
           </Card>
@@ -1680,183 +1764,98 @@ export default function PresentationPage() {
           <Card className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                <Award className="h-6 w-6 text-green-600" />
+                <Target className="h-6 w-6 text-green-600" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">Key Achievements & Impact</h3>
+              <h3 className="text-2xl font-bold text-gray-900">Domain Expertise</h3>
             </div>
-            <div className="space-y-6">
-              <div>
-                <h4 className="font-bold text-gray-900 mb-3">Revenue & Growth Impact</h4>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
-                    <span className="text-sm font-medium">ARR Growth at Eightfold</span>
-                    <span className="text-green-600 font-bold">$12Mn+</span>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
-                    <span className="text-sm font-medium">Revenue Saved at Zynga</span>
-                    <span className="text-blue-600 font-bold">$3Mn+</span>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
-                    <span className="text-sm font-medium">Revenue Impact at AmEx</span>
-                    <span className="text-purple-600 font-bold">$23Mn+</span>
-                  </div>
-                </div>
+            <div className="space-y-4">
+              <div className="p-4 bg-gray-50 rounded-lg">
+                <h4 className="font-bold text-gray-900 mb-2">Enterprise SaaS</h4>
+                <p className="text-sm text-gray-600">Resource Management, Field Service Management, Oracle CPQ</p>
               </div>
-              <div>
-                <h4 className="font-bold text-gray-900 mb-3">Product Performance</h4>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center p-3 bg-orange-50 rounded-lg">
-                    <span className="text-sm font-medium">Postpaid Digital Leads</span>
-                    <span className="text-orange-600 font-bold">+140%</span>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg">
-                    <span className="text-sm font-medium">Fleet Productivity</span>
-                    <span className="text-red-600 font-bold">+20%</span>
-                  </div>
-                  <div className="flex justify-between items-center p-3 bg-indigo-50 rounded-lg">
-                    <span className="text-sm font-medium">Customer Churn Reduction</span>
-                    <span className="text-indigo-600 font-bold">-22%</span>
-                  </div>
-                </div>
+              <div className="p-4 bg-gray-50 rounded-lg">
+                <h4 className="font-bold text-gray-900 mb-2">Consumer Tech</h4>
+                <p className="text-sm text-gray-600">Gaming platforms, Mobile apps (100M+ MAU), Digital experiences</p>
+              </div>
+              <div className="p-4 bg-gray-50 rounded-lg">
+                <h4 className="font-bold text-gray-900 mb-2">Financial Services</h4>
+                <p className="text-sm text-gray-600">Business targeting, Risk modeling, Customer analytics</p>
+              </div>
+              <div className="p-4 bg-gray-50 rounded-lg">
+                <h4 className="font-bold text-gray-900 mb-2">Telecom</h4>
+                <p className="text-sm text-gray-600">Digital transformation, Customer acquisition, Service optimization</p>
               </div>
             </div>
           </Card>
         </div>
 
-        {/* Education & Skills */}
-        <div className="mb-16">
-          <Card className="p-8 shadow-xl border-0 max-w-6xl mx-auto">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
-                <GraduationCap className="h-6 w-6 text-indigo-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900">Education & Technical Skills</h3>
-            </div>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h4 className="font-bold text-gray-900 mb-4">Premier Education</h4>
-                <div className="space-y-4">
-                  <div className="p-4 bg-indigo-50 rounded-lg">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center">
-                        <GraduationCap className="h-4 w-4 text-white" />
-                      </div>
-                      <div>
-                        <p className="font-bold text-gray-900">PGDM - IIM Ahmedabad</p>
-                        <p className="text-sm text-gray-600">Student Exchange @ EM Lyon Business School, France (2015-2017)</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-4 bg-green-50 rounded-lg">
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                        <Code className="h-4 w-4 text-white" />
-                      </div>
-                      <div>
-                        <p className="font-bold text-gray-900">B.Tech - IIT Guwahati</p>
-                        <p className="text-sm text-gray-600">Electronics & Communication Engineering (2010-2014)</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-900 mb-4">Technical Expertise</h4>
-                <div className="space-y-4">
-                  <div>
-                    <h5 className="font-medium text-gray-700 mb-2">AI & Machine Learning</h5>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">XGBoost</span>
-                      <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">AutoGen</span>
-                      <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">OpenAI GPT-4</span>
-                      <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Multi-Agent Systems</span>
-                    </div>
-                  </div>
-                  <div>
-                    <h5 className="font-medium text-gray-700 mb-2">Product & Analytics</h5>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Product Strategy</span>
-                      <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Data Science</span>
-                      <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">A/B Testing</span>
-                      <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Customer Analytics</span>
-                    </div>
-                  </div>
-                  <div>
-                    <h5 className="font-medium text-gray-700 mb-2">Development & Tools</h5>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Next.js</span>
-                      <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Python</span>
-                      <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Oracle CPQ</span>
-                      <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Enterprise SaaS</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </div>
-
-        {/* Awards & Recognition */}
-        <div className="mb-16">
-          <Card className="p-8 shadow-xl border-0 bg-gradient-to-br from-yellow-50 to-orange-50">
-            <div className="text-center mb-8">
-              <div className="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">Awards & Recognition</h3>
-            </div>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="text-center p-4 bg-white rounded-lg shadow-sm">
-                <div className="text-2xl mb-2">🏆</div>
-                <h4 className="font-bold text-gray-900 mb-2">Chairman Award 2022</h4>
-                <p className="text-sm text-gray-600">Bharti Airtel - 'Win with Digital' category for App growth & potential</p>
-              </div>
-              <div className="text-center p-4 bg-white rounded-lg shadow-sm">
-                <div className="text-2xl mb-2">⭐</div>
-                <h4 className="font-bold text-gray-900 mb-2">GCMA Superstar</h4>
-                <p className="text-sm text-gray-600">American Express - Top 6 out of 250+ analysts</p>
-              </div>
-              <div className="text-center p-4 bg-white rounded-lg shadow-sm">
-                <div className="text-2xl mb-2">🥇</div>
-                <h4 className="font-bold text-gray-900 mb-2">Think Tank Award 2017</h4>
-                <p className="text-sm text-gray-600">EM Lyon - Jury Award for best retail project (Italy vs Spain vs France)</p>
-              </div>
-            </div>
-          </Card>
-        </div>
-
-        {/* Vision & Why This Project */}
+        {/* Why This Project */}
         <div className="mb-16">
           <Card className="p-8 shadow-xl border-0 bg-gradient-to-br from-orange-50 to-red-50">
             <h3 className="text-3xl font-bold text-gray-900 mb-6 text-center">Why I Built This AI Council</h3>
             <div className="max-w-4xl mx-auto">
               <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                Having scaled products across Eightfold AI, Zynga, Airtel, and AmEx, I've consistently faced the same challenge at early-stage companies: <strong>How do you make confident product decisions when traditional research methods don't work?</strong>
+                Throughout my journey from engineering to product management, I've consistently encountered the same challenge at early-stage companies: making product decisions without sufficient user data. This became particularly apparent at Eightfold, where we needed to scale from 1 to 7 customers with limited feedback loops.
               </p>
               <div className="grid md:grid-cols-2 gap-8">
                 <div>
-                  <h4 className="text-xl font-bold text-gray-900 mb-4">The Pain I Lived</h4>
+                  <h4 className="text-xl font-bold text-gray-900 mb-4">The Challenge I Lived</h4>
                   <ul className="space-y-2 text-gray-600">
-                    <li>• At Eightfold: Scaling from 1 to 7 customers with limited user feedback</li>
-                    <li>• At Zynga: Making compliance decisions affecting $3Mn+ revenue</li>
-                    <li>• At Airtel: Optimizing for 100K+ users without comprehensive research</li>
-                    <li>• At AmEx: Building models with limited business context</li>
+                    <li>• Building products with 1-7 customers at Eightfold</li>
+                    <li>• Making compliance decisions affecting millions at Zynga</li>
+                    <li>• Optimizing experiences for 100M+ users at Airtel</li>
+                    <li>• Creating models with limited business context at AmEx</li>
                   </ul>
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-gray-900 mb-4">The Solution I Built</h4>
+                  <h4 className="text-xl font-bold text-gray-900 mb-4">The Solution I Explored</h4>
                   <ul className="space-y-2 text-gray-600">
-                    <li>• 5 AI experts providing instant diverse perspectives</li>
-                    <li>• Evidence-based recommendations in minutes, not weeks</li>
-                    <li>• Affordable access to expert-level product strategy</li>
-                    <li>• Real debate dynamics surfacing blind spots</li>
+                    <li>• Multi-agent AI systems for diverse perspectives</li>
+                    <li>• Structured debate to surface blind spots</li>
+                    <li>• Accessible expert-level product strategy</li>
+                    <li>• Fast validation for early-stage decisions</li>
                   </ul>
                 </div>
               </div>
               <div className="mt-8 p-6 bg-white rounded-lg border-l-4 border-orange-500">
                 <p className="text-gray-700 italic text-lg">
-                  "Having generated $25Mn+ in revenue impact across companies, I know the value of expert product strategy. This AI council democratizes that expertise for every early-stage PM who's ever felt lost without user data."
+                  "This project represents my attempt to solve a problem I've faced repeatedly: how to make confident product decisions when traditional research methods aren't feasible."
                 </p>
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        {/* Personal Interests */}
+        <div className="mb-16">
+          <Card className="p-8 shadow-xl border-0 bg-gradient-to-br from-blue-50 to-purple-50">
+            <div className="text-center mb-8">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Lightbulb className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-4">Beyond Product Management</h3>
+              <p className="text-gray-600">What keeps me curious and creative outside of work</p>
+            </div>
+            <div className="grid md:grid-cols-4 gap-6">
+              <div className="text-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div className="text-3xl mb-3">✈️</div>
+                <h4 className="font-bold text-gray-900 mb-2">Travel</h4>
+                <p className="text-sm text-gray-600">Exploring new cultures and perspectives from around the world</p>
+              </div>
+              <div className="text-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div className="text-3xl mb-3">🍽️</div>
+                <h4 className="font-bold text-gray-900 mb-2">Food</h4>
+                <p className="text-sm text-gray-600">Discovering great restaurants and experimenting with cuisines</p>
+              </div>
+              <div className="text-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div className="text-3xl mb-3">🎱</div>
+                <h4 className="font-bold text-gray-900 mb-2">Snooker & Pool</h4>
+                <p className="text-sm text-gray-600">Strategic thinking and precision in a relaxed setting</p>
+              </div>
+              <div className="text-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div className="text-3xl mb-3">🤖</div>
+                <h4 className="font-bold text-gray-900 mb-2">AI Agents</h4>
+                <p className="text-sm text-gray-600">Building and experimenting with autonomous AI systems</p>
               </div>
             </div>
           </Card>
@@ -1866,9 +1865,9 @@ export default function PresentationPage() {
         <div>
           <Card className="p-8 shadow-xl border-0 bg-gradient-to-br from-gray-900 to-blue-900 text-white max-w-4xl mx-auto">
             <div className="text-center">
-              <h3 className="text-3xl font-bold mb-6">Let's Build the Future of Product Strategy Together</h3>
+              <h3 className="text-3xl font-bold mb-6">Let's Connect</h3>
               <p className="text-xl text-blue-200 mb-8 leading-relaxed">
-                Ready to bring my proven track record of scaling products and generating revenue impact to your team. Let's discuss how I can drive your product strategy forward.
+                Open to discussing product strategy, AI applications, or opportunities where my background in engineering, analytics, and product management could be valuable.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
                 <Button 
@@ -1892,15 +1891,15 @@ export default function PresentationPage() {
               <div className="flex items-center justify-center gap-8 text-blue-200">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-5 w-5 text-green-400" />
-                  <span>Available Immediately</span>
+                  <span>Available for Opportunities</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Target className="h-5 w-5 text-purple-400" />
-                  <span>Senior PM Roles</span>
+                  <span>Product Management</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <TrendingUp className="h-5 w-5 text-yellow-400" />
-                  <span>$25Mn+ Revenue Impact</span>
+                  <Brain className="h-5 w-5 text-blue-400" />
+                  <span>AI/ML Focus</span>
                 </div>
               </div>
             </div>
