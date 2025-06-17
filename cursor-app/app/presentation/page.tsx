@@ -219,41 +219,124 @@ export default function PresentationPage() {
           </div>
 
           {/* Animated Comparison Chart */}
-          <div className="mb-16 max-w-4xl mx-auto">
+          <div className="mb-16 max-w-6xl mx-auto">
             <Card className="p-8 bg-white/10 backdrop-blur-sm border border-white/20">
-              <h3 className="text-2xl font-bold text-center mb-8">Single AI vs Multi-Agent Performance</h3>
-              <div className="grid md:grid-cols-2 gap-8">
+              <h3 className="text-3xl font-bold text-center mb-8">Why Multi-Agent AI Outperforms Everything Else</h3>
+              <div className="grid md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <h4 className="text-lg font-semibold mb-4 text-red-300">Single AI Response</h4>
+                  <h4 className="text-lg font-semibold mb-4 text-red-300">Traditional PM Tools</h4>
                   <div className="bg-red-500/20 rounded-lg p-4 mb-4">
-                    <div className="h-4 bg-red-500 rounded-full animate-pulse" style={{width: '40%'}}></div>
+                    <div className="h-4 bg-red-500 rounded-full animate-pulse" style={{width: '30%'}}></div>
+                  </div>
+                  <div className="text-xs text-red-200 mb-3 space-y-1">
+                    <div>Productboard • Aha! • Roadmunk</div>
+                    <div>UserVoice • Hotjar • Mixpanel</div>
                   </div>
                   <ul className="text-sm text-red-200 space-y-1">
-                    <li>• One perspective only</li>
-                    <li>• Limited reasoning depth</li>
-                    <li>• No conflict resolution</li>
-                    <li>• Generic outputs</li>
+                    <li>• Requires existing user data</li>
+                    <li>• Manual analysis & insights</li>
+                    <li>• No strategic guidance</li>
+                    <li>• Expensive for early-stage</li>
+                    <li>• Time-intensive setup</li>
                   </ul>
                 </div>
+                
+                <div className="text-center">
+                  <h4 className="text-lg font-semibold mb-4 text-orange-300">Single AI Solutions</h4>
+                  <div className="bg-orange-500/20 rounded-lg p-4 mb-4">
+                    <div className="h-4 bg-orange-500 rounded-full animate-pulse" style={{width: '55%'}}></div>
+                  </div>
+                  <div className="text-xs text-orange-200 mb-3 space-y-1">
+                    <div>ChatGPT • Claude • Gemini</div>
+                    <div>Pendo AI • Amplitude AI</div>
+                  </div>
+                  <ul className="text-sm text-orange-200 space-y-1">
+                    <li>• One perspective only</li>
+                    <li>• Generic responses</li>
+                    <li>• No domain expertise</li>
+                    <li>• Limited reasoning depth</li>
+                    <li>• No conflict resolution</li>
+                  </ul>
+                </div>
+                
                 <div className="text-center">
                   <h4 className="text-lg font-semibold mb-4 text-green-300">Multi-Agent Council</h4>
                   <div className="space-y-2 mb-4">
                     <div className="bg-green-500/20 rounded-lg p-2">
-                      <div className="h-2 bg-green-500 rounded-full animate-pulse" style={{width: '85%'}}></div>
+                      <div className="h-2 bg-green-500 rounded-full animate-pulse" style={{width: '95%'}}></div>
                     </div>
                     <div className="bg-blue-500/20 rounded-lg p-2">
-                      <div className="h-2 bg-blue-500 rounded-full animate-pulse delay-200" style={{width: '90%'}}></div>
+                      <div className="h-2 bg-blue-500 rounded-full animate-pulse delay-200" style={{width: '92%'}}></div>
                     </div>
                     <div className="bg-purple-500/20 rounded-lg p-2">
-                      <div className="h-2 bg-purple-500 rounded-full animate-pulse delay-500" style={{width: '88%'}}></div>
+                      <div className="h-2 bg-purple-500 rounded-full animate-pulse delay-500" style={{width: '90%'}}></div>
                     </div>
                   </div>
+                  <div className="text-xs text-green-200 mb-3">
+                    <div>Our Innovation</div>
+                  </div>
                   <ul className="text-sm text-green-200 space-y-1">
-                    <li>• Multiple expert viewpoints</li>
-                    <li>• Deep reasoning chains</li>
-                    <li>• Natural debate dynamics</li>
-                    <li>• Tailored recommendations</li>
+                    <li>• 5 specialized experts debate</li>
+                    <li>• Deep domain knowledge</li>
+                    <li>• Conflicting viewpoints surface</li>
+                    <li>• Works with 0 customers</li>
+                    <li>• Instant strategic insights</li>
                   </ul>
+                </div>
+              </div>
+              
+              {/* Detailed Comparison Table */}
+              <div className="mt-8 bg-white/5 rounded-lg p-6">
+                <h4 className="text-xl font-bold text-center mb-6">Detailed Feature Comparison</h4>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-white/20">
+                        <th className="text-left py-3 text-gray-300">Feature</th>
+                        <th className="text-center py-3 text-red-300">Traditional</th>
+                        <th className="text-center py-3 text-orange-300">Single AI</th>
+                        <th className="text-center py-3 text-green-300">Multi-Agent</th>
+                      </tr>
+                    </thead>
+                    <tbody className="space-y-2">
+                      <tr className="border-b border-white/10">
+                        <td className="py-3 text-gray-200">Works with 0-50 customers</td>
+                        <td className="text-center py-3 text-red-400">❌</td>
+                        <td className="text-center py-3 text-orange-400">⚠️</td>
+                        <td className="text-center py-3 text-green-400">✅</td>
+                      </tr>
+                      <tr className="border-b border-white/10">
+                        <td className="py-3 text-gray-200">Multiple expert perspectives</td>
+                        <td className="text-center py-3 text-red-400">❌</td>
+                        <td className="text-center py-3 text-orange-400">❌</td>
+                        <td className="text-center py-3 text-green-400">✅</td>
+                      </tr>
+                      <tr className="border-b border-white/10">
+                        <td className="py-3 text-gray-200">Real-time strategic analysis</td>
+                        <td className="text-center py-3 text-red-400">❌</td>
+                        <td className="text-center py-3 text-orange-400">⚠️</td>
+                        <td className="text-center py-3 text-green-400">✅</td>
+                      </tr>
+                      <tr className="border-b border-white/10">
+                        <td className="py-3 text-gray-200">Debate & conflict resolution</td>
+                        <td className="text-center py-3 text-red-400">❌</td>
+                        <td className="text-center py-3 text-orange-400">❌</td>
+                        <td className="text-center py-3 text-green-400">✅</td>
+                      </tr>
+                      <tr className="border-b border-white/10">
+                        <td className="py-3 text-gray-200">Cost for early-stage startups</td>
+                        <td className="text-center py-3 text-red-400">High</td>
+                        <td className="text-center py-3 text-orange-400">Medium</td>
+                        <td className="text-center py-3 text-green-400">Low</td>
+                      </tr>
+                      <tr>
+                        <td className="py-3 text-gray-200">Setup time</td>
+                        <td className="text-center py-3 text-red-400">Weeks</td>
+                        <td className="text-center py-3 text-orange-400">Minutes</td>
+                        <td className="text-center py-3 text-green-400">Minutes</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </Card>
@@ -313,15 +396,15 @@ export default function PresentationPage() {
                   <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
                   <span><strong>Iterative Refinement:</strong> Ideas evolve through discussion</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
+                <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
+                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
                   <span><strong>Consensus Building:</strong> Final aligned recommendations</span>
                 </li>
               </ul>
             </Card>
             
-            <Card className="p-8 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 group">
-              <div className="text-yellow-400 mb-6 transform group-hover:scale-110 transition-transform duration-300">
+            <Card className="p-8 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 group card-hover">
+              <div className="text-yellow-400 mb-6 transform group-hover:scale-110 transition-transform duration-300 animate-float">
                 <Zap className="h-12 w-12" />
               </div>
               <h3 className="text-2xl font-bold mb-4">Tangible Outputs</h3>
@@ -329,20 +412,20 @@ export default function PresentationPage() {
                 Get specific, actionable deliverables you can present to stakeholders, not generic AI responses.
               </p>
               <ul className="space-y-2 text-blue-100">
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
+                <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
+                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
                   <span><strong>RICE Scores:</strong> Prioritized feature ranking</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
+                <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
+                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
                   <span><strong>Risk Assessment:</strong> What could go wrong</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
+                <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
+                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
                   <span><strong>Market Positioning:</strong> Competitive analysis</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
+                <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
+                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
                   <span><strong>Implementation Roadmap:</strong> Step-by-step plan</span>
                 </li>
               </ul>
@@ -1552,12 +1635,21 @@ export default function PresentationPage() {
           50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
         }
+        
+        .scrollbar-hide {
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none; /* IE and Edge */
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none; /* Chrome, Safari and Opera */
+        }
       `}</style>
       
       {/* Tab Navigation */}
       <div className="bg-slate-900/95 backdrop-blur-sm border-b border-white/20 sticky top-0 z-50">
         <div className="container mx-auto px-4">
-          <div className="flex overflow-x-auto">
+          <div className="flex overflow-x-auto scrollbar-hide">
             {tabs.map((tab) => {
               const Icon = tab.icon;
               return (
