@@ -23,29 +23,28 @@ export default function PresentationPage() {
       <div className="relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%239C92AC" fill-opacity="0.1"%3E%3Ccircle cx="30" cy="30" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
         
         <div className="relative container mx-auto px-4 py-24">
           <div className="text-center max-w-5xl mx-auto">
             {/* Badge */}
-            <div className="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full mb-8 animate-fade-in">
+            <div className="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full mb-8">
               <Award className="w-4 h-4 mr-2" />
               Next-Generation Product Strategy Platform
             </div>
             
             {/* Main Heading */}
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 leading-tight animate-slide-up">
+            <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 leading-tight">
               Product Strategy
               <span className="block text-white">Council</span>
             </h1>
             
             {/* Subheading */}
-            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed animate-slide-up-delay">
+            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
               Revolutionary AI-powered platform that assembles expert personas to analyze, debate, and score your product ideas with unprecedented speed and accuracy.
             </p>
             
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-slide-up-delay-2">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button 
                 size="lg" 
                 className="text-lg px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-2xl transform hover:scale-105 transition-all duration-300"
@@ -66,7 +65,7 @@ export default function PresentationPage() {
             </div>
             
             {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 animate-fade-in-up">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
               <div className="text-center">
                 <div className="text-3xl font-bold text-blue-400">10x</div>
                 <div className="text-gray-400">Faster Analysis</div>
@@ -321,56 +320,129 @@ export default function PresentationPage() {
           </div>
           
           <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                icon: Brain,
-                title: "Expert AI Council",
-                description: "Five specialized AI personas with deep domain expertise analyze your product from multiple angles",
-                color: "blue",
-                features: ["Market Analyst", "Tech Architect", "Business Strategist", "UX Designer", "Financial Analyst"]
-              },
-              {
-                icon: Users,
-                title: "Real-time Debates",
-                description: "Watch expert personas engage in structured debates, uncovering insights you'd never find alone",
-                color: "purple",
-                features: ["Live Discussions", "Perspective Conflicts", "Evidence-based Arguments", "Consensus Building"]
-              },
-              {
-                icon: Zap,
-                title: "Instant RICE Scoring",
-                description: "Get immediate prioritization scores with detailed reasoning and export capabilities",
-                color: "yellow",
-                features: ["Automated Scoring", "Detailed Breakdown", "Comparison Matrix", "Export to Jira"]
-              },
-              {
-                icon: Shield,
-                title: "Enterprise Ready",
-                description: "Built for scale with enterprise-grade security, compliance, and performance",
-                color: "green",
-                features: ["SOC 2 Compliant", "99.9% Uptime", "Advanced Analytics", "API Integration"]
-              }
-            ].map((feature, index) => (
-              <Card key={index} className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300 group">
-                <div className="flex items-start gap-6">
-                  <div className={`bg-${feature.color}-100 p-4 rounded-xl group-hover:scale-110 transition-transform duration-300`}>
-                    <feature.icon className={`h-8 w-8 text-${feature.color}-600`} />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed">{feature.description}</p>
-                    <ul className="space-y-2">
-                      {feature.features.map((item, idx) => (
-                        <li key={idx} className="flex items-center gap-2">
-                          <CheckCircle className="h-4 w-4 text-green-500" />
-                          <span className="text-gray-700">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+            <Card className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300 group">
+              <div className="flex items-start gap-6">
+                <div className="bg-blue-100 p-4 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                  <Brain className="h-8 w-8 text-blue-600" />
                 </div>
-              </Card>
-            ))}
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Expert AI Council</h3>
+                  <p className="text-gray-600 mb-4 leading-relaxed">Five specialized AI personas with deep domain expertise analyze your product from multiple angles</p>
+                  <ul className="space-y-2">
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <span className="text-gray-700">Market Analyst</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <span className="text-gray-700">Tech Architect</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <span className="text-gray-700">Business Strategist</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <span className="text-gray-700">UX Designer</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <span className="text-gray-700">Financial Analyst</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300 group">
+              <div className="flex items-start gap-6">
+                <div className="bg-purple-100 p-4 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                  <Users className="h-8 w-8 text-purple-600" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Real-time Debates</h3>
+                  <p className="text-gray-600 mb-4 leading-relaxed">Watch expert personas engage in structured debates, uncovering insights you'd never find alone</p>
+                  <ul className="space-y-2">
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <span className="text-gray-700">Live Discussions</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <span className="text-gray-700">Perspective Conflicts</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <span className="text-gray-700">Evidence-based Arguments</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <span className="text-gray-700">Consensus Building</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300 group">
+              <div className="flex items-start gap-6">
+                <div className="bg-yellow-100 p-4 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                  <Zap className="h-8 w-8 text-yellow-600" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Instant RICE Scoring</h3>
+                  <p className="text-gray-600 mb-4 leading-relaxed">Get immediate prioritization scores with detailed reasoning and export capabilities</p>
+                  <ul className="space-y-2">
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <span className="text-gray-700">Automated Scoring</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <span className="text-gray-700">Detailed Breakdown</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <span className="text-gray-700">Comparison Matrix</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <span className="text-gray-700">Export to Jira</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300 group">
+              <div className="flex items-start gap-6">
+                <div className="bg-green-100 p-4 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                  <Shield className="h-8 w-8 text-green-600" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Enterprise Ready</h3>
+                  <p className="text-gray-600 mb-4 leading-relaxed">Built for scale with enterprise-grade security, compliance, and performance</p>
+                  <ul className="space-y-2">
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <span className="text-gray-700">SOC 2 Compliant</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <span className="text-gray-700">99.9% Uptime</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <span className="text-gray-700">Advanced Analytics</span>
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <span className="text-gray-700">API Integration</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
       </div>
@@ -422,55 +494,6 @@ export default function PresentationPage() {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes fade-in {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        
-        @keyframes slide-up {
-          from { 
-            opacity: 0; 
-            transform: translateY(30px); 
-          }
-          to { 
-            opacity: 1; 
-            transform: translateY(0); 
-          }
-        }
-        
-        @keyframes fade-in-up {
-          from { 
-            opacity: 0; 
-            transform: translateY(20px); 
-          }
-          to { 
-            opacity: 1; 
-            transform: translateY(0); 
-          }
-        }
-        
-        .animate-fade-in {
-          animation: fade-in 1s ease-out;
-        }
-        
-        .animate-slide-up {
-          animation: slide-up 1s ease-out;
-        }
-        
-        .animate-slide-up-delay {
-          animation: slide-up 1s ease-out 0.2s both;
-        }
-        
-        .animate-slide-up-delay-2 {
-          animation: slide-up 1s ease-out 0.4s both;
-        }
-        
-        .animate-fade-in-up {
-          animation: fade-in-up 1s ease-out 0.6s both;
-        }
-      `}</style>
     </div>
   );
 } 
