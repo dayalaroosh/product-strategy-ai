@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Brain, Users, Zap, Shield, Play, CheckCircle, TrendingUp, Star, Award, Target, Building, UserX, Clock, DollarSign, AlertTriangle, Mic, MessageSquare, Database, Code, Lock, Globe, BarChart3, Settings, Headphones, Bot } from 'lucide-react';
+import { ArrowRight, Brain, Users, Zap, Shield, Play, CheckCircle, TrendingUp, Star, Award, Target, Building, UserX, Clock, DollarSign, AlertTriangle, Mic, MessageSquare, Database, Code, Lock, Globe, BarChart3, Settings, Headphones, Bot, User, GraduationCap, Briefcase, Lightbulb, Mail, Linkedin, Github } from 'lucide-react';
 
 export default function PresentationPage() {
   const [activeTab, setActiveTab] = useState('overview');
@@ -30,7 +30,8 @@ export default function PresentationPage() {
     { id: 'enterprise', label: 'B2B Enterprise', icon: Shield },
     { id: 'architecture', label: 'System Architecture', icon: Database },
     { id: 'gtm', label: 'GTM Strategy', icon: TrendingUp },
-    { id: 'roadmap', label: 'Product Roadmap', icon: BarChart3 }
+    { id: 'roadmap', label: 'Product Roadmap', icon: BarChart3 },
+    { id: 'about', label: 'About the Creator', icon: User }
   ];
 
   const handleTabClick = (tabId: string) => {
@@ -1589,6 +1590,275 @@ export default function PresentationPage() {
     </div>
   );
 
+  const renderAboutTab = () => (
+    <div className="py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            About the Creator
+          </h2>
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+            Built by a product leader who lived the early-stage PM struggle and decided to solve it with AI.
+          </p>
+        </div>
+
+        {/* Hero Section */}
+        <div className="mb-16">
+          <Card className="p-8 shadow-2xl border-0 bg-gradient-to-br from-white to-blue-50 max-w-4xl mx-auto">
+            <div className="flex flex-col md:flex-row items-start gap-8">
+              <div className="w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                <User className="h-16 w-16 text-white" />
+              </div>
+              <div className="flex-1">
+                <h3 className="text-3xl font-bold text-gray-900 mb-4">Aroosh Dayal</h3>
+                <p className="text-xl text-blue-600 font-semibold mb-4">Senior Product Manager & AI Innovator</p>
+                <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                  9+ years of B2B SaaS and AI/ML product experience. Having lived through the early-stage PM struggle at companies like Eightfold, I built this AI council to solve the problem every early-stage product manager faces: making confident decisions with limited customer data.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <div className="flex items-center gap-2 bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
+                    <Briefcase className="h-4 w-4" />
+                    <span className="text-sm font-medium">9+ Years Product Experience</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-purple-100 text-purple-800 px-3 py-1 rounded-full">
+                    <Brain className="h-4 w-4" />
+                    <span className="text-sm font-medium">AI/ML Product Specialist</span>
+                  </div>
+                  <div className="flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full">
+                    <Building className="h-4 w-4" />
+                    <span className="text-sm font-medium">B2B SaaS Expert</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        {/* Experience & Skills */}
+        <div className="grid md:grid-cols-2 gap-12 mb-16">
+          <Card className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                <Briefcase className="h-6 w-6 text-blue-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900">Professional Experience</h3>
+            </div>
+            <div className="space-y-6">
+              <div className="border-l-4 border-blue-500 pl-4">
+                <h4 className="text-lg font-bold text-gray-900 mb-2">Early-Stage Product Leadership</h4>
+                <p className="text-blue-600 font-medium mb-2">Eightfold AI & Other Startups</p>
+                <ul className="text-gray-600 space-y-1 text-sm">
+                  <li>• Led product strategy for 0-50 customer companies</li>
+                  <li>• Experienced the pain of limited user research firsthand</li>
+                  <li>• Built products without traditional PM frameworks</li>
+                  <li>• Navigated investor pressure for product-market fit data</li>
+                </ul>
+              </div>
+              <div className="border-l-4 border-purple-500 pl-4">
+                <h4 className="text-lg font-bold text-gray-900 mb-2">B2B SaaS & AI/ML Products</h4>
+                <p className="text-purple-600 font-medium mb-2">9+ Years Across Multiple Companies</p>
+                <ul className="text-gray-600 space-y-1 text-sm">
+                  <li>• Product strategy and roadmap development</li>
+                  <li>• AI/ML product development and deployment</li>
+                  <li>• Cross-functional team leadership</li>
+                  <li>• Customer research and market analysis</li>
+                </ul>
+              </div>
+            </div>
+          </Card>
+
+          <Card className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                <Code className="h-6 w-6 text-green-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900">Technical Skills</h3>
+            </div>
+            <div className="space-y-6">
+              <div>
+                <h4 className="font-bold text-gray-900 mb-3">AI & Machine Learning</h4>
+                <div className="flex flex-wrap gap-2">
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">AutoGen</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">OpenAI GPT-4</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">LangChain</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Multi-Agent Systems</span>
+                </div>
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-900 mb-3">Full-Stack Development</h4>
+                <div className="flex flex-wrap gap-2">
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Next.js 14</span>
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Python FastAPI</span>
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">TypeScript</span>
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">PostgreSQL</span>
+                </div>
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-900 mb-3">Product & Analytics</h4>
+                <div className="flex flex-wrap gap-2">
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Product Strategy</span>
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">User Research</span>
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Data Analysis</span>
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">A/B Testing</span>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        {/* Education & Certifications */}
+        <div className="mb-16">
+          <Card className="p-8 shadow-xl border-0 max-w-4xl mx-auto">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                <GraduationCap className="h-6 w-6 text-indigo-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900">Education & Continuous Learning</h3>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 className="font-bold text-gray-900 mb-3">Formal Education</h4>
+                <div className="space-y-3">
+                  <div className="p-4 bg-indigo-50 rounded-lg">
+                    <p className="font-medium text-gray-900">Business & Technology Focus</p>
+                    <p className="text-sm text-gray-600">Strong foundation in business strategy and technology</p>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-900 mb-3">Professional Development</h4>
+                <div className="space-y-3">
+                  <div className="p-4 bg-indigo-50 rounded-lg">
+                    <p className="font-medium text-gray-900">AI/ML Specialization</p>
+                    <p className="text-sm text-gray-600">Continuous learning in AI product development</p>
+                  </div>
+                  <div className="p-4 bg-indigo-50 rounded-lg">
+                    <p className="font-medium text-gray-900">Product Management</p>
+                    <p className="text-sm text-gray-600">Advanced product strategy and user research methods</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        {/* Vision & Objectives */}
+        <div className="mb-16">
+          <Card className="p-8 shadow-xl border-0 bg-gradient-to-br from-blue-50 to-purple-50">
+            <div className="text-center mb-8">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Lightbulb className="h-8 w-8 text-white" />
+              </div>
+              <h3 className="text-3xl font-bold text-gray-900 mb-4">Vision & Career Objectives</h3>
+            </div>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <h4 className="text-lg font-bold text-gray-900 mb-3">🎯 Immediate Goal</h4>
+                <p className="text-gray-600">
+                  Join a forward-thinking company as a Senior Product Manager to lead AI-powered product initiatives and drive innovation in B2B SaaS.
+                </p>
+              </div>
+              <div className="text-center">
+                <h4 className="text-lg font-bold text-gray-900 mb-3">🚀 Medium-term Vision</h4>
+                <p className="text-gray-600">
+                  Scale AI products that solve real business problems, building from early-stage to enterprise-ready solutions with massive user impact.
+                </p>
+              </div>
+              <div className="text-center">
+                <h4 className="text-lg font-bold text-gray-900 mb-3">🌟 Long-term Impact</h4>
+                <p className="text-gray-600">
+                  Democratize access to expert-level product strategy through AI, helping every product manager make confident decisions regardless of company size.
+                </p>
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        {/* Why This Project */}
+        <div className="mb-16">
+          <Card className="p-8 shadow-xl border-0 bg-gradient-to-br from-orange-50 to-red-50">
+            <h3 className="text-3xl font-bold text-gray-900 mb-6 text-center">Why I Built This AI Council</h3>
+            <div className="max-w-4xl mx-auto">
+              <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                During my time at Eightfold and other early-stage companies, I repeatedly faced the same frustrating challenge: <strong>How do you make confident product decisions when you have limited customers and no access to meaningful user research?</strong>
+              </p>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-4">The Pain I Lived</h4>
+                  <ul className="space-y-2 text-gray-600">
+                    <li>• Weeks spent on research that yielded inconclusive results</li>
+                    <li>• Expensive consultants providing generic advice</li>
+                    <li>• Investor pressure for data we couldn't collect</li>
+                    <li>• Feature prioritization based on gut feeling, not evidence</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-4">The Solution I Built</h4>
+                  <ul className="space-y-2 text-gray-600">
+                    <li>• 5 AI experts debating in real-time</li>
+                    <li>• Instant access to diverse perspectives</li>
+                    <li>• Evidence-based recommendations in minutes</li>
+                    <li>• Affordable for any early-stage company</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="mt-8 p-6 bg-white rounded-lg border-l-4 border-orange-500">
+                <p className="text-gray-700 italic text-lg">
+                  "This isn't just a product I built—it's the solution I desperately needed when I was in the trenches of early-stage product management. Every feature was born from a real pain point I experienced."
+                </p>
+              </div>
+            </div>
+          </Card>
+        </div>
+
+        {/* Contact & Next Steps */}
+        <div>
+          <Card className="p-8 shadow-xl border-0 bg-gradient-to-br from-gray-900 to-blue-900 text-white max-w-4xl mx-auto">
+            <div className="text-center">
+              <h3 className="text-3xl font-bold mb-6">Let's Build the Future of Product Strategy Together</h3>
+              <p className="text-xl text-blue-200 mb-8 leading-relaxed">
+                I'm actively seeking opportunities to join innovative teams where I can apply my experience in AI product development and early-stage product strategy.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-8">
+                <Button 
+                  size="lg" 
+                  className="text-lg px-8 py-4 bg-white text-blue-900 hover:bg-blue-50 shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  onClick={() => window.open('mailto:aroosh.dayal@example.com', '_blank')}
+                >
+                  <Mail className="mr-2 h-5 w-5" />
+                  Get In Touch
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="text-lg px-8 py-4 border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm"
+                  onClick={() => window.open('https://linkedin.com/in/aroosh-dayal', '_blank')}
+                >
+                  <Linkedin className="mr-2 h-5 w-5" />
+                  LinkedIn Profile
+                </Button>
+              </div>
+              <div className="flex items-center justify-center gap-8 text-blue-200">
+                <div className="flex items-center gap-2">
+                  <CheckCircle className="h-5 w-5 text-green-400" />
+                  <span>Available Immediately</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Target className="h-5 w-5 text-purple-400" />
+                  <span>Senior PM Roles</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Brain className="h-5 w-5 text-blue-400" />
+                  <span>AI Product Focus</span>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       <style jsx>{`
@@ -1680,6 +1950,7 @@ export default function PresentationPage() {
         {activeTab === 'architecture' && renderArchitectureTab()}
         {activeTab === 'roadmap' && renderRoadmapTab()}
         {activeTab === 'gtm' && renderGTMTab()}
+        {activeTab === 'about' && renderAboutTab()}
       </div>
 
       {/* CTA Section */}
