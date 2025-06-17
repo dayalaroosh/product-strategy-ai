@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Brain, Users, Zap, Shield, Play, CheckCircle, TrendingUp, Star, Award, Target, Building, UserX, Clock, DollarSign, AlertTriangle, Mic, MessageSquare, Database, Code, Lock, Globe, BarChart3, Settings, Headphones, Bot } from 'lucide-react';
@@ -9,6 +9,11 @@ import { ArrowRight, Brain, Users, Zap, Shield, Play, CheckCircle, TrendingUp, S
 export default function PresentationPage() {
   const [activeTab, setActiveTab] = useState('overview');
   const [activeDemo, setActiveDemo] = useState<string | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const handleTryDemo = () => {
     window.open('/council', '_blank');
@@ -24,8 +29,15 @@ export default function PresentationPage() {
     { id: 'features', label: 'Innovative Features', icon: Zap },
     { id: 'enterprise', label: 'B2B Enterprise', icon: Shield },
     { id: 'architecture', label: 'System Architecture', icon: Database },
+    { id: 'gtm', label: 'GTM Strategy', icon: TrendingUp },
     { id: 'roadmap', label: 'Product Roadmap', icon: BarChart3 }
   ];
+
+  const handleTabClick = (tabId: string) => {
+    setActiveTab(tabId);
+    // Scroll to top when switching tabs
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const renderOverviewTab = () => (
     <div className="space-y-24">
@@ -33,45 +45,52 @@ export default function PresentationPage() {
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
         
+        {/* Animated background elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full blur-xl animate-pulse"></div>
+          <div className="absolute top-3/4 right-1/4 w-48 h-48 bg-purple-500/10 rounded-full blur-xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-3/4 w-24 h-24 bg-pink-500/10 rounded-full blur-xl animate-pulse delay-500"></div>
+        </div>
+        
         <div className="relative container mx-auto px-4 py-24">
-          <div className="text-center max-w-5xl mx-auto">
-            <div className="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full mb-8">
+          <div className={`text-center max-w-5xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full mb-8 animate-bounce">
               <Award className="w-4 h-4 mr-2" />
               AI-Powered Product Strategy for Early-Stage Companies
             </div>
             
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 leading-tight">
+            <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 leading-tight animate-fade-in">
               Product Strategy
               <span className="block text-white">Council</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
-              When you have <strong>limited customers</strong> and <strong>no access to real users</strong>, how do you make confident product decisions? Our AI expert council solves the early-stage PM's biggest challenge.
+              When you have <strong className="text-blue-400">limited customers</strong> and <strong className="text-purple-400">no access to real users</strong>, how do you make confident product decisions? Our AI expert council solves the early-stage PM's biggest challenge.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button 
                 size="lg" 
-                className="text-lg px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-2xl transform hover:scale-105 transition-all duration-300"
+                className="text-lg px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-2xl transform hover:scale-105 transition-all duration-300 group"
                 onClick={handleTryDemo}
               >
-                <Play className="mr-2 h-5 w-5" />
+                <Play className="mr-2 h-5 w-5 group-hover:animate-pulse" />
                 Experience Live Demo
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-blue-400">0-50</div>
+              <div className="text-center transform hover:scale-105 transition-all duration-300">
+                <div className="text-3xl font-bold text-blue-400 mb-2 animate-pulse">0-50</div>
                 <div className="text-gray-400">Customers</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-purple-400">5 Experts</div>
+              <div className="text-center transform hover:scale-105 transition-all duration-300">
+                <div className="text-3xl font-bold text-purple-400 mb-2 animate-pulse delay-200">5 Experts</div>
                 <div className="text-gray-400">In 5 Minutes</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-pink-400">10x</div>
+              <div className="text-center transform hover:scale-105 transition-all duration-300">
+                <div className="text-3xl font-bold text-pink-400 mb-2 animate-pulse delay-500">10x</div>
                 <div className="text-gray-400">Faster Insights</div>
               </div>
             </div>
@@ -92,52 +111,52 @@ export default function PresentationPage() {
           </div>
           
           <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto mb-16">
-            <Card className="p-8 shadow-2xl border-0 bg-gradient-to-br from-red-50 to-orange-50 hover:shadow-3xl transition-all duration-300">
-              <div className="text-red-600 mb-4">
+            <Card className="p-8 shadow-2xl border-0 bg-gradient-to-br from-red-50 to-orange-50 card-hover">
+              <div className="text-red-600 mb-4 animate-float">
                 <AlertTriangle className="h-8 w-8" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-6">The Brutal Reality</h3>
               <ul className="space-y-4">
-                <li className="flex items-start gap-3">
+                <li className="flex items-start gap-3 transform hover:translate-x-2 transition-transform duration-200">
                   <UserX className="h-5 w-5 text-red-500 mt-1 flex-shrink-0" />
                   <span className="text-gray-700"><strong>0-50 customers:</strong> Not enough for meaningful user research</span>
                 </li>
-                <li className="flex items-start gap-3">
+                <li className="flex items-start gap-3 transform hover:translate-x-2 transition-transform duration-200">
                   <Clock className="h-5 w-5 text-red-500 mt-1 flex-shrink-0" />
                   <span className="text-gray-700"><strong>Weeks of research:</strong> for insights that may be completely wrong</span>
                 </li>
-                <li className="flex items-start gap-3">
+                <li className="flex items-start gap-3 transform hover:translate-x-2 transition-transform duration-200">
                   <DollarSign className="h-5 w-5 text-red-500 mt-1 flex-shrink-0" />
                   <span className="text-gray-700"><strong>Expensive consultants:</strong> $200-500/hour for generic advice</span>
                 </li>
-                <li className="flex items-start gap-3">
+                <li className="flex items-start gap-3 transform hover:translate-x-2 transition-transform duration-200">
                   <Building className="h-5 w-5 text-red-500 mt-1 flex-shrink-0" />
                   <span className="text-gray-700"><strong>Investor pressure:</strong> "Where's your product-market fit data?"</span>
                 </li>
               </ul>
             </Card>
             
-            <Card className="p-8 shadow-2xl border-0 bg-gradient-to-br from-blue-50 to-indigo-50 hover:shadow-3xl transition-all duration-300">
-              <div className="text-blue-600 mb-4">
+            <Card className="p-8 shadow-2xl border-0 bg-gradient-to-br from-blue-50 to-indigo-50 card-hover">
+              <div className="text-blue-600 mb-4 animate-float-delay">
                 <Target className="h-8 w-8" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-6">What You Really Need</h3>
               <div className="space-y-6">
-                <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
+                <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm transform hover:scale-105 transition-all duration-200">
                   <span className="font-medium text-gray-700">Expert Perspectives</span>
-                  <span className="text-2xl font-bold text-green-600">✓</span>
+                  <span className="text-2xl font-bold text-green-600 animate-pulse">✓</span>
                 </div>
-                <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
+                <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm transform hover:scale-105 transition-all duration-200">
                   <span className="font-medium text-gray-700">Fast Validation</span>
-                  <span className="text-2xl font-bold text-green-600">✓</span>
+                  <span className="text-2xl font-bold text-green-600 animate-pulse">✓</span>
                 </div>
-                <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
+                <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm transform hover:scale-105 transition-all duration-200">
                   <span className="font-medium text-gray-700">Multiple Viewpoints</span>
-                  <span className="text-2xl font-bold text-green-600">✓</span>
+                  <span className="text-2xl font-bold text-green-600 animate-pulse">✓</span>
                 </div>
-                <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
+                <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm transform hover:scale-105 transition-all duration-200">
                   <span className="font-medium text-gray-700">Structured Analysis</span>
-                  <span className="text-2xl font-bold text-green-600">✓</span>
+                  <span className="text-2xl font-bold text-green-600 animate-pulse">✓</span>
                 </div>
               </div>
             </Card>
@@ -198,10 +217,51 @@ export default function PresentationPage() {
               Traditional single LLM approaches give you one perspective. Our multi-agent framework creates actual expert debates with conflicting viewpoints, just like a real strategy council.
             </p>
           </div>
+
+          {/* Animated Comparison Chart */}
+          <div className="mb-16 max-w-4xl mx-auto">
+            <Card className="p-8 bg-white/10 backdrop-blur-sm border border-white/20">
+              <h3 className="text-2xl font-bold text-center mb-8">Single AI vs Multi-Agent Performance</h3>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="text-center">
+                  <h4 className="text-lg font-semibold mb-4 text-red-300">Single AI Response</h4>
+                  <div className="bg-red-500/20 rounded-lg p-4 mb-4">
+                    <div className="h-4 bg-red-500 rounded-full animate-pulse" style={{width: '40%'}}></div>
+                  </div>
+                  <ul className="text-sm text-red-200 space-y-1">
+                    <li>• One perspective only</li>
+                    <li>• Limited reasoning depth</li>
+                    <li>• No conflict resolution</li>
+                    <li>• Generic outputs</li>
+                  </ul>
+                </div>
+                <div className="text-center">
+                  <h4 className="text-lg font-semibold mb-4 text-green-300">Multi-Agent Council</h4>
+                  <div className="space-y-2 mb-4">
+                    <div className="bg-green-500/20 rounded-lg p-2">
+                      <div className="h-2 bg-green-500 rounded-full animate-pulse" style={{width: '85%'}}></div>
+                    </div>
+                    <div className="bg-blue-500/20 rounded-lg p-2">
+                      <div className="h-2 bg-blue-500 rounded-full animate-pulse delay-200" style={{width: '90%'}}></div>
+                    </div>
+                    <div className="bg-purple-500/20 rounded-lg p-2">
+                      <div className="h-2 bg-purple-500 rounded-full animate-pulse delay-500" style={{width: '88%'}}></div>
+                    </div>
+                  </div>
+                  <ul className="text-sm text-green-200 space-y-1">
+                    <li>• Multiple expert viewpoints</li>
+                    <li>• Deep reasoning chains</li>
+                    <li>• Natural debate dynamics</li>
+                    <li>• Tailored recommendations</li>
+                  </ul>
+                </div>
+              </div>
+            </Card>
+          </div>
           
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card className="p-8 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 group">
-              <div className="text-blue-400 mb-6 transform group-hover:scale-110 transition-transform duration-300">
+            <Card className="p-8 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 group card-hover">
+              <div className="text-blue-400 mb-6 transform group-hover:scale-110 transition-transform duration-300 animate-float">
                 <Brain className="h-12 w-12" />
               </div>
               <h3 className="text-2xl font-bold mb-4">5 Specialized AI Experts</h3>
@@ -209,31 +269,31 @@ export default function PresentationPage() {
                 Each AI agent has deep domain expertise and argues from their specialized perspective, creating natural tension and comprehensive analysis.
               </p>
               <ul className="space-y-2 text-blue-100">
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
+                <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
+                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
                   <span><strong>Market Research Expert:</strong> TAM, competition, trends</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
+                <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
+                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
                   <span><strong>Technical Architect:</strong> Feasibility, scalability</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
+                <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
+                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
                   <span><strong>Business Strategist:</strong> Revenue, partnerships</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
+                <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
+                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
                   <span><strong>UX Researcher:</strong> User behavior, adoption</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
+                <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
+                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
                   <span><strong>Financial Analyst:</strong> Unit economics, pricing</span>
                 </li>
               </ul>
             </Card>
             
-            <Card className="p-8 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 group">
-              <div className="text-purple-400 mb-6 transform group-hover:scale-110 transition-transform duration-300">
+            <Card className="p-8 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 group card-hover">
+              <div className="text-purple-400 mb-6 transform group-hover:scale-110 transition-transform duration-300 animate-float-delay">
                 <Users className="h-12 w-12" />
               </div>
               <h3 className="text-2xl font-bold mb-4">Real Debate Dynamics</h3>
@@ -241,16 +301,16 @@ export default function PresentationPage() {
                 Watch experts challenge each other's assumptions in structured rounds, surfacing blind spots you'd never find with a single AI response.
               </p>
               <ul className="space-y-2 text-blue-100">
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
+                <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
+                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
                   <span><strong>Opposing Viewpoints:</strong> Natural conflicts emerge</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
+                <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
+                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
                   <span><strong>Evidence-Based Arguments:</strong> Each claim backed by reasoning</span>
                 </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-green-400" />
+                <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
+                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
                   <span><strong>Iterative Refinement:</strong> Ideas evolve through discussion</span>
                 </li>
                 <li className="flex items-center gap-2">
@@ -1094,10 +1154,408 @@ export default function PresentationPage() {
     </div>
   );
 
+  const renderGTMTab = () => (
+    <div className="py-24 bg-white">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            Go-To-Market Strategy & Pricing
+          </h2>
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+            Strategic approach to market entry, pricing models, and scaling from early adopters to enterprise customers.
+          </p>
+        </div>
+
+        {/* Pricing Strategy */}
+        <div className="mb-16">
+          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Freemium to Enterprise Pricing Model</h3>
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <Card className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300 relative">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Star className="h-8 w-8 text-white" />
+                </div>
+                <h4 className="text-2xl font-bold text-gray-900 mb-2">Free Tier</h4>
+                <div className="text-4xl font-bold text-green-600 mb-4">$0</div>
+                <p className="text-gray-600 mb-6">Perfect for individual PMs and early exploration</p>
+                <ul className="space-y-3 text-left">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500" />
+                    <span>3 strategy sessions/month</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500" />
+                    <span>Basic 5-agent council</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500" />
+                    <span>RICE scoring output</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500" />
+                    <span>Export to PDF/CSV</span>
+                  </li>
+                </ul>
+                <div className="mt-6 p-3 bg-green-50 rounded-lg">
+                  <p className="text-sm text-green-800"><strong>Goal:</strong> 10,000+ signups in Year 1</p>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300 relative border-2 border-blue-500">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                <span className="bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-bold">Most Popular</span>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="h-8 w-8 text-white" />
+                </div>
+                <h4 className="text-2xl font-bold text-gray-900 mb-2">Professional</h4>
+                <div className="text-4xl font-bold text-blue-600 mb-4">$49<span className="text-lg">/month</span></div>
+                <p className="text-gray-600 mb-6">For growing startups and product teams</p>
+                <ul className="space-y-3 text-left">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-blue-500" />
+                    <span>Unlimited strategy sessions</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-blue-500" />
+                    <span>Advanced agent personalities</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-blue-500" />
+                    <span>Audio + text interface</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-blue-500" />
+                    <span>Document upload & analysis</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-blue-500" />
+                    <span>Priority support</span>
+                  </li>
+                </ul>
+                <div className="mt-6 p-3 bg-blue-50 rounded-lg">
+                  <p className="text-sm text-blue-800"><strong>Goal:</strong> 1,000+ customers by Month 18</p>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300 relative">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Building className="h-8 w-8 text-white" />
+                </div>
+                <h4 className="text-2xl font-bold text-gray-900 mb-2">Enterprise</h4>
+                <div className="text-4xl font-bold text-purple-600 mb-4">Custom</div>
+                <p className="text-gray-600 mb-6">For large organizations and teams</p>
+                <ul className="space-y-3 text-left">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-purple-500" />
+                    <span>Everything in Professional</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-purple-500" />
+                    <span>SSO & advanced security</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-purple-500" />
+                    <span>Custom agent training</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-purple-500" />
+                    <span>API access & integrations</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-purple-500" />
+                    <span>Dedicated success manager</span>
+                  </li>
+                </ul>
+                <div className="mt-6 p-3 bg-purple-50 rounded-lg">
+                  <p className="text-sm text-purple-800"><strong>Goal:</strong> 50+ enterprise deals by Year 2</p>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+
+        {/* GTM Strategy */}
+        <div className="mb-16">
+          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Go-To-Market Approach</h3>
+          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <Card className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
+              <h4 className="text-2xl font-bold text-gray-900 mb-6">Phase 1: Product-Led Growth (Months 1-12)</h4>
+              <div className="space-y-4">
+                <div className="p-4 bg-green-50 rounded-lg">
+                  <h5 className="font-bold mb-2">🎯 Target: Early-Stage PMs</h5>
+                  <p className="text-sm text-gray-600">Focus on 0-50 customer companies, solo founders, product consultants</p>
+                </div>
+                <div className="p-4 bg-green-50 rounded-lg">
+                  <h5 className="font-bold mb-2">📢 Channels</h5>
+                  <ul className="text-sm text-gray-600 space-y-1">
+                    <li>• Product Hunt launch</li>
+                    <li>• PM community engagement (Product School, Mind the Product)</li>
+                    <li>• Content marketing (PM pain point blogs)</li>
+                    <li>• Twitter/LinkedIn thought leadership</li>
+                  </ul>
+                </div>
+                <div className="p-4 bg-green-50 rounded-lg">
+                  <h5 className="font-bold mb-2">📊 Success Metrics</h5>
+                  <ul className="text-sm text-gray-600 space-y-1">
+                    <li>• 10,000+ free signups</li>
+                    <li>• 15% free-to-paid conversion</li>
+                    <li>• NPS score above 50</li>
+                  </ul>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
+              <h4 className="text-2xl font-bold text-gray-900 mb-6">Phase 2: Sales-Led Growth (Months 13-24)</h4>
+              <div className="space-y-4">
+                <div className="p-4 bg-blue-50 rounded-lg">
+                  <h5 className="font-bold mb-2">🏢 Target: Growing Startups</h5>
+                  <p className="text-sm text-gray-600">Series A-B companies, product teams of 5-50 people</p>
+                </div>
+                <div className="p-4 bg-blue-50 rounded-lg">
+                  <h5 className="font-bold mb-2">🤝 Sales Strategy</h5>
+                  <ul className="text-sm text-gray-600 space-y-1">
+                    <li>• Outbound to VP Products at funded startups</li>
+                    <li>• Partner with VC firms for portfolio introductions</li>
+                    <li>• Conference speaking (ProductCon, etc.)</li>
+                    <li>• Case study development</li>
+                  </ul>
+                </div>
+                <div className="p-4 bg-blue-50 rounded-lg">
+                  <h5 className="font-bold mb-2">📈 Success Metrics</h5>
+                  <ul className="text-sm text-gray-600 space-y-1">
+                    <li>• $500K ARR</li>
+                    <li>• 1,000+ paid customers</li>
+                    <li>• Under 5% monthly churn</li>
+                  </ul>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+
+        {/* Testing & Validation Strategy */}
+        <div className="mb-16">
+          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Testing & Validation Strategy</h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="p-6 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
+              <div className="text-orange-600 mb-4">
+                <Users className="h-8 w-8" />
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 mb-3">User Testing</h4>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>• Weekly user interviews (10-15 per week)</li>
+                <li>• A/B testing on key features</li>
+                <li>• Usability testing sessions</li>
+                <li>• Beta user feedback loops</li>
+                <li>• NPS surveys and follow-ups</li>
+              </ul>
+            </Card>
+
+            <Card className="p-6 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
+              <div className="text-blue-600 mb-4">
+                <BarChart3 className="h-8 w-8" />
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 mb-3">Product Analytics</h4>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>• Feature usage tracking</li>
+                <li>• Session duration analysis</li>
+                <li>• Conversion funnel optimization</li>
+                <li>• Cohort retention analysis</li>
+                <li>• Agent performance metrics</li>
+              </ul>
+            </Card>
+
+            <Card className="p-6 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
+              <div className="text-green-600 mb-4">
+                <Target className="h-8 w-8" />
+              </div>
+              <h4 className="text-xl font-bold text-gray-900 mb-3">Market Validation</h4>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li>• Competitive analysis updates</li>
+                <li>• Price sensitivity testing</li>
+                <li>• Feature demand validation</li>
+                <li>• Market size validation</li>
+                <li>• Customer segment analysis</li>
+              </ul>
+            </Card>
+          </div>
+        </div>
+
+        {/* Rollout Plan */}
+        <div>
+          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Market Rollout Timeline</h3>
+          <Card className="p-8 shadow-xl border-0 max-w-5xl mx-auto">
+            <div className="space-y-8">
+              <div className="flex items-start gap-6">
+                <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold">Q1</span>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-xl font-bold text-gray-900 mb-2">Launch & Early Adoption</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <p className="font-medium text-gray-700 mb-2">Product:</p>
+                      <ul className="text-sm text-gray-600 space-y-1">
+                        <li>• Free tier launch</li>
+                        <li>• Core 5-agent system</li>
+                        <li>• Basic web interface</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-700 mb-2">Marketing:</p>
+                      <ul className="text-sm text-gray-600 space-y-1">
+                        <li>• Product Hunt launch</li>
+                        <li>• PM community outreach</li>
+                        <li>• Content marketing start</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6">
+                <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold">Q2</span>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-xl font-bold text-gray-900 mb-2">Feature Enhancement & Paid Tiers</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <p className="font-medium text-gray-700 mb-2">Product:</p>
+                      <ul className="text-sm text-gray-600 space-y-1">
+                        <li>• Professional tier launch ($49/mo)</li>
+                        <li>• Audio interface rollout</li>
+                        <li>• Advanced agent features</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-700 mb-2">Growth:</p>
+                      <ul className="text-sm text-gray-600 space-y-1">
+                        <li>• Referral program launch</li>
+                        <li>• Case study development</li>
+                        <li>• Conference speaking</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6">
+                <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold">Q3</span>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-xl font-bold text-gray-900 mb-2">Enterprise Push & Partnerships</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <p className="font-medium text-gray-700 mb-2">Product:</p>
+                      <ul className="text-sm text-gray-600 space-y-1">
+                        <li>• Enterprise features</li>
+                        <li>• SSO & security compliance</li>
+                        <li>• API development</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-700 mb-2">Sales:</p>
+                      <ul className="text-sm text-gray-600 space-y-1">
+                        <li>• Enterprise sales team</li>
+                        <li>• VC partnership program</li>
+                        <li>• Custom pricing rollout</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6">
+                <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold">Q4</span>
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-xl font-bold text-gray-900 mb-2">Scale & International</h4>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <p className="font-medium text-gray-700 mb-2">Expansion:</p>
+                      <ul className="text-sm text-gray-600 space-y-1">
+                        <li>• International markets</li>
+                        <li>• Multi-language support</li>
+                        <li>• Regional partnerships</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-700 mb-2">Goals:</p>
+                      <ul className="text-sm text-gray-600 space-y-1">
+                        <li>• $1M ARR target</li>
+                        <li>• 50+ enterprise customers</li>
+                        <li>• Series A preparation</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      <style jsx>{`
+        @keyframes fade-in {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+        
+        .animate-fade-in {
+          animation: fade-in 1s ease-out;
+        }
+        
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+        
+        .animate-float-delay {
+          animation: float 3s ease-in-out infinite;
+          animation-delay: 1s;
+        }
+        
+        .card-hover {
+          transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .gradient-text {
+          background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899);
+          background-size: 200% 200%;
+          animation: gradient-shift 3s ease infinite;
+        }
+        
+        @keyframes gradient-shift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+      `}</style>
+      
       {/* Tab Navigation */}
-      <div className="bg-white/10 backdrop-blur-sm border-b border-white/20 sticky top-0 z-50">
+      <div className="bg-slate-900/95 backdrop-blur-sm border-b border-white/20 sticky top-0 z-50">
         <div className="container mx-auto px-4">
           <div className="flex overflow-x-auto">
             {tabs.map((tab) => {
@@ -1105,11 +1563,11 @@ export default function PresentationPage() {
               return (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
+                  onClick={() => handleTabClick(tab.id)}
                   className={`flex items-center gap-2 px-6 py-4 text-sm font-medium whitespace-nowrap transition-all duration-200 border-b-2 ${
                     activeTab === tab.id
                       ? 'text-blue-400 border-blue-400 bg-blue-500/10'
-                      : 'text-gray-300 border-transparent hover:text-white hover:border-gray-400'
+                      : 'text-gray-200 border-transparent hover:text-white hover:border-gray-400'
                   }`}
                 >
                   <Icon className="h-4 w-4" />
@@ -1129,6 +1587,7 @@ export default function PresentationPage() {
         {activeTab === 'enterprise' && renderEnterpriseTab()}
         {activeTab === 'architecture' && renderArchitectureTab()}
         {activeTab === 'roadmap' && renderRoadmapTab()}
+        {activeTab === 'gtm' && renderGTMTab()}
       </div>
 
       {/* CTA Section */}
