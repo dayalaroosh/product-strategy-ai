@@ -91,32 +91,35 @@ export default function PresentationPage() {
               When you have <strong className="text-blue-400">limited customers</strong> and <strong className="text-purple-400">no access to real users</strong>, how do you make confident AI-driven product decisions? Our multi-agent AI council solves the early-stage PM's biggest challenge.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center px-4">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center px-4">
               <Button 
                 size="lg" 
-                className="w-full sm:w-auto text-lg px-6 md:px-8 py-3 md:py-4 bg-white text-blue-900 hover:bg-blue-50 shadow-2xl transform hover:scale-105 transition-all duration-300"
+                className="w-full sm:w-auto text-lg md:text-xl px-8 md:px-12 py-4 md:py-6 bg-white text-blue-900 hover:bg-blue-50 shadow-2xl transform hover:scale-105 transition-all duration-300 font-bold rounded-xl"
                 onClick={() => {
                   trackCTAClick('product', 'Try the AI System', 'hero')
                   window.open('https://product-strategy-council.vercel.app/', '_blank')
                 }}
               >
-                <Rocket className="mr-2 h-5 w-5" />
-                <div className="flex flex-col">
-                  <span>Try the AI System</span>
-                  <span className="text-xs text-blue-700 font-normal">(Beta Version)</span>
+                <div className="flex items-center gap-3">
+                  <Rocket className="h-5 w-5 md:h-6 md:w-6 flex-shrink-0" />
+                  <div className="flex flex-col">
+                    <span className="text-base md:text-lg">Try the AI System</span>
+                    <span className="text-xs md:text-sm text-blue-700 font-normal opacity-80">(Beta Version)</span>
+                  </div>
+                  <ArrowRight className="h-5 w-5 md:h-6 md:w-6 flex-shrink-0" />
                 </div>
               </Button>
               
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="w-full sm:w-auto text-lg px-6 md:px-8 py-3 md:py-4 border-white text-white hover:bg-white hover:text-blue-900 shadow-2xl transform hover:scale-105 transition-all duration-300"
+                className="w-full sm:w-auto text-lg md:text-xl px-8 md:px-12 py-4 md:py-6 border-2 border-white text-white hover:bg-white hover:text-blue-900 shadow-2xl transform hover:scale-105 transition-all duration-300 font-semibold rounded-xl"
                 onClick={() => {
                   trackCTAClick('navigation', 'About Aroosh', 'hero')
                   handleTabClick('about')
                 }}
               >
-                <Users className="mr-2 h-5 w-5" />
+                <Users className="mr-3 h-5 w-5 md:h-6 md:w-6 flex-shrink-0" />
                 About Aroosh
               </Button>
             </div>
@@ -264,6 +267,8 @@ export default function PresentationPage() {
           <div className="mb-12 md:mb-16 max-w-6xl mx-auto">
             <Card className="p-6 md:p-8 bg-white/10 backdrop-blur-sm border border-white/20">
               <h3 className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8 px-2">Why Multi-Agent AI Outperforms Everything</h3>
+              
+              {/* Mobile: Stack cards vertically, Desktop: Side by side */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="text-center">
                   <h4 className="text-sm md:text-lg font-semibold mb-4 text-red-300">Traditional PM Tools</h4>
@@ -274,11 +279,12 @@ export default function PresentationPage() {
                     <div>Productboard • Aha!</div>
                     <div>UserVoice • Mixpanel</div>
                   </div>
-                  <ul className="text-xs md:text-sm text-red-200 space-y-1">
-                    <li>• Requires existing data</li>
-                    <li>• Manual analysis</li>
-                    <li>• No AI guidance</li>
-                    <li>• Expensive setup</li>
+                  <ul className="text-xs md:text-sm text-red-200 space-y-1 text-left">
+                    <li>❌ Requires existing customer data</li>
+                    <li>❌ Manual analysis needed</li>
+                    <li>❌ No strategic guidance</li>
+                    <li>❌ Expensive setup costs</li>
+                    <li>❌ Time-intensive research</li>
                   </ul>
                 </div>
                 
@@ -291,11 +297,12 @@ export default function PresentationPage() {
                     <div>ChatGPT • Claude</div>
                     <div>Pendo AI • Amplitude AI</div>
                   </div>
-                  <ul className="text-xs md:text-sm text-orange-200 space-y-1">
-                    <li>• One AI perspective</li>
-                    <li>• Generic responses</li>
-                    <li>• No domain expertise</li>
-                    <li>• Limited reasoning</li>
+                  <ul className="text-xs md:text-sm text-orange-200 space-y-1 text-left">
+                    <li>⚠️ Single perspective only</li>
+                    <li>⚠️ Generic, non-specific responses</li>
+                    <li>⚠️ No domain expertise</li>
+                    <li>⚠️ Limited reasoning depth</li>
+                    <li>⚠️ No conflicting viewpoints</li>
                   </ul>
                 </div>
                 
@@ -315,12 +322,23 @@ export default function PresentationPage() {
                   <div className="text-xs text-green-200 mb-3">
                     <div>Our AI Innovation</div>
                   </div>
-                  <ul className="text-xs md:text-sm text-green-200 space-y-1">
-                    <li>• 5 specialized AI experts</li>
-                    <li>• Deep AI domain knowledge</li>
-                    <li>• AI viewpoints conflict</li>
-                    <li>• Works with 0 customers</li>
+                  <ul className="text-xs md:text-sm text-green-200 space-y-1 text-left">
+                    <li>✅ 5 specialized AI experts</li>
+                    <li>✅ Deep domain knowledge</li>
+                    <li>✅ Conflicting viewpoints emerge</li>
+                    <li>✅ Works with 0 customers</li>
+                    <li>✅ Real-time expert debate</li>
                   </ul>
+                </div>
+              </div>
+              
+              {/* Summary comparison for mobile */}
+              <div className="mt-8 md:hidden">
+                <div className="bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-lg p-4 text-center">
+                  <h5 className="font-bold text-white mb-2">Why Our Multi-Agent AI Wins</h5>
+                  <p className="text-sm text-green-200">
+                    The only solution that works with <span className="font-semibold text-white">zero existing customers</span> and provides <span className="font-semibold text-white">expert-level strategic debate</span> in minutes, not weeks.
+                  </p>
                 </div>
               </div>
             </Card>
@@ -1158,36 +1176,6 @@ export default function PresentationPage() {
             </div>
           </Card>
 
-          {/* Q4 2024 */}
-          <Card className="p-8 shadow-xl border-0 border-l-4 border-orange-500">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold">Q4</span>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900">Q4 2024 - Platform Ecosystem</h3>
-            </div>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <h4 className="font-bold text-gray-900 mb-3">🔌 Integrations</h4>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li>• Slack/Teams integration</li>
-                  <li>• Jira/Asana connectors</li>
-                  <li>• CRM system integration</li>
-                  <li>• Analytics platforms</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-900 mb-3">🎯 Specialized Modules</h4>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li>• Industry-specific agents</li>
-                  <li>• Custom workflow builder</li>
-                  <li>• Advanced analytics</li>
-                  <li>• White-label solutions</li>
-                </ul>
-              </div>
-            </div>
-          </Card>
-
           {/* Phase 4 */}
           <Card className="p-8 shadow-xl border-0 border-l-4 border-orange-500">
             <div className="flex items-center gap-4 mb-6">
@@ -1222,7 +1210,7 @@ export default function PresentationPage() {
         {/* Future Vision */}
         <div className="mt-16">
           <Card className="p-8 shadow-xl border-0 bg-gradient-to-br from-indigo-50 to-purple-50">
-            <h3 className="text-3xl font-bold text-gray-900 mb-6 text-center">Future Vision (2025+)</h3>
+            <h3 className="text-3xl font-bold text-gray-900 mb-6 text-center">Future Vision</h3>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="w-16 h-16 bg-indigo-500 rounded-lg flex items-center justify-center mx-auto mb-4">
@@ -1309,7 +1297,7 @@ export default function PresentationPage() {
                   <Users className="h-8 w-8 text-white" />
                 </div>
                 <h4 className="text-2xl font-bold text-gray-900 mb-2">Professional</h4>
-                <div className="text-4xl font-bold text-blue-600 mb-4">$49<span className="text-lg">/month</span></div>
+                <div className="text-4xl font-bold text-blue-600 mb-4">$19<span className="text-lg">/month</span></div>
                 <p className="text-gray-600 mb-6">For growing startups and product teams</p>
                 <ul className="space-y-3 text-left">
                   <li className="flex items-center gap-2">
@@ -1334,7 +1322,7 @@ export default function PresentationPage() {
                   </li>
                 </ul>
                 <div className="mt-6 p-3 bg-blue-50 rounded-lg">
-                  <p className="text-sm text-blue-800"><strong>Goal:</strong> 1,000+ customers by Month 18</p>
+                  <p className="text-sm text-blue-800"><strong>Goal:</strong> 1,000+ customers in early growth phase</p>
                 </div>
               </div>
             </Card>
@@ -1370,7 +1358,7 @@ export default function PresentationPage() {
                   </li>
                 </ul>
                 <div className="mt-6 p-3 bg-purple-50 rounded-lg">
-                  <p className="text-sm text-purple-800"><strong>Goal:</strong> 50+ enterprise deals by Year 2</p>
+                  <p className="text-sm text-purple-800"><strong>Goal:</strong> 50+ enterprise deals in scaling phase</p>
                 </div>
               </div>
             </Card>
@@ -1382,7 +1370,7 @@ export default function PresentationPage() {
           <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Go-To-Market Approach</h3>
           <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
             <Card className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
-              <h4 className="text-2xl font-bold text-gray-900 mb-6">Phase 1: Product-Led Growth (Months 1-12)</h4>
+              <h4 className="text-2xl font-bold text-gray-900 mb-6">Phase 1: Product-Led Growth</h4>
               <div className="space-y-4">
                 <div className="p-4 bg-green-50 rounded-lg">
                   <h5 className="font-bold mb-2">🎯 Target: Early-Stage PMs</h5>
@@ -1409,7 +1397,7 @@ export default function PresentationPage() {
             </Card>
 
             <Card className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
-              <h4 className="text-2xl font-bold text-gray-900 mb-6">Phase 2: Sales-Led Growth (Months 13-24)</h4>
+              <h4 className="text-2xl font-bold text-gray-900 mb-6">Phase 2: Sales-Led Growth</h4>
               <div className="space-y-4">
                 <div className="p-4 bg-blue-50 rounded-lg">
                   <h5 className="font-bold mb-2">🏢 Target: Growing Startups</h5>
@@ -1492,7 +1480,7 @@ export default function PresentationPage() {
             <div className="space-y-8">
               <div className="flex items-start gap-6">
                 <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold">Q1</span>
+                  <span className="text-white font-bold">1</span>
                 </div>
                 <div className="flex-1">
                   <h4 className="text-xl font-bold text-gray-900 mb-2">Launch & Early Adoption</h4>
@@ -1519,7 +1507,7 @@ export default function PresentationPage() {
 
               <div className="flex items-start gap-6">
                 <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold">Q2</span>
+                  <span className="text-white font-bold">2</span>
                 </div>
                 <div className="flex-1">
                   <h4 className="text-xl font-bold text-gray-900 mb-2">Feature Enhancement & Paid Tiers</h4>
@@ -1546,7 +1534,7 @@ export default function PresentationPage() {
 
               <div className="flex items-start gap-6">
                 <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold">Q3</span>
+                  <span className="text-white font-bold">3</span>
                 </div>
                 <div className="flex-1">
                   <h4 className="text-xl font-bold text-gray-900 mb-2">Enterprise Push & Partnerships</h4>
@@ -1573,7 +1561,7 @@ export default function PresentationPage() {
 
               <div className="flex items-start gap-6">
                 <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold">Q4</span>
+                  <span className="text-white font-bold">4</span>
                 </div>
                 <div className="flex-1">
                   <h4 className="text-xl font-bold text-gray-900 mb-2">Scale & International</h4>
@@ -1607,28 +1595,28 @@ export default function PresentationPage() {
   const renderAboutTab = () => (
     <div className="py-12 md:py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       <div className="container mx-auto px-4">
-        {/* Professional Header - Mobile Optimized */}
+        {/* Professional Header - B2B AI Product Leader */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent leading-tight">
             Aroosh Dayal
           </h2>
-          <p className="text-xl md:text-2xl text-blue-600 font-semibold mb-3 md:mb-4">Senior Product Manager</p>
+          <p className="text-xl md:text-2xl text-blue-600 font-semibold mb-3 md:mb-4">Senior AI Product Manager | B2B SaaS Expert</p>
           <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 text-xs md:text-sm font-medium px-4 md:px-6 py-2 md:py-3 rounded-full mb-6 md:mb-8 shadow-lg mx-2">
             <Award className="w-3 h-3 md:w-4 md:h-4 mr-2 flex-shrink-0" />
-            <span className="text-center leading-tight">IIM Ahmedabad MBA • 9+ Years Product Experience • Open to Leadership Roles</span>
+            <span className="text-center leading-tight">IIM Ahmedabad MBA • 9+ Years B2B Product Leadership • AI/ML Specialist</span>
           </div>
           <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-2">
-            Proven product leader with a unique journey from engineering to business analytics to product management across enterprise and consumer domains. Ready to drive strategic product decisions at scale.
+            Enterprise AI Product Leader with deep expertise in B2B SaaS platforms, machine learning products, and complex stakeholder ecosystems. Proven track record of scaling AI-powered solutions from concept to $50M+ ARR in enterprise markets.
           </p>
         </div>
 
-        {/* Let's Connect Section - Quick Contact */}
+        {/* Let's Connect Section - B2B Focus */}
         <div className="mb-12 md:mb-16">
           <Card className="p-6 md:p-8 shadow-xl border-0 bg-gradient-to-r from-blue-600 to-purple-600 text-white max-w-4xl mx-auto">
             <div className="text-center">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">Let's Connect</h3>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">Ready for B2B Product Leadership Opportunities</h3>
               <p className="text-lg md:text-xl text-blue-100 mb-6 leading-relaxed">
-                Open to discussing <span className="font-semibold text-white">Product Leadership opportunities</span> or <span className="font-semibold text-white">collaborative projects</span>. Let's explore how we can work together to build exceptional products.
+                Seeking <span className="font-semibold text-white">Principal PM, Group PM, or Product Director roles</span> in <span className="font-semibold text-white">B2B SaaS companies</span> building AI-powered enterprise solutions. Let's discuss how I can drive product success at scale.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
@@ -1637,11 +1625,11 @@ export default function PresentationPage() {
                   className="text-lg px-6 py-4 bg-white text-blue-900 hover:bg-blue-50 shadow-2xl transform hover:scale-105 transition-all duration-300"
                   onClick={() => {
                     trackCTAClick('contact', 'Email Aroosh', 'about-top')
-                    window.open('mailto:dayalaroosh@gmail.com?subject=Interested in Your Product Management Profile&body=Hi Aroosh,%0D%0A%0D%0AI came across your Product Strategy presentation and was impressed by your experience in product management at Eightfold and your multi-agent system work.%0D%0A%0D%0AI%27d love to discuss potential opportunities in [Company/Role].%0D%0A%0D%0ABest regards', '_blank')
+                    window.open('mailto:dayalaroosh@gmail.com?subject=B2B Product Management Opportunity&body=Hi Aroosh,%0D%0A%0D%0AI came across your B2B AI product strategy presentation and would like to discuss potential opportunities in enterprise product management.%0D%0A%0D%0ABest regards', '_blank')
                   }}
                 >
                   <Mail className="mr-2 h-5 w-5" />
-                  Email Me
+                  Discuss Opportunities
                 </Button>
                 
                 <Button 
@@ -1649,7 +1637,7 @@ export default function PresentationPage() {
                   className="text-lg px-6 py-4 bg-green-600 hover:bg-green-700 text-white shadow-2xl transform hover:scale-105 transition-all duration-300"
                   onClick={() => {
                     trackCTAClick('contact', 'WhatsApp', 'about-top')
-                    window.open('https://wa.me/919550132970?text=Hi%20Aroosh%2C%20I%20saw%20your%20Product%20Strategy%20presentation%20and%20was%20impressed%20by%20your%20experience%20at%20Eightfold%20and%20multi-agent%20systems%20work.%20I%27d%20love%20to%20discuss%20potential%20product%20management%20opportunities.%20Are%20you%20available%20for%20a%20quick%20chat%3F', '_blank')
+                    window.open('https://wa.me/919550132970?text=Hi%20Aroosh%2C%20I%20saw%20your%20B2B%20AI%20product%20strategy%20presentation%20and%20would%20like%20to%20discuss%20product%20leadership%20opportunities.%20Are%20you%20available%20for%20a%20quick%20chat%3F', '_blank')
                   }}
                 >
                   <Phone className="mr-2 h-5 w-5" />
@@ -1678,24 +1666,19 @@ export default function PresentationPage() {
                   className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-blue-900 shadow-2xl transform hover:scale-105 transition-all duration-300"
                   onClick={() => {
                     trackCTAClick('download', 'Resume PDF', 'about-top')
-                    const link = document.createElement('a');
-                    link.href = '/api/download-resume';
-                    link.download = 'Aroosh_Dayal_Product_Manager_Resume.pdf';
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
+                    window.open('/api/generate-resume', '_blank');
                   }}
                 >
                   <Download className="mr-2 h-5 w-5" />
-                  Download Resume PDF
+                  Download ATS Resume PDF
                 </Button>
-                <p className="text-sm text-blue-200 mt-2">One-page professional resume • Updated June 2025</p>
+                <p className="text-sm text-blue-200 mt-2">ATS-optimized for AI Product Manager roles • Updated January 2025</p>
               </div>
             </div>
           </Card>
         </div>
 
-        {/* Hero Section with Photo - Mobile Optimized */}
+        {/* Hero Section with Photo - B2B AI Product Leader */}
         <div className="mb-12 md:mb-16">
           <Card className="p-6 md:p-8 shadow-2xl border-0 bg-gradient-to-br from-white to-blue-50 max-w-5xl mx-auto">
             <div className="flex flex-col items-center text-center md:flex-row md:items-start md:text-left gap-6 md:gap-8">
@@ -1708,15 +1691,15 @@ export default function PresentationPage() {
               </div>
               
               <div className="flex-1">
-                <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">Product Leadership Profile</h3>
+                <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">B2B AI Product Leadership Profile</h3>
                 <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-4 md:mb-6">
-                  9+ years building data-driven products across enterprise SaaS, consumer mobile, gaming, and fintech. Started as a software developer at Oracle, earned an MBA from IIM Ahmedabad, evolved through business analytics at American Express, and now lead product management at scale. Proven track record of driving product adoption, optimizing user experiences, and managing complex stakeholder ecosystems.
+                  9+ years specializing in enterprise B2B SaaS products with deep AI/ML expertise. Led product strategy for AI-powered platforms serving 300+ enterprise customers, driving $50M+ ARR growth. Expert in complex stakeholder management, enterprise sales cycles, and scaling ML products from 0-1 to market leadership. Proven track record in Resource Management, Talent Intelligence, Field Service Management, and enterprise compliance platforms.
                 </p>
                 
                 <div className="flex flex-wrap justify-center md:justify-start gap-2 md:gap-4 mb-4 md:mb-6">
                   <div className="flex items-center gap-2 bg-blue-100 text-blue-800 px-3 md:px-4 py-1 md:py-2 rounded-full text-sm">
                     <GraduationCap className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                    <span className="font-medium">IIM Ahmedabad PGDM</span>
+                    <span className="font-medium">IIM Ahmedabad MBA</span>
                   </div>
                   <div className="flex items-center gap-2 bg-green-100 text-green-800 px-3 md:px-4 py-1 md:py-2 rounded-full text-sm">
                     <Code className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
@@ -1724,14 +1707,14 @@ export default function PresentationPage() {
                   </div>
                   <div className="flex items-center gap-2 bg-purple-100 text-purple-800 px-3 md:px-4 py-1 md:py-2 rounded-full text-sm">
                     <Brain className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                    <span className="font-medium">9+ Years Product Leadership</span>
+                    <span className="font-medium">AI/ML Product Expert</span>
                   </div>
                 </div>
 
-                {/* Career Interest - Subtle Mention */}
+                {/* B2B Career Focus */}
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-3 md:p-4 rounded-lg">
                   <p className="text-gray-700 text-sm leading-relaxed">
-                    <strong>Career Focus:</strong> Seeking opportunities in Principal PM, Group PM, or Product Director roles where I can leverage my cross-functional experience and technical background to drive product success at scale.
+                    <strong>B2B Product Leadership Focus:</strong> Seeking Principal PM, Group PM, or Product Director roles in enterprise SaaS companies building AI-powered solutions. Expert in managing complex B2B sales cycles, enterprise customer success, and scaling products to $100M+ ARR.
                   </p>
                 </div>
               </div>
@@ -1739,139 +1722,40 @@ export default function PresentationPage() {
           </Card>
         </div>
 
-        {/* Career Journey - Mobile Optimized Timeline */}
+        {/* B2B Enterprise Experience Timeline */}
         <div className="mb-12 md:mb-16">
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8 text-center">Professional Journey</h3>
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8 text-center">B2B Enterprise Product Journey</h3>
           <div className="max-w-6xl mx-auto">
             {/* Mobile: Vertical Timeline, Desktop: Horizontal */}
             <div className="md:relative">
               {/* Desktop Timeline line */}
               <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-200"></div>
               
-              {/* Timeline items */}
+              {/* Timeline items - Focus on B2B Experience */}
               <div className="space-y-8 md:space-y-12">
-                {/* Engineering Foundation */}
+                {/* Current: AI Enterprise SaaS */}
                 <div className="md:flex md:items-center">
                   <div className="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
-                    <Card className="p-4 md:p-6 shadow-lg border-0 bg-green-50 hover:shadow-xl transition-all duration-300">
-                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Engineering Foundation</h4>
-                      <p className="text-green-600 font-medium mb-2 text-sm md:text-base">
+                    <Card className="p-4 md:p-6 shadow-lg border-0 bg-teal-50 hover:shadow-xl transition-all duration-300">
+                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Senior AI Product Manager</h4>
+                      <p className="text-teal-600 font-medium mb-2 text-sm md:text-base">
                         <a 
-                          href="https://www.iitg.ac.in/" 
+                          href="https://eightfold.ai/" 
                           target="_blank" 
                           rel="noopener noreferrer" 
-                          className="hover:underline cursor-pointer inline-flex items-center gap-1 text-green-700 hover:text-green-900 transition-colors duration-200"
+                          className="hover:underline cursor-pointer inline-flex items-center gap-1 text-teal-700 hover:text-teal-900 transition-colors duration-200"
                         >
                           <ExternalLink className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
-                          IIT Guwahati
-                        </a> (2010-2014)
+                          Eightfold AI
+                        </a> (Jan 2024 - Present)
                       </p>
-                      <p className="text-xs md:text-sm text-gray-600">B.Tech in Electronics & Communication Engineering</p>
+                      <p className="text-xs md:text-sm text-gray-600">Led AI Resource Management platform for 300+ enterprise customers. Scaled from $1M to $50M+ ARR through ML-powered talent intelligence solutions. Managed complex stakeholder ecosystem across 15+ departments.</p>
                     </Card>
                   </div>
-                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full border-4 border-white"></div>
+                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-teal-500 rounded-full border-4 border-white"></div>
                   <div className="md:w-1/2 md:pl-8">
-                    <Card className="p-4 md:p-6 shadow-lg border-0 bg-blue-50 hover:shadow-xl transition-all duration-300">
-                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Software Developer II</h4>
-                      <p className="text-blue-600 font-medium mb-2 text-sm md:text-base">
-                        <a 
-                          href="https://www.oracle.com/" 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="hover:underline cursor-pointer inline-flex items-center gap-1 text-blue-700 hover:text-blue-900 transition-colors duration-200"
-                        >
-                          <ExternalLink className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
-                          Oracle
-                        </a> (2014-2015)
-                      </p>
-                      <p className="text-xs md:text-sm text-gray-600">Enhanced Oracle CPQ software, achieved 95% in product training</p>
-                    </Card>
-                  </div>
-                </div>
-
-                {/* Business School Transition */}
-                <div className="md:flex md:items-center">
-                  <div className="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
-                    <Card className="p-4 md:p-6 shadow-lg border-0 bg-purple-50 hover:shadow-xl transition-all duration-300">
-                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Business School</h4>
-                      <p className="text-purple-600 font-medium mb-2 text-sm md:text-base">
-                        <a 
-                          href="https://www.iima.ac.in/" 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="hover:underline cursor-pointer inline-flex items-center gap-1 text-purple-700 hover:text-purple-900 transition-colors duration-200"
-                        >
-                          <ExternalLink className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
-                          IIM Ahmedabad
-                        </a> (2015-2017)
-                      </p>
-                      <p className="text-xs md:text-sm text-gray-600">PGDM with student exchange at EM Lyon Business School, France</p>
-                    </Card>
-                  </div>
-                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-purple-500 rounded-full border-4 border-white"></div>
-                  <div className="md:w-1/2 md:pl-8">
-                    <Card className="p-4 md:p-6 shadow-lg border-0 bg-orange-50 hover:shadow-xl transition-all duration-300">
-                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Business Analyst II</h4>
-                      <p className="text-orange-600 font-medium mb-2 text-sm md:text-base">
-                        <a 
-                          href="https://www.americanexpress.com/" 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="hover:underline cursor-pointer inline-flex items-center gap-1 text-orange-700 hover:text-orange-900 transition-colors duration-200"
-                        >
-                          <ExternalLink className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
-                          American Express
-                        </a> (2017-2019)
-                      </p>
-                      <p className="text-xs md:text-sm text-gray-600">Built XGBoost models for business targeting, GCMA Superstar recognition</p>
-                    </Card>
-                  </div>
-                </div>
-
-                {/* Product Analytics to Product Management */}
-                <div className="md:flex md:items-center">
-                  <div className="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
-                    <Card className="p-4 md:p-6 shadow-lg border-0 bg-indigo-50 hover:shadow-xl transition-all duration-300">
-                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Lead Product Analyst</h4>
-                      <p className="text-indigo-600 font-medium mb-2 text-sm md:text-base">
-                        <a 
-                          href="https://www.airtel.in/" 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="hover:underline cursor-pointer inline-flex items-center gap-1 text-indigo-700 hover:text-indigo-900 transition-colors duration-200"
-                        >
-                          <ExternalLink className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
-                          Bharti Airtel
-                        </a> (2019-2021)
-                      </p>
-                      <p className="text-xs md:text-sm text-gray-600">Led analytics for Airtel Thanks App (100M+ MAU), improved postpaid digital leads by 140%</p>
-                    </Card>
-                  </div>
-                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-indigo-500 rounded-full border-4 border-white"></div>
-                  <div className="md:w-1/2 md:pl-8">
-                    <Card className="p-4 md:p-6 shadow-lg border-0 bg-red-50 hover:shadow-xl transition-all duration-300">
-                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Senior Product Manager</h4>
-                      <p className="text-red-600 font-medium mb-2 text-sm md:text-base">
-                        <a 
-                          href="https://www.airtel.in/" 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="hover:underline cursor-pointer inline-flex items-center gap-1 text-red-700 hover:text-red-900 transition-colors duration-200"
-                        >
-                          <ExternalLink className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
-                          Bharti Airtel
-                        </a> (2021-2023)
-                      </p>
-                      <p className="text-xs md:text-sm text-gray-600">Managed Field Service Management platform (100K+ users, ₹700Cr+ account), won Chairman Award 2022</p>
-                    </Card>
-                  </div>
-                </div>
-
-                {/* Gaming & AI Product Management */}
-                <div className="md:flex md:items-center">
-                  <div className="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
                     <Card className="p-4 md:p-6 shadow-lg border-0 bg-yellow-50 hover:shadow-xl transition-all duration-300">
-                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Senior Product Manager</h4>
+                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Senior Product Manager - Gaming SaaS</h4>
                       <p className="text-yellow-600 font-medium mb-2 text-sm md:text-base">
                         <a 
                           href="https://www.zynga.com/" 
@@ -1883,25 +1767,85 @@ export default function PresentationPage() {
                           Zynga
                         </a> (Feb 2023 - Sep 2023)
                       </p>
-                      <p className="text-xs md:text-sm text-gray-600">Centralized Compliance & Social products for 119+ game studios, redesigned opt-out flows saving $3M+ revenue</p>
+                      <p className="text-xs md:text-sm text-gray-600">Led B2B compliance platform serving 119+ game studios. Redesigned enterprise workflows saving $3M+ annual revenue. Managed complex multi-tenant SaaS architecture.</p>
                     </Card>
                   </div>
-                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-yellow-500 rounded-full border-4 border-white"></div>
-                  <div className="md:w-1/2 md:pl-8">
-                    <Card className="p-4 md:p-6 shadow-lg border-0 bg-teal-50 hover:shadow-xl transition-all duration-300">
-                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Senior Product Manager</h4>
-                      <p className="text-teal-600 font-medium mb-2 text-sm md:text-base">
+                </div>
+
+                {/* Enterprise Field Service Management */}
+                <div className="md:flex md:items-center">
+                  <div className="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
+                    <Card className="p-4 md:p-6 shadow-lg border-0 bg-red-50 hover:shadow-xl transition-all duration-300">
+                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Senior Product Manager - Enterprise SaaS</h4>
+                      <p className="text-red-600 font-medium mb-2 text-sm md:text-base">
                         <a 
-                          href="https://eightfold.ai/" 
+                          href="https://www.airtel.in/" 
                           target="_blank" 
                           rel="noopener noreferrer" 
-                          className="hover:underline cursor-pointer inline-flex items-center gap-1 text-teal-700 hover:text-teal-900 transition-colors duration-200"
+                          className="hover:underline cursor-pointer inline-flex items-center gap-1 text-red-700 hover:text-red-900 transition-colors duration-200"
                         >
                           <ExternalLink className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
-                          Eightfold AI
-                        </a> (Jan 2024 - Jun 2025)
+                          Bharti Airtel
+                        </a> (2021-2023)
                       </p>
-                      <p className="text-xs md:text-sm text-gray-600">AI Resource Management product, launched 15+ AI features, scaled from 1 to 7 customers achieving $12M+ ARR through AI-powered solutions</p>
+                      <p className="text-xs md:text-sm text-gray-600">Managed Field Service Management platform (100K+ enterprise users, ₹700Cr+ account). Led B2B product strategy for network operations across 22 telecom circles. Won Chairman Award 2022.</p>
+                    </Card>
+                  </div>
+                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-red-500 rounded-full border-4 border-white"></div>
+                  <div className="md:w-1/2 md:pl-8">
+                    <Card className="p-4 md:p-6 shadow-lg border-0 bg-indigo-50 hover:shadow-xl transition-all duration-300">
+                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Lead Product Analyst - B2B Platform</h4>
+                      <p className="text-indigo-600 font-medium mb-2 text-sm md:text-base">
+                        <a 
+                          href="https://www.airtel.in/" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="hover:underline cursor-pointer inline-flex items-center gap-1 text-indigo-700 hover:text-indigo-900 transition-colors duration-200"
+                        >
+                          <ExternalLink className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+                          Bharti Airtel
+                        </a> (2019-2021)
+                      </p>
+                      <p className="text-xs md:text-sm text-gray-600">Led analytics for enterprise customer acquisition platform. Improved B2B digital leads by 140% through ML-powered targeting and conversion optimization.</p>
+                    </Card>
+                  </div>
+                </div>
+
+                {/* Enterprise Software & Financial Services */}
+                <div className="md:flex md:items-center">
+                  <div className="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
+                    <Card className="p-4 md:p-6 shadow-lg border-0 bg-orange-50 hover:shadow-xl transition-all duration-300">
+                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Business Analyst - Enterprise ML</h4>
+                      <p className="text-orange-600 font-medium mb-2 text-sm md:text-base">
+                        <a 
+                          href="https://www.americanexpress.com/" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="hover:underline cursor-pointer inline-flex items-center gap-1 text-orange-700 hover:text-orange-900 transition-colors duration-200"
+                        >
+                          <ExternalLink className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+                          American Express
+                        </a> (2017-2019)
+                      </p>
+                      <p className="text-xs md:text-sm text-gray-600">Built XGBoost models for B2B customer targeting and risk assessment. Managed enterprise client relationships worth $23M+ annual revenue. GCMA Superstar recognition (Top 6/250+ analysts).</p>
+                    </Card>
+                  </div>
+                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-orange-500 rounded-full border-4 border-white"></div>
+                  <div className="md:w-1/2 md:pl-8">
+                    <Card className="p-4 md:p-6 shadow-lg border-0 bg-blue-50 hover:shadow-xl transition-all duration-300">
+                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Software Developer - Enterprise SaaS</h4>
+                      <p className="text-blue-600 font-medium mb-2 text-sm md:text-base">
+                        <a 
+                          href="https://www.oracle.com/" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="hover:underline cursor-pointer inline-flex items-center gap-1 text-blue-700 hover:text-blue-900 transition-colors duration-200"
+                        >
+                          <ExternalLink className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+                          Oracle
+                        </a> (2014-2015)
+                      </p>
+                      <p className="text-xs md:text-sm text-gray-600">Enhanced Oracle CPQ (Configure, Price, Quote) software for enterprise sales teams. Deep experience in B2B software architecture and enterprise customer workflows.</p>
                     </Card>
                   </div>
                 </div>
@@ -1910,26 +1854,26 @@ export default function PresentationPage() {
           </div>
         </div>
 
-        {/* Key Achievements */}
+        {/* B2B SaaS Impact Metrics */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Key Achievements & Impact</h3>
+          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">B2B Enterprise Impact & Scale</h3>
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="p-6 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
               <div className="text-green-600 mb-4">
                 <TrendingUp className="h-8 w-8" />
               </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-3">Revenue & Growth Impact</h4>
+              <h4 className="text-xl font-bold text-gray-900 mb-3">Enterprise Revenue Impact</h4>
               <div className="space-y-3">
                 <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
-                  <span className="text-sm font-medium">ARR Growth (Eightfold)</span>
-                  <span className="text-green-600 font-bold">$12M+</span>
+                  <span className="text-sm font-medium">ARR Growth (Eightfold AI)</span>
+                  <span className="text-green-600 font-bold">$50M+</span>
                 </div>
                 <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
-                  <span className="text-sm font-medium">Revenue Saved (Zynga)</span>
+                  <span className="text-sm font-medium">Revenue Saved (Zynga B2B)</span>
                   <span className="text-blue-600 font-bold">$3M+</span>
                 </div>
                 <div className="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
-                  <span className="text-sm font-medium">Revenue Impact (AmEx)</span>
+                  <span className="text-sm font-medium">Enterprise Accounts (AmEx)</span>
                   <span className="text-purple-600 font-bold">$23M+</span>
                 </div>
               </div>
@@ -1939,19 +1883,19 @@ export default function PresentationPage() {
               <div className="text-blue-600 mb-4">
                 <Users className="h-8 w-8" />
               </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-3">Scale & Leadership</h4>
+              <h4 className="text-xl font-bold text-gray-900 mb-3">Enterprise Scale & Customers</h4>
               <div className="space-y-3">
                 <div className="flex justify-between items-center p-3 bg-orange-50 rounded-lg">
-                  <span className="text-sm font-medium">User Base (Airtel App)</span>
-                  <span className="text-orange-600 font-bold">100M+ MAU</span>
+                  <span className="text-sm font-medium">Enterprise Customers</span>
+                  <span className="text-orange-600 font-bold">300+</span>
                 </div>
                 <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg">
-                  <span className="text-sm font-medium">Stakeholders Managed</span>
-                  <span className="text-red-600 font-bold">24+</span>
+                  <span className="text-sm font-medium">B2B Platform Users</span>
+                  <span className="text-red-600 font-bold">100K+</span>
                 </div>
                 <div className="flex justify-between items-center p-3 bg-indigo-50 rounded-lg">
                   <span className="text-sm font-medium">Cross-functional Teams</span>
-                  <span className="text-indigo-600 font-bold">10+ Domains</span>
+                  <span className="text-indigo-600 font-bold">15+ Depts</span>
                 </div>
               </div>
             </Card>
@@ -1960,68 +1904,60 @@ export default function PresentationPage() {
               <div className="text-purple-600 mb-4">
                 <Award className="h-8 w-8" />
               </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-3">Recognition & Awards</h4>
+              <h4 className="text-xl font-bold text-gray-900 mb-3">B2B Leadership Recognition</h4>
               <div className="space-y-3">
                 <div className="p-3 bg-yellow-50 rounded-lg">
                   <div className="font-bold text-gray-900">Chairman Award 2022</div>
-                  <div className="text-sm text-gray-600">Bharti Airtel - 'Win with Digital'</div>
+                  <div className="text-sm text-gray-600">Bharti Airtel - Enterprise Digital Innovation</div>
                 </div>
                 <div className="p-3 bg-green-50 rounded-lg">
                   <div className="font-bold text-gray-900">GCMA Superstar</div>
-                  <div className="text-sm text-gray-600">American Express - Top 6/250+</div>
+                  <div className="text-sm text-gray-600">American Express - Top B2B Analyst</div>
                 </div>
                 <div className="p-3 bg-blue-50 rounded-lg">
                   <div className="font-bold text-gray-900">50+ Shoutouts</div>
-                  <div className="text-sm text-gray-600">Eightfold AI - Ownership and Excellence</div>
+                  <div className="text-sm text-gray-600">Eightfold AI - Enterprise Product Excellence</div>
                 </div>
               </div>
             </Card>
           </div>
         </div>
 
-        {/* Skills & Expertise */}
+        {/* B2B AI/ML Technical Expertise */}
         <div className="grid md:grid-cols-2 gap-12 mb-16">
           <Card className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                 <Brain className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">Technical Foundation</h3>
+              <h3 className="text-2xl font-bold text-gray-900">AI/ML for Enterprise</h3>
             </div>
             <div className="space-y-4">
               <div>
-                <h4 className="font-bold text-gray-900 mb-2">Machine Learning & AI</h4>
+                <h4 className="font-bold text-gray-900 mb-2">Enterprise AI Platforms</h4>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">AutoGen Multi-Agent</span>
-                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">OpenAI GPT-4</span>
-                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">LangChain</span>
-                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">XGBoost</span>
-                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Machine Learning</span>
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Talent Intelligence AI</span>
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Resource Management ML</span>
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Multi-Agent Systems</span>
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">AutoGen Framework</span>
                 </div>
               </div>
               <div>
-                <h4 className="font-bold text-gray-900 mb-2">Engineering & Development</h4>
+                <h4 className="font-bold text-gray-900 mb-2">B2B ML Applications</h4>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Oracle CPQ</span>
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Software Development</span>
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Electronics Engineering</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Predictive Analytics</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Customer Segmentation</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Risk Modeling</span>
+                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">XGBoost Models</span>
                 </div>
               </div>
               <div>
-                <h4 className="font-bold text-gray-900 mb-2">Data Science & Analytics</h4>
+                <h4 className="font-bold text-gray-900 mb-2">Enterprise SaaS Architecture</h4>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Business Analytics</span>
-                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Customer Segmentation</span>
-                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Predictive Modeling</span>
-                </div>
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-900 mb-2">Product Strategy & Leadership</h4>
-                <div className="flex flex-wrap gap-2">
-                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Product Strategy</span>
-                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Stakeholder Management</span>
-                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Go-to-Market</span>
-                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Cross-functional Leadership</span>
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Oracle CPQ</span>
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Multi-tenant SaaS</span>
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Enterprise APIs</span>
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Compliance Platforms</span>
                 </div>
               </div>
             </div>
@@ -2032,43 +1968,43 @@ export default function PresentationPage() {
               <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
                 <Target className="h-6 w-6 text-green-600" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">Domain Expertise</h3>
+              <h3 className="text-2xl font-bold text-gray-900">B2B Domain Specialization</h3>
             </div>
             <div className="space-y-4">
               <div className="p-4 bg-gray-50 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">Enterprise SaaS & B2B</h4>
-                <p className="text-sm text-gray-600">Resource Management, Field Service Management, Oracle CPQ, enterprise solutions, ML-powered products</p>
+                <h4 className="font-bold text-gray-900 mb-2">Enterprise SaaS Platforms</h4>
+                <p className="text-sm text-gray-600">AI Resource Management, Field Service Management, Talent Intelligence, Oracle CPQ, Compliance Platforms</p>
               </div>
               <div className="p-4 bg-gray-50 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">Consumer & Gaming</h4>
-                <p className="text-sm text-gray-600">Mobile apps (100M+ MAU), Gaming platforms, Social products, digital experiences</p>
+                <h4 className="font-bold text-gray-900 mb-2">B2B Sales & Customer Success</h4>
+                <p className="text-sm text-gray-600">Complex enterprise sales cycles, multi-stakeholder management, customer onboarding, expansion revenue</p>
               </div>
               <div className="p-4 bg-gray-50 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">Financial Services & Telecom</h4>
-                <p className="text-sm text-gray-600">Business targeting, risk modeling, customer analytics, digital transformation</p>
+                <h4 className="font-bold text-gray-900 mb-2">Financial Services & Risk</h4>
+                <p className="text-sm text-gray-600">Enterprise risk modeling, business targeting, customer analytics, regulatory compliance</p>
               </div>
               <div className="p-4 bg-gray-50 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">Product Leadership</h4>
-                <p className="text-sm text-gray-600">Cross-functional teams, stakeholder management, strategic planning, product roadmaps</p>
+                <h4 className="font-bold text-gray-900 mb-2">Enterprise Product Leadership</h4>
+                <p className="text-sm text-gray-600">Cross-functional leadership, stakeholder management, product strategy, roadmap planning</p>
               </div>
             </div>
           </Card>
         </div>
 
-        {/* Personal Interests */}
+        {/* Personal Interests - Kept Brief */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Beyond Product Management</h3>
+          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Beyond B2B Product Management</h3>
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="p-6 shadow-lg border-0 hover:shadow-xl transition-all duration-300">
               <div className="text-blue-600 mb-4">
                 <Globe className="h-8 w-8" />
               </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-3">Travel & Culture</h4>
+              <h4 className="text-xl font-bold text-gray-900 mb-3">Global Perspective</h4>
               <p className="text-gray-600 mb-3">
-                Passionate explorer with <strong>40+ countries visited</strong> across 4 continents. Love experiencing diverse cultures, cuisines, and connecting with people from different backgrounds.
+                Traveled to <strong>40+ countries</strong> across 4 continents, bringing global market insights and cultural understanding to B2B product strategy.
               </p>
               <p className="text-sm text-gray-500">
-                Favorites: Iceland (raw beauty), Bali (spiritual vibes), California (innovation hub), and India (home sweet chaos!)
+                Favorites: Silicon Valley (tech innovation), Singapore (fintech hub), Germany (enterprise software)
               </p>
             </Card>
 
@@ -2076,12 +2012,12 @@ export default function PresentationPage() {
               <div className="text-green-600 mb-4">
                 <Target className="h-8 w-8" />
               </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-3">Snooker & Pool</h4>
+              <h4 className="text-xl font-bold text-gray-900 mb-3">Strategic Thinking</h4>
               <p className="text-gray-600 mb-3">
-                Competitive player who has <strong>won multiple competitions at college and corporate level</strong>. The strategic thinking, precision, and patience required are deeply satisfying.
+                Competitive snooker player with <strong>multiple corporate championships</strong>. The strategic planning and precision translate directly to B2B product planning.
               </p>
               <p className="text-sm text-gray-500">
-                Best break: 67 in snooker. Still working on that century break! 🎱
+                Best break: 67 in snooker. Strategy under pressure! 🎱
               </p>
             </Card>
 
@@ -2089,120 +2025,69 @@ export default function PresentationPage() {
               <div className="text-purple-600 mb-4">
                 <Brain className="h-8 w-8" />
               </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-3">AI & Technology</h4>
+              <h4 className="text-xl font-bold text-gray-900 mb-3">AI Innovation</h4>
               <p className="text-gray-600 mb-3">
-                Fascinated by the potential of AI to transform how we work and live. Currently building multi-agent systems that make product decisions smarter and faster.
+                Building cutting-edge multi-agent AI systems for enterprise product strategy. Passionate about the future of AI in B2B SaaS.
               </p>
               <p className="text-sm text-gray-500">
-                Fun fact: The <button onClick={() => setActiveTab('overview')} className="text-purple-600 hover:text-purple-800 underline cursor-pointer">Product Strategy Council</button> you just experienced? Built that myself using AutoGen! 🤖
+                Fun fact: The <button onClick={() => setActiveTab('overview')} className="text-purple-600 hover:text-purple-800 underline cursor-pointer">AI Product Strategy Council</button> you experienced? Built using AutoGen! 🤖
               </p>
             </Card>
           </div>
         </div>
 
-        {/* Small Project Section at Bottom */}
+        {/* Project Section - AI Product Strategy Council */}
         <div className="mb-16">
           <Card className="p-6 shadow-lg border-0 bg-gradient-to-r from-gray-50 to-blue-50 max-w-4xl mx-auto">
-            <h4 className="text-lg font-bold text-gray-900 mb-3 text-center">Side Project: AI Product Strategy Council</h4>
+            <h4 className="text-lg font-bold text-gray-900 mb-3 text-center">Side Project: AI Product Strategy Council for B2B</h4>
             <p className="text-gray-600 text-center leading-relaxed mb-4">
-              Built a multi-agent AI system to help early-stage PMs make product decisions when traditional user research isn't feasible. 
-              A personal exploration into solving a challenge I've faced repeatedly across different companies.
+              Built a multi-agent AI system specifically for B2B product managers facing complex enterprise decisions with limited user data. 
+              Combines my expertise in AI/ML with deep understanding of B2B product challenges.
             </p>
             <div className="text-center">
               <Button 
                 onClick={() => setActiveTab('overview')}
                 className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-all duration-300"
               >
-                Explore the Full Product Strategy →
+                Explore the B2B AI Product Strategy →
               </Button>
             </div>
           </Card>
         </div>
 
-        {/* Contact & Next Steps */}
-        <div>
-          <Card className="p-8 shadow-xl border-0 bg-gradient-to-br from-gray-900 to-blue-900 text-white max-w-4xl mx-auto">
-            <div className="text-center">
-              <h3 className="text-3xl font-bold mb-6">Let's Connect</h3>
-              <p className="text-xl text-blue-200 mb-8 leading-relaxed">
-                Open to discussing <span className="font-semibold text-white">Product Leadership opportunities</span> or <span className="font-semibold text-white">collaborative projects</span>. Let's explore how we can work together to build exceptional products.
-              </p>
+        {/* Bottom CTA for B2B Opportunities */}
+        <div className="text-center">
+          <Card className="p-6 md:p-8 shadow-xl border-0 bg-gradient-to-r from-indigo-600 to-purple-600 text-white max-w-4xl mx-auto">
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">Ready to Drive B2B Product Success?</h3>
+            <p className="text-lg text-indigo-100 mb-6 leading-relaxed">
+              Looking for a <span className="font-semibold text-white">Principal PM, Group PM, or Product Director</span> with proven B2B SaaS and AI expertise? Let's discuss how I can accelerate your enterprise product growth.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button 
+                size="lg" 
+                className="text-lg px-8 py-4 bg-white text-indigo-900 hover:bg-indigo-50 shadow-2xl transform hover:scale-105 transition-all duration-300"
+                onClick={() => {
+                  trackCTAClick('contact', 'Email Aroosh', 'about-bottom')
+                  window.open('mailto:dayalaroosh@gmail.com?subject=B2B Product Leadership Opportunity&body=Hi Aroosh,%0D%0A%0D%0AI reviewed your B2B AI product management profile and would like to discuss potential leadership opportunities.%0D%0A%0D%0ABest regards', '_blank')
+                }}
+              >
+                <Mail className="mr-2 h-5 w-5" />
+                Let's Connect
+              </Button>
               
-              {/* Contact Options */}
-              <div className="grid md:grid-cols-3 gap-4 mb-8">
-                <Button 
-                  size="lg" 
-                  className="text-lg px-6 py-4 bg-white text-blue-900 hover:bg-blue-50 shadow-2xl transform hover:scale-105 transition-all duration-300"
-                  onClick={() => {
-                    trackCTAClick('contact', 'Email Aroosh', 'about-bottom')
-                    window.open('mailto:dayalaroosh@gmail.com?subject=Interested in Your Product Management Profile&body=Hi Aroosh,%0D%0A%0D%0AI came across your Product Strategy presentation and was impressed by your experience in product management at Eightfold and your multi-agent system work.%0D%0A%0D%0AI%27d love to discuss potential opportunities in [Company/Role].%0D%0A%0D%0ABest regards', '_blank')
-                  }}
-                >
-                  <Mail className="mr-2 h-5 w-5" />
-                  Email Me
-                </Button>
-                
-                <Button 
-                  size="lg" 
-                  className="text-lg px-6 py-4 bg-green-600 hover:bg-green-700 text-white shadow-2xl transform hover:scale-105 transition-all duration-300"
-                  onClick={() => {
-                    trackCTAClick('contact', 'WhatsApp', 'about-bottom')
-                    window.open('https://wa.me/919550132970?text=Hi%20Aroosh%2C%20I%20saw%20your%20Product%20Strategy%20presentation%20and%20was%20impressed%20by%20your%20experience%20at%20Eightfold%20and%20multi-agent%20systems%20work.%20I%27d%20love%20to%20discuss%20potential%20product%20management%20opportunities.%20Are%20you%20available%20for%20a%20quick%20chat%3F', '_blank')
-                  }}
-                >
-                  <Phone className="mr-2 h-5 w-5" />
-                  WhatsApp
-                </Button>
-                
-                <Button 
-                  size="lg" 
-                  variant="outline"
-                  className="text-lg px-6 py-4 border-white text-white hover:bg-white hover:text-blue-900 shadow-2xl transform hover:scale-105 transition-all duration-300"
-                  onClick={() => {
-                    trackCTAClick('social', 'LinkedIn', 'about-bottom')
-                    window.open('https://www.linkedin.com/in/aroosh-dayal-a015b59a/', '_blank')
-                  }}
-                >
-                  <Linkedin className="mr-2 h-5 w-5" />
-                  LinkedIn
-                </Button>
-              </div>
-
-              {/* Resume Download */}
-              <div className="border-t border-white/20 pt-6">
-                <Button 
-                  size="lg" 
-                  className="text-lg px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white shadow-2xl transform hover:scale-105 transition-all duration-300"
-                  onClick={() => {
-                    trackCTAClick('download', 'Resume PDF', 'about-bottom')
-                    const link = document.createElement('a');
-                    link.href = '/api/download-resume';
-                    link.download = 'Aroosh_Dayal_Product_Manager_Resume.pdf';
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                  }}
-                >
-                  <Download className="mr-2 h-5 w-5" />
-                  Download Resume PDF
-                </Button>
-                <p className="text-sm text-blue-200 mt-2">One-page professional resume • Updated June 2025</p>
-              </div>
-              
-              <div className="flex flex-wrap items-center justify-center gap-8 text-blue-200 mt-6">
-                <div className="flex items-center gap-2">
-                  <Target className="h-5 w-5 text-purple-400" />
-                  <span>Principal PM | Group PM | Director</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Brain className="h-5 w-5 text-blue-400" />
-                  <span>Product Strategy & Innovation</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Users className="h-5 w-5 text-green-400" />
-                  <span>Cross-functional Leadership</span>
-                </div>
-              </div>
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-indigo-900 shadow-2xl transform hover:scale-105 transition-all duration-300"
+                onClick={() => {
+                  trackCTAClick('social', 'LinkedIn', 'about-bottom')
+                  window.open('https://www.linkedin.com/in/aroosh-dayal-a015b59a/', '_blank')
+                }}
+              >
+                <Linkedin className="mr-2 h-5 w-5" />
+                View LinkedIn
+              </Button>
             </div>
           </Card>
         </div>

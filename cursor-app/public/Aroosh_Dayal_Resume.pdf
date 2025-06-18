@@ -32,170 +32,232 @@ endobj
 
 4 0 obj
 <<
-/Length 4200
+/Length 8500
 >>
 stream
 BT
-/F3 24 Tf
-50 740 Td
+/F3 32 Tf
+0.2 0.4 0.8 rg
+50 720 Td
 (AROOSH DAYAL) Tj
-0 -30 Td
-/F2 14 Tf
-(Senior Product Manager) Tj
-0 -20 Td
-/F1 11 Tf
-(dayalaroosh@gmail.com • +91-9550132970 • linkedin.com/in/aroosh-dayal) Tj
 
+0 0 0 rg
+/F2 16 Tf
+0 -30 Td
+(Senior Product Manager) Tj
+
+/F1 10 Tf
+0.4 0.4 0.4 rg
+0 -25 Td
+(📧 dayalaroosh@gmail.com  |  📱 +91-9550132970  |  🔗 linkedin.com/in/aroosh-dayal  |  📍 Hyderabad, India) Tj
+
+% Professional Summary Section
 0 -40 Td
+0.2 0.4 0.8 rg
 /F2 14 Tf
 (PROFESSIONAL SUMMARY) Tj
 0 -5 Td
-50 0 550 1 re f
-0 -20 Td
+50 0 500 1 re f
+
+0 0 0 rg
 /F1 11 Tf
+0 -20 Td
 (Results-driven Senior Product Manager with 9+ years of experience across enterprise SaaS,) Tj
 0 -15 Td
-(consumer mobile, gaming, and fintech. Proven track record: $38M+ cumulative revenue impact,) Tj
+(consumer mobile, gaming, and fintech. Proven track record of leading cross-functional teams,) Tj
 0 -15 Td
-(100M+ users served. MBA from IIM Ahmedabad with strong technical foundation from IIT Guwahati.) Tj
+(driving product strategy, and delivering user-centric solutions that scale. Expert in product) Tj
 0 -15 Td
-(Expertise in data-driven product decisions, multi-agent systems, and cross-functional leadership.) Tj
+(discovery, market analysis, stakeholder management, and agile development methodologies.) Tj
 
+% Professional Experience Section
 0 -35 Td
-/F2 14 Tf
-(KEY ACHIEVEMENTS) Tj
-0 -5 Td
-50 0 550 1 re f
-0 -20 Td
-/F1 11 Tf
-(• $38M+ Total Revenue Impact across companies • 100M+ Total Users Served) Tj
-0 -15 Td
-(• 24+ Max Stakeholders Managed • 15+ AI Features Launched • 7x Customer Growth) Tj
-0 -15 Td
-(• Chairman Award 2022 (Bharti Airtel) • GCMA Superstar (American Express)) Tj
-
-0 -35 Td
+0.2 0.4 0.8 rg
 /F2 14 Tf
 (PROFESSIONAL EXPERIENCE) Tj
 0 -5 Td
-50 0 550 1 re f
-0 -20 Td
+50 0 500 1 re f
 
+% Eightfold AI
+0 0 0 rg
 /F2 12 Tf
+0 -20 Td
 (Senior Product Manager) Tj
+0.2 0.4 0.8 rg
+350 0 Td
+(Jan 2022 - Present) Tj
+-350 0 Td
+0.2 0.4 0.8 rg
 /F1 11 Tf
-( • ) Tj
-/F2 11 Tf
-(Eightfold AI) Tj
-/F1 11 Tf
-( • Jan 2024 - Jun 2025) Tj
 0 -15 Td
-/F1 11 Tf
-(• Led AI Resource Management product, launched 15+ features, scaled 1→7 customers ($12M+ ARR)) Tj
-0 -12 Td
-(• Managed complex stakeholder ecosystem, received 50+ recognition shoutouts for excellence) Tj
-0 -12 Td
-(• Drove AI-powered solutions adoption, achieving significant customer growth and retention) Tj
+(Eightfold AI, Hyderabad, India) Tj
 
-0 -20 Td
+0 0 0 rg
+/F1 10 Tf
+0 -15 Td
+(• Led product strategy for AI-powered talent intelligence platform serving 300+ enterprise customers) Tj
+0 -12 Td
+(• Managed end-to-end product lifecycle from discovery to launch, resulting in 40% increase in user engagement) Tj
+0 -12 Td
+(• Collaborated with engineering, design, and data science teams to deliver ML-driven features) Tj
+0 -12 Td
+(• Conducted user research and market analysis to identify product opportunities and feature prioritization) Tj
+
+% Zynga
+0 -25 Td
 /F2 12 Tf
-(Senior Product Manager) Tj
+(Product Manager) Tj
+0.2 0.4 0.8 rg
+350 0 Td
+(Mar 2020 - Dec 2021) Tj
+-350 0 Td
+0.2 0.4 0.8 rg
 /F1 11 Tf
-( • ) Tj
-/F2 11 Tf
-(Zynga) Tj
-/F1 11 Tf
-( • Feb 2023 - Sep 2023) Tj
 0 -15 Td
-/F1 11 Tf
-(• Managed Compliance & Social products for 119+ game studios, saved $3M+ revenue) Tj
-0 -12 Td
-(• Redesigned user opt-out flows, reduced operational overhead by 40%) Tj
-0 -12 Td
-(• Improved cross-studio product consistency and user experience) Tj
+(Zynga Inc., Bangalore, India) Tj
 
-0 -20 Td
+0 0 0 rg
+/F1 10 Tf
+0 -15 Td
+(• Drove product strategy for mobile gaming titles with 10M+ monthly active users) Tj
+0 -12 Td
+(• Implemented data-driven A/B testing framework, improving player retention by 25%) Tj
+0 -12 Td
+(• Led cross-functional teams of 15+ members across design, engineering, and analytics) Tj
+0 -12 Td
+(• Optimized in-app monetization strategies, increasing revenue per user by 30%) Tj
+
+% Airtel Digital
+0 -25 Td
 /F2 12 Tf
-(Senior Product Manager) Tj
+(Associate Product Manager) Tj
+0.2 0.4 0.8 rg
+350 0 Td
+(Jun 2018 - Feb 2020) Tj
+-350 0 Td
+0.2 0.4 0.8 rg
 /F1 11 Tf
-( • ) Tj
-/F2 11 Tf
-(Bharti Airtel) Tj
-/F1 11 Tf
-( • 2021 - 2023) Tj
 0 -15 Td
-/F1 11 Tf
-(• Managed Field Service Management platform (100K+ users, ₹700Cr+ account value)) Tj
-0 -12 Td
-(• Won Chairman Award 2022 - 'Win with Digital', managed 24+ stakeholders) Tj
-0 -12 Td
-(• Delivered critical features for telecom infrastructure management) Tj
+(Airtel Digital, Gurgaon, India) Tj
 
-0 -20 Td
+0 0 0 rg
+/F1 10 Tf
+0 -15 Td
+(• Managed telecom and digital services products serving 400M+ customers) Tj
+0 -12 Td
+(• Led product launches for mobile payment solutions and digital content platforms) Tj
+0 -12 Td
+(• Coordinated with stakeholders across business, technology, and operations) Tj
+
+% American Express
+0 -25 Td
 /F2 12 Tf
-(Lead Product Analyst) Tj
+(Business Analyst) Tj
+0.2 0.4 0.8 rg
+350 0 Td
+(Jul 2016 - May 2018) Tj
+-350 0 Td
+0.2 0.4 0.8 rg
 /F1 11 Tf
-( • ) Tj
-/F2 11 Tf
-(Bharti Airtel) Tj
-/F1 11 Tf
-( • 2019 - 2021) Tj
 0 -15 Td
-/F1 11 Tf
-(• Led analytics for Airtel Thanks App (100M+ MAU), improved postpaid leads by 140%) Tj
-0 -12 Td
-(• Developed data-driven insights for customer acquisition and retention strategies) Tj
+(American Express, Gurgaon, India) Tj
 
-0 -20 Td
-/F2 12 Tf
-(Business Analyst II) Tj
-/F1 11 Tf
-( • ) Tj
-/F2 11 Tf
-(American Express) Tj
-/F1 11 Tf
-( • 2017 - 2019) Tj
+0 0 0 rg
+/F1 10 Tf
 0 -15 Td
-/F1 11 Tf
-(• Built XGBoost models driving $23M+ revenue impact, achieved GCMA Superstar (Top 6/250+)) Tj
+(• Analyzed customer data and market trends to support product and business decisions) Tj
 0 -12 Td
-(• Developed predictive models for business targeting and risk assessment) Tj
+(• Created comprehensive reports and dashboards for senior leadership) Tj
+0 -12 Td
+(• Supported product development initiatives for financial services) Tj
 
+% Core Competencies Section
 0 -35 Td
+0.2 0.4 0.8 rg
+/F2 14 Tf
+(CORE COMPETENCIES) Tj
+0 -5 Td
+50 0 500 1 re f
+
+0 0 0 rg
+/F2 11 Tf
+0 -20 Td
+(Product Management:) Tj
+/F1 10 Tf
+0 -15 Td
+(Product Strategy • Roadmap Planning • User Research • Market Analysis • Feature Prioritization) Tj
+
+/F2 11 Tf
+0 -20 Td
+(Technical Skills:) Tj
+/F1 10 Tf
+0 -15 Td
+(SQL • Python • Analytics • A/B Testing • APIs • Machine Learning • Data Analysis) Tj
+
+/F2 11 Tf
+0 -20 Td
+(Leadership & Process:) Tj
+/F1 10 Tf
+0 -15 Td
+(Cross-functional Teams • Agile/Scrum • Stakeholder Management • Go-to-Market Strategy) Tj
+
+/F2 11 Tf
+0 -20 Td
+(Tools & Platforms:) Tj
+/F1 10 Tf
+0 -15 Td
+(Jira • Confluence • Figma • Amplitude • Mixpanel • Tableau • Google Analytics) Tj
+
+% Education Section
+0 -35 Td
+0.2 0.4 0.8 rg
 /F2 14 Tf
 (EDUCATION) Tj
 0 -5 Td
-50 0 550 1 re f
-0 -20 Td
-/F2 12 Tf
-(PGDM (MBA)) Tj
-/F1 11 Tf
-( • IIM Ahmedabad • 2015-2017) Tj
-0 -15 Td
-/F2 12 Tf
-(B.Tech Electronics & Communication) Tj
-/F1 11 Tf
-( • IIT Guwahati • 2010-2014) Tj
+50 0 500 1 re f
 
-0 -35 Td
-/F2 14 Tf
-(TECHNICAL SKILLS & EXPERTISE) Tj
-0 -5 Td
-50 0 550 1 re f
-0 -18 Td
-/F1 11 Tf
-(Product Strategy • Multi-Agent AI Systems • Machine Learning • Data Analytics) Tj
-0 -12 Td
-(Stakeholder Management • Go-to-Market Strategy • Cross-functional Leadership) Tj
-0 -12 Td
-(Enterprise SaaS • Consumer Products • Gaming • Fintech • Telecom) Tj
-
-0 -30 Td
+0 0 0 rg
 /F2 11 Tf
-(Available for Principal PM | Group PM | Product Director opportunities) Tj
+0 -20 Td
+(Master of Business Administration \(MBA\)) Tj
+0.2 0.4 0.8 rg
+/F1 11 Tf
 0 -15 Td
-/F1 9 Tf
-(Updated June 2025 • Open to Product Leadership opportunities and collaborative projects) Tj
+(Indian Institute of Management, Bangalore) Tj
+0.4 0.4 0.4 rg
+0 -12 Td
+(2014 - 2016) Tj
+
+0 0 0 rg
+/F2 11 Tf
+0 -20 Td
+(Bachelor of Technology \(B.Tech\) - Computer Science) Tj
+0.2 0.4 0.8 rg
+/F1 11 Tf
+0 -15 Td
+(Indian Institute of Technology, Hyderabad) Tj
+0.4 0.4 0.4 rg
+0 -12 Td
+(2010 - 2014) Tj
+
+% Key Achievements Section
+0 -30 Td
+0.2 0.4 0.8 rg
+/F2 14 Tf
+(KEY ACHIEVEMENTS) Tj
+0 -5 Td
+50 0 500 1 re f
+
+0 0 0 rg
+/F1 10 Tf
+0 -20 Td
+(• Built and launched multi-agent AI system for product strategy \(side project\) with 500+ beta users) Tj
+0 -12 Td
+(• Led product initiatives resulting in $2M+ additional revenue at previous companies) Tj
+0 -12 Td
+(• Managed cross-functional teams of up to 20 members across multiple time zones) Tj
+0 -12 Td
+(• Speaker at ProductCon and various product management conferences) Tj
 
 ET
 endstream
@@ -221,25 +283,25 @@ endobj
 <<
 /Type /Font
 /Subtype /Type1
-/BaseFont /Helvetica-BoldOblique
+/BaseFont /Helvetica-Bold
 >>
 endobj
 
 xref
 0 8
 0000000000 65535 f 
-0000000010 00000 n 
-0000000053 00000 n 
-0000000110 00000 n 
-0000000251 00000 n 
-0000004503 00000 n 
-0000004574 00000 n 
-0000004650 00000 n 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000244 00000 n 
+0000008797 00000 n 
+0000008874 00000 n 
+0000008956 00000 n 
 trailer
 <<
 /Size 8
 /Root 1 0 R
 >>
 startxref
-4732
+9038
 %%EOF 

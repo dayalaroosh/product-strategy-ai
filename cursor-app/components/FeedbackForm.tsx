@@ -103,8 +103,9 @@ export default function FeedbackForm({ context = 'presentation', onClose }: Feed
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
               </div>
-              <h4 className="text-lg font-semibold mb-2">Thank you!</h4>
-              <p className="text-gray-600">Your feedback helps me improve the presentation.</p>
+              <h4 className="text-lg font-semibold mb-2 text-green-600">Thank you for your feedback!</h4>
+              <p className="text-gray-600 mb-4">Your feedback helps improve the presentation and is greatly appreciated.</p>
+              <p className="text-sm text-gray-500">This dialog will close automatically in a few seconds...</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -113,14 +114,12 @@ export default function FeedbackForm({ context = 'presentation', onClose }: Feed
                   placeholder="Your Name"
                   value={formData.name}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                  required
                 />
                 <Input
                   placeholder="Email"
                   type="email"
                   value={formData.email}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                  required
                 />
               </div>
 
@@ -158,7 +157,6 @@ export default function FeedbackForm({ context = 'presentation', onClose }: Feed
                 value={formData.feedback}
                 onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setFormData(prev => ({ ...prev, feedback: e.target.value }))}
                 className="min-h-[80px]"
-                required
               />
 
               <div>
