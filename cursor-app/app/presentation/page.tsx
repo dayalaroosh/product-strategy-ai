@@ -1854,9 +1854,9 @@ export default function PresentationPage() {
           </div>
         </div>
 
-        {/* B2B SaaS Impact Metrics */}
+        {/* Impact Metrics & Scale */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">B2B Enterprise Impact & Scale</h3>
+          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Product Impact & Scale</h3>
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="p-6 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
               <div className="text-green-600 mb-4">
@@ -1904,7 +1904,7 @@ export default function PresentationPage() {
               <div className="text-purple-600 mb-4">
                 <Award className="h-8 w-8" />
               </div>
-              <h4 className="text-xl font-bold text-gray-900 mb-3">B2B Leadership Recognition</h4>
+              <h4 className="text-xl font-bold text-gray-900 mb-3">Leadership Recognition</h4>
               <div className="space-y-3">
                 <div className="p-3 bg-yellow-50 rounded-lg">
                   <div className="font-bold text-gray-900">Chairman Award 2022</div>
@@ -1923,14 +1923,14 @@ export default function PresentationPage() {
           </div>
         </div>
 
-        {/* B2B AI/ML Technical Expertise */}
+        {/* AI/ML Technical Expertise */}
         <div className="grid md:grid-cols-2 gap-12 mb-16">
           <Card className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                 <Brain className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">AI/ML for Enterprise</h3>
+              <h3 className="text-2xl font-bold text-gray-900">AI/ML Product Expertise</h3>
             </div>
             <div className="space-y-4">
               <div>
@@ -1968,7 +1968,7 @@ export default function PresentationPage() {
               <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
                 <Target className="h-6 w-6 text-green-600" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">B2B Domain Specialization</h3>
+              <h3 className="text-2xl font-bold text-gray-900">Domain Specialization</h3>
             </div>
             <div className="space-y-4">
               <div className="p-4 bg-gray-50 rounded-lg">
@@ -1991,9 +1991,9 @@ export default function PresentationPage() {
           </Card>
         </div>
 
-        {/* Personal Interests - Kept Brief */}
+        {/* Personal Interests & Background */}
         <div className="mb-16">
-          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Beyond B2B Product Management</h3>
+          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Beyond Product Management</h3>
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="p-6 shadow-lg border-0 hover:shadow-xl transition-all duration-300">
               <div className="text-blue-600 mb-4">
@@ -2001,10 +2001,10 @@ export default function PresentationPage() {
               </div>
               <h4 className="text-xl font-bold text-gray-900 mb-3">Global Perspective</h4>
               <p className="text-gray-600 mb-3">
-                Traveled to <strong>40+ countries</strong> across 4 continents, bringing global market insights and cultural understanding to B2B product strategy.
+                Traveled to <strong>40+ countries</strong> across 4 continents, bringing diverse cultural insights and global market understanding to product strategy.
               </p>
               <p className="text-sm text-gray-500">
-                Favorites: Silicon Valley (tech innovation), Singapore (fintech hub), Germany (enterprise software)
+                Favorites: Silicon Valley (innovation), Singapore (fintech), Germany (engineering excellence)
               </p>
             </Card>
 
@@ -2014,7 +2014,7 @@ export default function PresentationPage() {
               </div>
               <h4 className="text-xl font-bold text-gray-900 mb-3">Strategic Thinking</h4>
               <p className="text-gray-600 mb-3">
-                Competitive snooker player with <strong>multiple corporate championships</strong>. The strategic planning and precision translate directly to B2B product planning.
+                Competitive snooker player with <strong>multiple championships</strong>. The strategic planning, precision, and pressure management skills directly translate to product leadership.
               </p>
               <p className="text-sm text-gray-500">
                 Best break: 67 in snooker. Strategy under pressure! 🎱
@@ -2027,7 +2027,7 @@ export default function PresentationPage() {
               </div>
               <h4 className="text-xl font-bold text-gray-900 mb-3">AI Innovation</h4>
               <p className="text-gray-600 mb-3">
-                Building cutting-edge multi-agent AI systems for enterprise product strategy. Passionate about the future of AI in B2B SaaS.
+                Building cutting-edge multi-agent AI systems for product strategy. Passionate about democratizing AI-powered decision making for product teams.
               </p>
               <p className="text-sm text-gray-500">
                 Fun fact: The <button onClick={() => setActiveTab('overview')} className="text-purple-600 hover:text-purple-800 underline cursor-pointer">AI Product Strategy Council</button> you experienced? Built using AutoGen! 🤖
@@ -2039,28 +2039,28 @@ export default function PresentationPage() {
         {/* Project Section - AI Product Strategy Council */}
         <div className="mb-16">
           <Card className="p-6 shadow-lg border-0 bg-gradient-to-r from-gray-50 to-blue-50 max-w-4xl mx-auto">
-            <h4 className="text-lg font-bold text-gray-900 mb-3 text-center">Side Project: AI Product Strategy Council for B2B</h4>
+            <h4 className="text-lg font-bold text-gray-900 mb-3 text-center">Featured Project: AI Product Strategy Council</h4>
             <p className="text-gray-600 text-center leading-relaxed mb-4">
-              Built a multi-agent AI system specifically for B2B product managers facing complex enterprise decisions with limited user data. 
-              Combines my expertise in AI/ML with deep understanding of B2B product challenges.
+              Built a multi-agent AI system that helps product managers make confident decisions when they have limited user data or customer access. 
+              Combines AI expertise with real-world product management experience.
             </p>
             <div className="text-center">
               <Button 
                 onClick={() => setActiveTab('overview')}
                 className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-all duration-300"
               >
-                Explore the B2B AI Product Strategy →
+                Explore the AI Product Strategy System →
               </Button>
             </div>
           </Card>
         </div>
 
-        {/* Bottom CTA for B2B Opportunities */}
+        {/* Bottom CTA for Opportunities */}
         <div className="text-center">
           <Card className="p-6 md:p-8 shadow-xl border-0 bg-gradient-to-r from-indigo-600 to-purple-600 text-white max-w-4xl mx-auto">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">Ready to Drive B2B Product Success?</h3>
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">Ready to Drive Product Success?</h3>
             <p className="text-lg text-indigo-100 mb-6 leading-relaxed">
-              Looking for a <span className="font-semibold text-white">Principal PM, Group PM, or Product Director</span> with proven B2B SaaS and AI expertise? Let's discuss how I can accelerate your enterprise product growth.
+              Looking for a <span className="font-semibold text-white">Principal PM, Group PM, or Product Director</span> with proven AI/ML and product leadership experience? Let's discuss how I can help accelerate your product growth.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -2069,7 +2069,7 @@ export default function PresentationPage() {
                 className="text-lg px-8 py-4 bg-white text-indigo-900 hover:bg-indigo-50 shadow-2xl transform hover:scale-105 transition-all duration-300"
                 onClick={() => {
                   trackCTAClick('contact', 'Email Aroosh', 'about-bottom')
-                  window.open('mailto:dayalaroosh@gmail.com?subject=B2B Product Leadership Opportunity&body=Hi Aroosh,%0D%0A%0D%0AI reviewed your B2B AI product management profile and would like to discuss potential leadership opportunities.%0D%0A%0D%0ABest regards', '_blank')
+                  window.open('mailto:dayalaroosh@gmail.com?subject=Product Leadership Opportunity&body=Hi Aroosh,%0D%0A%0D%0AI came across your product strategy presentation and would like to discuss potential opportunities.%0D%0A%0D%0ABest regards', '_blank')
                 }}
               >
                 <Mail className="mr-2 h-5 w-5" />
