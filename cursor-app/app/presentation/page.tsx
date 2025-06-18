@@ -1602,59 +1602,59 @@ export default function PresentationPage() {
   );
 
   const renderAboutTab = () => (
-    <div className="py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+    <div className="py-12 md:py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       <div className="container mx-auto px-4">
-        {/* Professional Header - More Profile Focused */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent leading-tight">
+        {/* Professional Header - Mobile Optimized */}
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent leading-tight">
             Aroosh Dayal
           </h2>
-          <p className="text-2xl text-blue-600 font-semibold mb-4">Senior Product Manager</p>
-          <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 text-sm font-medium px-6 py-3 rounded-full mb-8 shadow-lg">
-            <Award className="w-4 h-4 mr-2" />
-            IIM Ahmedabad MBA • 9+ Years Experience • Open to Leadership Roles
+          <p className="text-xl md:text-2xl text-blue-600 font-semibold mb-3 md:mb-4">Senior Product Manager</p>
+          <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 text-xs md:text-sm font-medium px-4 md:px-6 py-2 md:py-3 rounded-full mb-6 md:mb-8 shadow-lg mx-2">
+            <Award className="w-3 h-3 md:w-4 md:h-4 mr-2 flex-shrink-0" />
+            <span className="text-center leading-tight">IIM Ahmedabad MBA • 9+ Years Experience • Open to Leadership Roles</span>
           </div>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-2">
             Proven product leader with a unique journey from engineering to business analytics to product management across enterprise and consumer domains. Ready to drive strategic product decisions at scale.
           </p>
         </div>
 
-        {/* Hero Section with Photo */}
-        <div className="mb-16">
-          <Card className="p-8 shadow-2xl border-0 bg-gradient-to-br from-white to-blue-50 max-w-5xl mx-auto">
-            <div className="flex flex-col md:flex-row items-start gap-8">
+        {/* Hero Section with Photo - Mobile Optimized */}
+        <div className="mb-12 md:mb-16">
+          <Card className="p-6 md:p-8 shadow-2xl border-0 bg-gradient-to-br from-white to-blue-50 max-w-5xl mx-auto">
+            <div className="flex flex-col items-center text-center md:flex-row md:items-start md:text-left gap-6 md:gap-8">
               {/* Professional Photo */}
               <div className="flex-shrink-0">
-                <div className="w-40 h-40 rounded-full overflow-hidden shadow-xl border-4 border-white bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                  <div className="text-6xl font-bold text-white">AD</div>
+                <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-xl border-4 border-white bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mx-auto">
+                  <div className="text-4xl md:text-6xl font-bold text-white">AD</div>
                 </div>
                 <p className="text-center text-sm text-gray-500 mt-2">Aroosh Dayal</p>
               </div>
               
               <div className="flex-1">
-                <h3 className="text-4xl font-bold text-gray-900 mb-4">Product Leadership Profile</h3>
-                <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">Product Leadership Profile</h3>
+                <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-4 md:mb-6">
                   9+ years building products across enterprise SaaS, consumer mobile, gaming, and fintech. Started as a software developer at Oracle, earned an MBA from IIM Ahmedabad, evolved through business analytics at American Express, and now lead product management at scale. Proven track record of driving growth, optimizing user experiences, and managing complex stakeholder ecosystems.
                 </p>
                 
-                <div className="flex flex-wrap gap-4 mb-6">
-                  <div className="flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full">
-                    <GraduationCap className="h-5 w-5" />
+                <div className="flex flex-wrap justify-center md:justify-start gap-2 md:gap-4 mb-4 md:mb-6">
+                  <div className="flex items-center gap-2 bg-blue-100 text-blue-800 px-3 md:px-4 py-1 md:py-2 rounded-full text-sm">
+                    <GraduationCap className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
                     <span className="font-medium">IIM Ahmedabad PGDM</span>
                   </div>
-                  <div className="flex items-center gap-2 bg-green-100 text-green-800 px-4 py-2 rounded-full">
-                    <Code className="h-5 w-5" />
+                  <div className="flex items-center gap-2 bg-green-100 text-green-800 px-3 md:px-4 py-1 md:py-2 rounded-full text-sm">
+                    <Code className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
                     <span className="font-medium">IIT Guwahati B.Tech</span>
                   </div>
-                  <div className="flex items-center gap-2 bg-purple-100 text-purple-800 px-4 py-2 rounded-full">
-                    <Briefcase className="h-5 w-5" />
+                  <div className="flex items-center gap-2 bg-purple-100 text-purple-800 px-3 md:px-4 py-1 md:py-2 rounded-full text-sm">
+                    <Briefcase className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
                     <span className="font-medium">9+ Years Product Leadership</span>
                   </div>
                 </div>
 
                 {/* Career Interest - Subtle Mention */}
-                <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-lg">
-                  <p className="text-gray-700 text-sm">
+                <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-3 md:p-4 rounded-lg">
+                  <p className="text-gray-700 text-sm leading-relaxed">
                     <strong>Career Focus:</strong> Seeking opportunities in Principal PM, Group PM, or Product Director roles where I can leverage my cross-functional experience and technical background to drive product success at scale.
                   </p>
                 </div>
@@ -1663,90 +1663,91 @@ export default function PresentationPage() {
           </Card>
         </div>
 
-        {/* Career Journey - Enhanced Clickable Links */}
-        <div className="mb-16">
-          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Professional Journey</h3>
+        {/* Career Journey - Mobile Optimized Timeline */}
+        <div className="mb-12 md:mb-16">
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8 text-center">Professional Journey</h3>
           <div className="max-w-6xl mx-auto">
-            <div className="relative">
-              {/* Timeline line */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-200"></div>
+            {/* Mobile: Vertical Timeline, Desktop: Horizontal */}
+            <div className="md:relative">
+              {/* Desktop Timeline line */}
+              <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-200"></div>
               
               {/* Timeline items */}
-              <div className="space-y-12">
+              <div className="space-y-8 md:space-y-12">
                 {/* Engineering Foundation */}
-                <div className="flex items-center">
-                  <div className="w-1/2 pr-8 text-right">
-                    <Card className="p-6 shadow-lg border-0 bg-green-50 hover:shadow-xl transition-all duration-300">
-                      <h4 className="text-lg font-bold text-gray-900 mb-2">Engineering Foundation</h4>
-                      <p className="text-green-600 font-medium mb-2">
+                <div className="md:flex md:items-center">
+                  <div className="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
+                    <Card className="p-4 md:p-6 shadow-lg border-0 bg-green-50 hover:shadow-xl transition-all duration-300">
+                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Engineering Foundation</h4>
+                      <p className="text-green-600 font-medium mb-2 text-sm md:text-base">
                         <a 
                           href="https://www.iitg.ac.in/" 
                           target="_blank" 
                           rel="noopener noreferrer" 
                           className="hover:underline cursor-pointer inline-flex items-center gap-1 text-green-700 hover:text-green-900 transition-colors duration-200"
                         >
-                          <ExternalLink className="h-4 w-4" />
+                          <ExternalLink className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
                           IIT Guwahati
                         </a> (2010-2014)
                       </p>
-                      <p className="text-sm text-gray-600">B.Tech in Electronics & Communication Engineering</p>
+                      <p className="text-xs md:text-sm text-gray-600">B.Tech in Electronics & Communication Engineering</p>
                     </Card>
                   </div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full border-4 border-white"></div>
-                  <div className="w-1/2 pl-8">
-                    <Card className="p-6 shadow-lg border-0 bg-blue-50 hover:shadow-xl transition-all duration-300">
-                      <h4 className="text-lg font-bold text-gray-900 mb-2">Software Developer II</h4>
-                      <p className="text-blue-600 font-medium mb-2">
+                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full border-4 border-white"></div>
+                  <div className="md:w-1/2 md:pl-8">
+                    <Card className="p-4 md:p-6 shadow-lg border-0 bg-blue-50 hover:shadow-xl transition-all duration-300">
+                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Software Developer II</h4>
+                      <p className="text-blue-600 font-medium mb-2 text-sm md:text-base">
                         <a 
                           href="https://www.oracle.com/" 
                           target="_blank" 
                           rel="noopener noreferrer" 
                           className="hover:underline cursor-pointer inline-flex items-center gap-1 text-blue-700 hover:text-blue-900 transition-colors duration-200"
                         >
-                          <ExternalLink className="h-4 w-4" />
+                          <ExternalLink className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
                           Oracle
                         </a> (2014-2015)
                       </p>
-                      <p className="text-sm text-gray-600">Enhanced Oracle CPQ software, achieved 95% in product training</p>
+                      <p className="text-xs md:text-sm text-gray-600">Enhanced Oracle CPQ software, achieved 95% in product training</p>
                     </Card>
                   </div>
                 </div>
 
                 {/* Business School Transition */}
-                <div className="flex items-center">
-                  <div className="w-1/2 pr-8 text-right">
-                    <Card className="p-6 shadow-lg border-0 bg-purple-50 hover:shadow-xl transition-all duration-300">
-                      <h4 className="text-lg font-bold text-gray-900 mb-2">Business School</h4>
-                      <p className="text-purple-600 font-medium mb-2">
+                <div className="md:flex md:items-center">
+                  <div className="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
+                    <Card className="p-4 md:p-6 shadow-lg border-0 bg-purple-50 hover:shadow-xl transition-all duration-300">
+                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Business School</h4>
+                      <p className="text-purple-600 font-medium mb-2 text-sm md:text-base">
                         <a 
                           href="https://www.iima.ac.in/" 
                           target="_blank" 
                           rel="noopener noreferrer" 
                           className="hover:underline cursor-pointer inline-flex items-center gap-1 text-purple-700 hover:text-purple-900 transition-colors duration-200"
                         >
-                          <ExternalLink className="h-4 w-4" />
+                          <ExternalLink className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
                           IIM Ahmedabad
                         </a> (2015-2017)
                       </p>
-                      <p className="text-sm text-gray-600">PGDM with student exchange at EM Lyon Business School, France</p>
+                      <p className="text-xs md:text-sm text-gray-600">PGDM with student exchange at EM Lyon Business School, France</p>
                     </Card>
                   </div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-purple-500 rounded-full border-4 border-white"></div>
-                  <div className="w-1/2 pl-8">
-                    <Card className="p-6 shadow-lg border-0 bg-orange-50 hover:shadow-xl transition-all duration-300">
-                      <h4 className="text-lg font-bold text-gray-900 mb-2">Business Analyst II</h4>
-                      <p className="text-orange-600 font-medium mb-2">
+                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-purple-500 rounded-full border-4 border-white"></div>
+                  <div className="md:w-1/2 md:pl-8">
+                    <Card className="p-4 md:p-6 shadow-lg border-0 bg-orange-50 hover:shadow-xl transition-all duration-300">
+                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Business Analyst II</h4>
+                      <p className="text-orange-600 font-medium mb-2 text-sm md:text-base">
                         <a 
                           href="https://www.americanexpress.com/" 
                           target="_blank" 
                           rel="noopener noreferrer" 
                           className="hover:underline cursor-pointer inline-flex items-center gap-1 text-orange-700 hover:text-orange-900 transition-colors duration-200"
                         >
-                          <ExternalLink className="h-4 w-4" />
+                          <ExternalLink className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
                           American Express
                         </a> (2017-2019)
                       </p>
-                      <p className="text-sm text-gray-600">Built XGBoost models for business targeting, GCMA Superstar recognition</p>
+                      <p className="text-xs md:text-sm text-gray-600">Built XGBoost models for business targeting, GCMA Superstar recognition</p>
                     </Card>
                   </div>
                 </div>
