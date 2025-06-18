@@ -95,3 +95,4 @@ cursor-app/backend/tests/__pycache__/
 *.pem
 *.key
 *.crt 
+.vercel
