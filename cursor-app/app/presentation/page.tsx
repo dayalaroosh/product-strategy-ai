@@ -1612,13 +1612,13 @@ export default function PresentationPage() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent leading-tight">
             Aroosh Dayal
           </h2>
-          <p className="text-xl md:text-2xl text-blue-600 font-semibold mb-3 md:mb-4">Senior AI Product Manager</p>
+          <p className="text-xl md:text-2xl text-blue-600 font-semibold mb-3 md:mb-4">Senior Product Manager</p>
           <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 text-xs md:text-sm font-medium px-4 md:px-6 py-2 md:py-3 rounded-full mb-6 md:mb-8 shadow-lg mx-2">
             <Award className="w-3 h-3 md:w-4 md:h-4 mr-2 flex-shrink-0" />
-            <span className="text-center leading-tight">IIM Ahmedabad MBA • 9+ Years AI/Product Experience • Open to AI Leadership Roles</span>
+            <span className="text-center leading-tight">IIM Ahmedabad MBA • 9+ Years Product Experience • Open to Leadership Roles</span>
           </div>
           <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-2">
-            Proven AI product leader with a unique journey from engineering to business analytics to AI product management across enterprise and consumer domains. Ready to drive strategic AI product decisions at scale.
+            Proven product leader with a unique journey from engineering to business analytics to product management across enterprise and consumer domains. Ready to drive strategic product decisions at scale.
           </p>
         </div>
 
@@ -1686,9 +1686,9 @@ export default function PresentationPage() {
               </div>
               
               <div className="flex-1">
-                <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">AI Product Leadership Profile</h3>
+                <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">Product Leadership Profile</h3>
                 <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-4 md:mb-6">
-                  9+ years building AI and data-driven products across enterprise SaaS, consumer mobile, gaming, and fintech. Started as a software developer at Oracle, earned an MBA from IIM Ahmedabad, evolved through business analytics at American Express, and now lead AI product management at scale. Proven track record of driving AI adoption, optimizing ML-powered user experiences, and managing complex AI stakeholder ecosystems.
+                  9+ years building data-driven products across enterprise SaaS, consumer mobile, gaming, and fintech. Started as a software developer at Oracle, earned an MBA from IIM Ahmedabad, evolved through business analytics at American Express, and now lead product management at scale. Proven track record of driving product adoption, optimizing user experiences, and managing complex stakeholder ecosystems.
                 </p>
                 
                 <div className="flex flex-wrap justify-center md:justify-start gap-2 md:gap-4 mb-4 md:mb-6">
@@ -1702,7 +1702,7 @@ export default function PresentationPage() {
                   </div>
                   <div className="flex items-center gap-2 bg-purple-100 text-purple-800 px-3 md:px-4 py-1 md:py-2 rounded-full text-sm">
                     <Brain className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                    <span className="font-medium">9+ Years AI Product Leadership</span>
+                    <span className="font-medium">9+ Years Product Leadership</span>
                   </div>
                 </div>
 
@@ -1867,7 +1867,7 @@ export default function PresentationPage() {
                   <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-yellow-500 rounded-full border-4 border-white"></div>
                   <div className="md:w-1/2 md:pl-8">
                     <Card className="p-4 md:p-6 shadow-lg border-0 bg-teal-50 hover:shadow-xl transition-all duration-300">
-                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Senior AI Product Manager</h4>
+                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Senior Product Manager</h4>
                       <p className="text-teal-600 font-medium mb-2 text-sm md:text-base">
                         <a 
                           href="https://eightfold.ai/" 
@@ -2334,84 +2334,86 @@ export default function PresentationPage() {
       {/* Feedback Form */}
       <FeedbackForm context="presentation" />
 
-      {/* Ready to Discuss Section - Moved to Bottom */}
-      <div className="py-12 md:py-16 bg-gradient-to-r from-blue-600 to-purple-600">
-        <div className="max-w-6xl mx-auto px-4 md:px-8 text-center">
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/20">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              🚀 Ready to Discuss Product Opportunities?
-            </h2>
-            <p className="text-lg md:text-xl text-blue-100 mb-6 max-w-3xl mx-auto">
-              I'm actively seeking <span className="font-semibold text-white">Principal PM, Group PM, or Product Director</span> roles. 
-              Let's connect if you're building products that need experienced leadership.
-            </p>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 justify-center items-center">
-              <Button 
-                size="lg" 
-                className="text-lg px-6 py-4 bg-white text-blue-900 hover:bg-blue-50 shadow-2xl transform hover:scale-105 transition-all duration-300"
-                onClick={() => {
-                  trackCTAClick('contact', 'Email Aroosh', 'bottom-cta')
-                  window.open('mailto:dayalaroosh@gmail.com?subject=Interested in Your Product Management Profile&body=Hi Aroosh,%0D%0A%0D%0AI came across your Product Strategy presentation and was impressed by your experience in product management at Eightfold and your multi-agent system work.%0D%0A%0D%0AI%27d love to discuss potential opportunities in [Company/Role].%0D%0A%0D%0ABest regards', '_blank')
-                }}
-              >
-                <Mail className="mr-2 h-5 w-5" />
-                Email Me
-              </Button>
+      {/* Ready to Discuss Section - Only show on Overview tab */}
+      {activeTab === 'overview' && (
+        <div className="py-12 md:py-16 bg-gradient-to-r from-blue-600 to-purple-600">
+          <div className="max-w-6xl mx-auto px-4 md:px-8 text-center">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/20">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                🚀 Ready to Discuss Product Opportunities?
+              </h2>
+              <p className="text-lg md:text-xl text-blue-100 mb-6 max-w-3xl mx-auto">
+                I'm actively seeking <span className="font-semibold text-white">Principal PM, Group PM, or Product Director</span> roles. 
+                Let's connect if you're building products that need experienced leadership.
+              </p>
               
-              <Button 
-                size="lg" 
-                className="text-lg px-6 py-4 bg-green-600 hover:bg-green-700 text-white shadow-2xl transform hover:scale-105 transition-all duration-300"
-                onClick={() => {
-                  trackCTAClick('contact', 'WhatsApp', 'bottom-cta')
-                  window.open('https://wa.me/919550132970?text=Hi%20Aroosh%2C%20I%20saw%20your%20Product%20Strategy%20presentation%20and%20was%20impressed%20by%20your%20experience%20at%20Eightfold%20and%20multi-agent%20systems%20work.%20I%27d%20love%20to%20discuss%20potential%20product%20management%20opportunities.%20Are%20you%20available%20for%20a%20quick%20chat%3F', '_blank')
-                }}
-              >
-                <Phone className="mr-2 h-5 w-5" />
-                WhatsApp
-              </Button>
-              
-              <Button 
-                size="lg" 
-                className="text-lg px-6 py-4 bg-blue-800 hover:bg-blue-900 text-white shadow-2xl transform hover:scale-105 transition-all duration-300"
-                onClick={() => {
-                  trackCTAClick('navigation', 'About Creator', 'bottom-cta')
-                  handleTabClick('about')
-                }}
-              >
-                <User className="mr-2 h-5 w-5" />
-                About Creator
-              </Button>
-              
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="text-lg px-6 py-4 border-white text-white hover:bg-white hover:text-blue-900 shadow-2xl transform hover:scale-105 transition-all duration-300"
-                onClick={() => {
-                  trackCTAClick('social', 'LinkedIn', 'bottom-cta')
-                  window.open('https://www.linkedin.com/in/aroosh-dayal-a015b59a/', '_blank')
-                }}
-              >
-                <Linkedin className="mr-2 h-5 w-5" />
-                LinkedIn
-              </Button>
-              
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="text-lg px-6 py-4 border-white text-white hover:bg-white hover:text-blue-900 shadow-2xl transform hover:scale-105 transition-all duration-300"
-                onClick={() => {
-                  trackCTAClick('download', 'Resume', 'bottom-cta')
-                  window.open('/api/download-resume', '_blank')
-                }}
-              >
-                <Download className="mr-2 h-5 w-5" />
-                Resume
-              </Button>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 justify-center items-center">
+                <Button 
+                  size="lg" 
+                  className="text-lg px-6 py-4 bg-white text-blue-900 hover:bg-blue-50 shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  onClick={() => {
+                    trackCTAClick('contact', 'Email Aroosh', 'bottom-cta')
+                    window.open('mailto:dayalaroosh@gmail.com?subject=Interested in Your Product Management Profile&body=Hi Aroosh,%0D%0A%0D%0AI came across your Product Strategy presentation and was impressed by your experience in product management at Eightfold and your multi-agent system work.%0D%0A%0D%0AI%27d love to discuss potential opportunities in [Company/Role].%0D%0A%0D%0ABest regards', '_blank')
+                  }}
+                >
+                  <Mail className="mr-2 h-5 w-5" />
+                  Email Me
+                </Button>
+                
+                <Button 
+                  size="lg" 
+                  className="text-lg px-6 py-4 bg-green-600 hover:bg-green-700 text-white shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  onClick={() => {
+                    trackCTAClick('contact', 'WhatsApp', 'bottom-cta')
+                    window.open('https://wa.me/919550132970?text=Hi%20Aroosh%2C%20I%20saw%20your%20Product%20Strategy%20presentation%20and%20was%20impressed%20by%20your%20experience%20at%20Eightfold%20and%20multi-agent%20systems%20work.%20I%27d%20love%20to%20discuss%20potential%20product%20management%20opportunities.%20Are%20you%20available%20for%20a%20quick%20chat%3F', '_blank')
+                  }}
+                >
+                  <Phone className="mr-2 h-5 w-5" />
+                  WhatsApp
+                </Button>
+                
+                <Button 
+                  size="lg" 
+                  className="text-lg px-6 py-4 bg-blue-800 hover:bg-blue-900 text-white shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  onClick={() => {
+                    trackCTAClick('navigation', 'About Creator', 'bottom-cta')
+                    handleTabClick('about')
+                  }}
+                >
+                  <User className="mr-2 h-5 w-5" />
+                  About Creator
+                </Button>
+                
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  className="text-lg px-6 py-4 border-white text-white hover:bg-white hover:text-blue-900 shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  onClick={() => {
+                    trackCTAClick('social', 'LinkedIn', 'bottom-cta')
+                    window.open('https://www.linkedin.com/in/aroosh-dayal-a015b59a/', '_blank')
+                  }}
+                >
+                  <Linkedin className="mr-2 h-5 w-5" />
+                  LinkedIn
+                </Button>
+                
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  className="text-lg px-6 py-4 border-white text-white hover:bg-white hover:text-blue-900 shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  onClick={() => {
+                    trackCTAClick('download', 'Resume', 'bottom-cta')
+                    window.open('/api/download-resume', '_blank')
+                  }}
+                >
+                  <Download className="mr-2 h-5 w-5" />
+                  Resume
+                </Button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 } 

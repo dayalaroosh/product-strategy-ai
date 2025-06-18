@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model AnalyticsEvent {
+  id        String   @id @default(cuid())
+  event     String   // page_view, cta_click, section_view, user_info_captured
+  timestamp DateTime @default(now())
+  page      String?
+  section   String?
+  ctaType   String?
+  ctaText   String?
+  url       String?
+  userAgent String?
+  ip        String?
+  data      String?  // JSON string for additional data
+  
+  @@map("analytics_events")
+}
+
+model FeedbackSubmission {
+  id          String   @id @default(cuid())
+  timestamp   DateTime @default(now())
+  name        String?
+  email       String?
+  company     String?
+  role        String?
+  interest    String?
+  rating      Int?
+  feedback    String?
+  ip          String?
+  userAgent   String?
+  
+  @@map("feedback_submissions")
+} 

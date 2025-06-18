@@ -21,12 +21,33 @@ export default function AnalyticsDashboard() {
   const [events, setEvents] = useState<AnalyticsEvent[]>([])
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState<string>('all')
+  const [metrics, setMetrics] = useState({ pageViews: 0, ctaClicks: 0, sectionViews: 0, userInfoCaptures: 0 })
 
-  // In a real implementation, you'd fetch from your analytics API
-  // For now, we'll simulate data since we're only console logging
+  // Fetch real analytics data from API
   useEffect(() => {
-    // Simulate fetching analytics data
-    const simulateData = () => {
+    const fetchAnalytics = async () => {
+      try {
+        const response = await fetch(`/api/analytics?event=${filter}&limit=100`);
+        const data = await response.json();
+        
+        if (data.success) {
+          setEvents(data.events || []);
+          setMetrics(data.metrics || { pageViews: 0, ctaClicks: 0, sectionViews: 0, userInfoCaptures: 0 });
+        } else {
+          console.error('Failed to fetch analytics:', data.error);
+          // Fallback to simulated data
+          setSimulatedData();
+        }
+      } catch (error) {
+        console.error('Error fetching analytics:', error);
+        // Fallback to simulated data
+        setSimulatedData();
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const setSimulatedData = () => {
       const mockEvents: AnalyticsEvent[] = [
         {
           event: 'page_view',
@@ -47,13 +68,13 @@ export default function AnalyticsDashboard() {
           section: 'about',
           timestamp: new Date(Date.now() - 600000).toISOString(),
         }
-      ]
-      setEvents(mockEvents)
-      setLoading(false)
-    }
+      ];
+      setEvents(mockEvents);
+      setMetrics({ pageViews: 3, ctaClicks: 1, sectionViews: 1, userInfoCaptures: 0 });
+    };
 
-    simulateData()
-  }, [])
+    fetchAnalytics();
+  }, [filter]);
 
   const filteredEvents = events.filter(event => 
     filter === 'all' || event.event === filter
@@ -67,8 +88,6 @@ export default function AnalyticsDashboard() {
 
     return { pageViews, ctaClicks, sectionViews, userInfoCaptures }
   }
-
-  const metrics = getMetrics()
 
   const exportData = () => {
     const csv = [

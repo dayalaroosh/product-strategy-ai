@@ -168,11 +168,12 @@ export default function FeedbackForm({ context = 'presentation', onClose }: Feed
                   onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setFormData(prev => ({ ...prev, interest: e.target.value }))}
                   className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 >
-                  <option value="">Select an option</option>
-                  <option value="hiring">Product Management opportunities</option>
-                  <option value="collaboration">Collaboration/Partnership</option>
-                  <option value="product">Using the AI Product Strategy tool</option>
-                  <option value="consulting">Product Strategy Consulting</option>
+                  <option value="">Select your interest...</option>
+                  <option value="try-product">Try the AI Product Council System</option>
+                  <option value="hiring">Hiring</option>
+                  <option value="partnership">Business Partnership</option>
+                  <option value="consulting">Consulting Services</option>
+                  <option value="investor">Investor Interest</option>
                   <option value="other">Other</option>
                 </select>
               </div>
