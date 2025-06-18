@@ -13,6 +13,13 @@ export default function PresentationPage() {
 
   useEffect(() => {
     setIsVisible(true);
+    
+    // Check for URL parameters to set active tab
+    const urlParams = new URLSearchParams(window.location.search);
+    const tab = urlParams.get('tab');
+    if (tab && ['overview', 'technology', 'features', 'enterprise', 'architecture', 'gtm', 'roadmap', 'about'].includes(tab)) {
+      setActiveTab(tab);
+    }
   }, []);
 
   const handleTryDemo = () => {
@@ -36,6 +43,10 @@ export default function PresentationPage() {
 
   const handleTabClick = (tabId: string) => {
     setActiveTab(tabId);
+    // Update URL without page reload
+    const newUrl = new URL(window.location.href);
+    newUrl.searchParams.set('tab', tabId);
+    window.history.pushState({}, '', newUrl.toString());
     // Scroll to top when switching tabs
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -1594,11 +1605,26 @@ export default function PresentationPage() {
     <div className="py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Product Leader & Strategist
+          <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 text-sm font-medium px-6 py-3 rounded-full mb-8 shadow-lg">
+            <Award className="w-4 h-4 mr-2" />
+            Senior Product Manager • IIM Ahmedabad MBA • 9+ Years Experience
+          </div>
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent leading-tight">
+            Aroosh Dayal
           </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-            Proven journey from engineering to business analytics to product management across enterprise and consumer domains.
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
+            <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full font-semibold text-lg shadow-lg">
+              Principal PM Ready
+            </span>
+            <span className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-2 rounded-full font-semibold text-lg shadow-lg">
+              Group PM Ready
+            </span>
+            <span className="bg-gradient-to-r from-green-500 to-teal-500 text-white px-6 py-2 rounded-full font-semibold text-lg shadow-lg">
+              Product Director Ready
+            </span>
+          </div>
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            Proven journey from engineering to business analytics to product management across enterprise and consumer domains. Ready to lead at the next level.
           </p>
         </div>
 
@@ -1608,12 +1634,8 @@ export default function PresentationPage() {
             <div className="flex flex-col md:flex-row items-start gap-8">
               {/* Professional Photo */}
               <div className="flex-shrink-0">
-                <div className="w-40 h-40 rounded-full overflow-hidden shadow-lg border-4 border-white">
-                  <img 
-                    src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAoACgDASIAAhEBAxEB/8QAGwAAAgMBAQEAAAAAAAAAAAAABAUDBgcCAQj/xAAvEAACAgEDAwMCBQQDAAAAAAABAgMEEQAFEiExBkFRYXGBEyKRobEyweHwFELR/8QAGQEAAwEBAQAAAAAAAAAAAAAAAgMEAQAF/8QAIhEAAgICAgICAwAAAAAAAAAAAAECEQMhEjEEQRNRImFx/9oADAMBAAIRAxEAPwCbHKjOoLcVXQJJJFEGcAEKCQBkjJA+dRbdtNbZaeyq2Nz7rZKEQgBnWV2DYyVOFzjJGfGrDe3Hb7O6bXU3qpMDGbKpJFvJBOGPjyOMjnjnONUre6q1d3qyXLEVUAkW2sEjqC2OQKhyOODnGMjOPbVkWlGmvBnYSy+Yt8Qo3yyQ7dJJ+nXKKpJYtjGcAjJJGBnGcZwfGqrVmjGwzXZ5ZJ5A7JvKwSKrSCRQFJJYDJGMDBPPnxq1Xb0Ue5WJbFWa1HLcqVFhLqkbEOGZhwJJwc8QccQcjGDqtbXWinq3rNOWWKCJpYpHkQYVyBhFGTjOCQSTyHI6HGhbSdFCjJxT9o/2uyKu8xwz2YKlZlZJLU5JWJSGLBsKxAIBOQOOQOOAcWYbJFvljeXr2zW8KKVfbIJmaMxKQWfKjGfBIJPnPGtXlpwPvVWrVkjqVJK6NVjjXCpGGIwi9MAHjjzjHnVP6T6Ot7PfXf7kK1zEMjUo5GIRZGOXLAEZUhcAE4JJOBkYLUG0m9l6yKMnGK0ux1sVjZZ6dJp7tNLEBJEMhJ5TIGBjKjgcEEjGMjONVj1BvtOtZkpW7lqCCNI7MbTVDGjMWKhRyJJwSRyAJOFGOONa1f3Cvu1qGzNtK3JhCIVNiUjCqzEKAOPEMT4JAOCTjVF9Y9JV9l3+vu1WZJqFpllUuTJJC5XGWOSTwYcgcnCjJOBqhOLdJ6Kk5SjclaKbT2XdK+8z7rCUW5ZhWKVkbKsqk4Yggg5wDjI5A4PTVh6OjsW7V6u5T1qUFkCVbFqRURQOJKgE5LEgAYGSckDONNb/S2z7pVsXL9eWe7t8cjIgn4+oqjKA/FTlQCRgZxnOdJ+lNlh3jdI6VqxBWrGOWdZ5syKqopYZABOeJXABJJA55yMzSi7JvJlKLjJaZduG3UNz6Oq7fJKtWvdlFqOWQEpIjEFQTjOQQQCRnBGSNZ7LGUkZGKsrEMCMEEHBBH3Gt03HpXZKW8VKdnbqVp45lkjIZlZJDnAYE5YDjyAJxkZxjVE9Q+lNx2WRZbdOWrCwJWwg5RMD5DD8pz7g+9Y8OMo3EzjzlGVSMaFqWlcpJE8cqNhlYYII8gg6Y1K1e1MzSyRrDGAZZHOFQE4GfJJOABkknAAJOl+rF0tJWKf7fKp/wCJP//Z"
-                    alt="Aroosh Dayal"
-                    className="w-full h-full object-cover"
-                  />
+                <div className="w-40 h-40 rounded-full overflow-hidden shadow-xl border-4 border-white bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                  <div className="text-6xl font-bold text-white">AD</div>
                 </div>
                 <p className="text-center text-sm text-gray-500 mt-2">Aroosh Dayal</p>
               </div>
@@ -1661,7 +1683,11 @@ export default function PresentationPage() {
                   <div className="w-1/2 pr-8 text-right">
                     <Card className="p-6 shadow-lg border-0 bg-green-50">
                       <h4 className="text-lg font-bold text-gray-900 mb-2">Engineering Foundation</h4>
-                      <p className="text-green-600 font-medium mb-2">IIT Guwahati (2010-2014)</p>
+                      <p className="text-green-600 font-medium mb-2">
+                        <a href="https://www.iitg.ac.in/" target="_blank" rel="noopener noreferrer" className="hover:underline cursor-pointer">
+                          IIT Guwahati
+                        </a> (2010-2014)
+                      </p>
                       <p className="text-sm text-gray-600">B.Tech in Electronics & Communication Engineering</p>
                     </Card>
                   </div>
@@ -1669,7 +1695,11 @@ export default function PresentationPage() {
                   <div className="w-1/2 pl-8">
                     <Card className="p-6 shadow-lg border-0 bg-blue-50">
                       <h4 className="text-lg font-bold text-gray-900 mb-2">Software Developer II</h4>
-                      <p className="text-blue-600 font-medium mb-2">Oracle (2014-2015)</p>
+                      <p className="text-blue-600 font-medium mb-2">
+                        <a href="https://www.oracle.com/" target="_blank" rel="noopener noreferrer" className="hover:underline cursor-pointer">
+                          Oracle
+                        </a> (2014-2015)
+                      </p>
                       <p className="text-sm text-gray-600">Enhanced Oracle CPQ software, achieved 95% in product training</p>
                     </Card>
                   </div>
@@ -1680,7 +1710,11 @@ export default function PresentationPage() {
                   <div className="w-1/2 pr-8 text-right">
                     <Card className="p-6 shadow-lg border-0 bg-purple-50">
                       <h4 className="text-lg font-bold text-gray-900 mb-2">Business School</h4>
-                      <p className="text-purple-600 font-medium mb-2">IIM Ahmedabad (2015-2017)</p>
+                      <p className="text-purple-600 font-medium mb-2">
+                        <a href="https://www.iima.ac.in/" target="_blank" rel="noopener noreferrer" className="hover:underline cursor-pointer">
+                          IIM Ahmedabad
+                        </a> (2015-2017)
+                      </p>
                       <p className="text-sm text-gray-600">PGDM with student exchange at EM Lyon Business School, France</p>
                     </Card>
                   </div>
@@ -1688,7 +1722,11 @@ export default function PresentationPage() {
                   <div className="w-1/2 pl-8">
                     <Card className="p-6 shadow-lg border-0 bg-orange-50">
                       <h4 className="text-lg font-bold text-gray-900 mb-2">Business Analyst II</h4>
-                      <p className="text-orange-600 font-medium mb-2">American Express (2017-2019)</p>
+                      <p className="text-orange-600 font-medium mb-2">
+                        <a href="https://www.americanexpress.com/" target="_blank" rel="noopener noreferrer" className="hover:underline cursor-pointer">
+                          American Express
+                        </a> (2017-2019)
+                      </p>
                       <p className="text-sm text-gray-600">Built XGBoost models for business targeting, GCMA Superstar recognition</p>
                     </Card>
                   </div>
@@ -1699,7 +1737,11 @@ export default function PresentationPage() {
                   <div className="w-1/2 pr-8 text-right">
                     <Card className="p-6 shadow-lg border-0 bg-indigo-50">
                       <h4 className="text-lg font-bold text-gray-900 mb-2">Lead Product Analyst</h4>
-                      <p className="text-indigo-600 font-medium mb-2">Bharti Airtel (2019-2021)</p>
+                      <p className="text-indigo-600 font-medium mb-2">
+                        <a href="https://www.airtel.in/" target="_blank" rel="noopener noreferrer" className="hover:underline cursor-pointer">
+                          Bharti Airtel
+                        </a> (2019-2021)
+                      </p>
                       <p className="text-sm text-gray-600">Led analytics for Airtel Thanks App (100M+ MAU), improved postpaid digital leads by 140%</p>
                     </Card>
                   </div>
@@ -1707,7 +1749,11 @@ export default function PresentationPage() {
                   <div className="w-1/2 pl-8">
                     <Card className="p-6 shadow-lg border-0 bg-red-50">
                       <h4 className="text-lg font-bold text-gray-900 mb-2">Senior Product Manager</h4>
-                      <p className="text-red-600 font-medium mb-2">Bharti Airtel (2021-2023)</p>
+                      <p className="text-red-600 font-medium mb-2">
+                        <a href="https://www.airtel.in/" target="_blank" rel="noopener noreferrer" className="hover:underline cursor-pointer">
+                          Bharti Airtel
+                        </a> (2021-2023)
+                      </p>
                       <p className="text-sm text-gray-600">Managed Field Service Management platform (100K+ users, ₹700Cr+ account), won Chairman Award 2022</p>
                     </Card>
                   </div>
@@ -1718,7 +1764,11 @@ export default function PresentationPage() {
                   <div className="w-1/2 pr-8 text-right">
                     <Card className="p-6 shadow-lg border-0 bg-yellow-50">
                       <h4 className="text-lg font-bold text-gray-900 mb-2">Senior Product Manager</h4>
-                      <p className="text-yellow-600 font-medium mb-2">Zynga (Feb 2023 - Sep 2023)</p>
+                      <p className="text-yellow-600 font-medium mb-2">
+                        <a href="https://www.zynga.com/" target="_blank" rel="noopener noreferrer" className="hover:underline cursor-pointer">
+                          Zynga
+                        </a> (Feb 2023 - Sep 2023)
+                      </p>
                       <p className="text-sm text-gray-600">Centralized Compliance & Social products for 119+ game studios, redesigned opt-out flows saving $3M+ revenue</p>
                     </Card>
                   </div>
@@ -1726,7 +1776,11 @@ export default function PresentationPage() {
                   <div className="w-1/2 pl-8">
                     <Card className="p-6 shadow-lg border-0 bg-teal-50">
                       <h4 className="text-lg font-bold text-gray-900 mb-2">Senior Product Manager</h4>
-                      <p className="text-teal-600 font-medium mb-2">Eightfold AI (Jan 2024 - Jun 2025)</p>
+                      <p className="text-teal-600 font-medium mb-2">
+                        <a href="https://eightfold.ai/" target="_blank" rel="noopener noreferrer" className="hover:underline cursor-pointer">
+                          Eightfold AI
+                        </a> (Jan 2024 - Jun 2025)
+                      </p>
                       <p className="text-sm text-gray-600">Resource Management AI product, launched 15+ features, scaled from 1 to 7 customers achieving $12M+ ARR</p>
                     </Card>
                   </div>
@@ -1891,10 +1945,10 @@ export default function PresentationPage() {
               </div>
               <h4 className="text-xl font-bold text-gray-900 mb-3">Travel & Culture</h4>
               <p className="text-gray-600 mb-3">
-                Passionate explorer with <strong>40+ countries visited</strong> across 6 continents. Love experiencing diverse cultures, cuisines, and connecting with people from different backgrounds.
+                Passionate explorer with <strong>40+ countries visited</strong> across 4 continents. Love experiencing diverse cultures, cuisines, and connecting with people from different backgrounds.
               </p>
               <p className="text-sm text-gray-500">
-                Favorite destinations: Japan (tech innovation), Switzerland (precision), and India (home sweet chaos!)
+                Favorites: Iceland (raw beauty), Bali (spiritual vibes), California (innovation hub), and India (home sweet chaos!)
               </p>
             </Card>
 
@@ -1904,7 +1958,7 @@ export default function PresentationPage() {
               </div>
               <h4 className="text-xl font-bold text-gray-900 mb-3">Snooker & Pool</h4>
               <p className="text-gray-600 mb-3">
-                Competitive player who has <strong>won multiple competitions at college and corporate level</strong>. The strategic thinking and precision required translate beautifully to product management.
+                Competitive player who has <strong>won multiple competitions at college and corporate level</strong>. The strategic thinking, precision, and patience required are deeply satisfying.
               </p>
               <p className="text-sm text-gray-500">
                 Best break: 67 in snooker. Still working on that century break! 🎱
@@ -1920,7 +1974,7 @@ export default function PresentationPage() {
                 Fascinated by the potential of AI to transform how we work and live. Currently building multi-agent systems that make product decisions smarter and faster.
               </p>
               <p className="text-sm text-gray-500">
-                Fun fact: The Product Strategy Council you just experienced? Built that myself using AutoGen! 🤖
+                Fun fact: The <button onClick={() => setActiveTab('overview')} className="text-purple-600 hover:text-purple-800 underline cursor-pointer">Product Strategy Council</button> you just experienced? Built that myself using AutoGen! 🤖
               </p>
             </Card>
           </div>
@@ -1930,10 +1984,18 @@ export default function PresentationPage() {
         <div className="mb-16">
           <Card className="p-6 shadow-lg border-0 bg-gradient-to-r from-gray-50 to-blue-50 max-w-4xl mx-auto">
             <h4 className="text-lg font-bold text-gray-900 mb-3 text-center">Side Project: AI Product Strategy Council</h4>
-            <p className="text-gray-600 text-center leading-relaxed">
+            <p className="text-gray-600 text-center leading-relaxed mb-4">
               Built a multi-agent AI system to help early-stage PMs make product decisions when traditional user research isn't feasible. 
               A personal exploration into solving a challenge I've faced repeatedly across different companies.
             </p>
+            <div className="text-center">
+              <Button 
+                onClick={() => setActiveTab('overview')}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-all duration-300"
+              >
+                Explore the Full Product Strategy →
+              </Button>
+            </div>
           </Card>
         </div>
 
@@ -1960,7 +2022,7 @@ export default function PresentationPage() {
                 <Button 
                   size="lg" 
                   className="text-lg px-6 py-4 bg-green-600 hover:bg-green-700 text-white shadow-2xl transform hover:scale-105 transition-all duration-300"
-                  onClick={() => window.open('https://wa.me/919818264466?text=Hi%20Aroosh%2C%20I%20saw%20your%20Product%20Strategy%20presentation%20and%20would%20like%20to%20connect%20regarding%20PM%20opportunities.', '_blank')}
+                  onClick={() => window.open('https://wa.me/919550132970?text=Hi%20Aroosh%2C%20I%20saw%20your%20Product%20Strategy%20presentation%20and%20would%20like%20to%20connect%20regarding%20PM%20opportunities.', '_blank')}
                 >
                   <Phone className="mr-2 h-5 w-5" />
                   WhatsApp
@@ -1995,7 +2057,7 @@ export default function PresentationPage() {
                   <Download className="mr-2 h-5 w-5" />
                   Download Resume PDF
                 </Button>
-                <p className="text-sm text-blue-200 mt-2">One-page professional resume • Updated January 2025</p>
+                <p className="text-sm text-blue-200 mt-2">One-page professional resume • Updated June 2025</p>
               </div>
               
               <div className="flex flex-wrap items-center justify-center gap-8 text-blue-200">
