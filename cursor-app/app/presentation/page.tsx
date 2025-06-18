@@ -1628,10 +1628,10 @@ export default function PresentationPage() {
             <div className="text-center">
               <h3 className="text-2xl md:text-3xl font-bold mb-4">Let's Connect</h3>
               <p className="text-lg md:text-xl text-blue-100 mb-6 leading-relaxed">
-                Ready to discuss <span className="font-semibold text-white">Principal PM, Group PM, or Product Director</span> opportunities? Let's talk!
+                Open to discussing <span className="font-semibold text-white">Product Leadership opportunities</span> or <span className="font-semibold text-white">collaborative projects</span>. Let's explore how we can work together to build exceptional products.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
                 <Button 
                   size="lg" 
                   className="text-lg px-6 py-4 bg-white text-blue-900 hover:bg-blue-50 shadow-2xl transform hover:scale-105 transition-all duration-300"
@@ -1668,6 +1668,28 @@ export default function PresentationPage() {
                   <Linkedin className="mr-2 h-5 w-5" />
                   LinkedIn
                 </Button>
+              </div>
+
+              {/* Resume Download CTA */}
+              <div className="border-t border-white/20 pt-4">
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  className="text-lg px-8 py-4 border-white text-white hover:bg-white hover:text-blue-900 shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  onClick={() => {
+                    trackCTAClick('download', 'Resume PDF', 'about-top')
+                    const link = document.createElement('a');
+                    link.href = '/api/download-resume';
+                    link.download = 'Aroosh_Dayal_Product_Manager_Resume.pdf';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                  }}
+                >
+                  <Download className="mr-2 h-5 w-5" />
+                  Download Resume PDF
+                </Button>
+                <p className="text-sm text-blue-200 mt-2">One-page professional resume • Updated June 2025</p>
               </div>
             </div>
           </Card>
@@ -1964,11 +1986,11 @@ export default function PresentationPage() {
               <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                 <Brain className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">AI & Technical Foundation</h3>
+              <h3 className="text-2xl font-bold text-gray-900">Technical Foundation</h3>
             </div>
             <div className="space-y-4">
               <div>
-                <h4 className="font-bold text-gray-900 mb-2">AI & Machine Learning</h4>
+                <h4 className="font-bold text-gray-900 mb-2">Machine Learning & AI</h4>
                 <div className="flex flex-wrap gap-2 mb-4">
                   <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">AutoGen Multi-Agent</span>
                   <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">OpenAI GPT-4</span>
@@ -1994,12 +2016,12 @@ export default function PresentationPage() {
                 </div>
               </div>
               <div>
-                <h4 className="font-bold text-gray-900 mb-2">AI Product & Strategy</h4>
+                <h4 className="font-bold text-gray-900 mb-2">Product Strategy & Leadership</h4>
                 <div className="flex flex-wrap gap-2">
-                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">AI Product Strategy</span>
-                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">AI Stakeholder Management</span>
-                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">AI Go-to-Market</span>
-                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">AI Cross-functional Leadership</span>
+                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Product Strategy</span>
+                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Stakeholder Management</span>
+                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Go-to-Market</span>
+                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Cross-functional Leadership</span>
                 </div>
               </div>
             </div>
@@ -2010,24 +2032,24 @@ export default function PresentationPage() {
               <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
                 <Target className="h-6 w-6 text-green-600" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">AI Domain Expertise</h3>
+              <h3 className="text-2xl font-bold text-gray-900">Domain Expertise</h3>
             </div>
             <div className="space-y-4">
               <div className="p-4 bg-gray-50 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">Enterprise AI & SaaS</h4>
-                <p className="text-sm text-gray-600">AI Resource Management, Field Service Management, Oracle CPQ, AI-driven products, ML-powered enterprise solutions</p>
+                <h4 className="font-bold text-gray-900 mb-2">Enterprise SaaS & B2B</h4>
+                <p className="text-sm text-gray-600">Resource Management, Field Service Management, Oracle CPQ, enterprise solutions, ML-powered products</p>
               </div>
               <div className="p-4 bg-gray-50 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">Consumer AI & Gaming</h4>
-                <p className="text-sm text-gray-600">Mobile apps (100M+ MAU), Gaming platforms with AI features, Social products, AI-enhanced digital experiences</p>
+                <h4 className="font-bold text-gray-900 mb-2">Consumer & Gaming</h4>
+                <p className="text-sm text-gray-600">Mobile apps (100M+ MAU), Gaming platforms, Social products, digital experiences</p>
               </div>
               <div className="p-4 bg-gray-50 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">AI in Financial Services & Telecom</h4>
-                <p className="text-sm text-gray-600">AI business targeting, ML risk modeling, AI customer analytics, AI-driven digital transformation</p>
+                <h4 className="font-bold text-gray-900 mb-2">Financial Services & Telecom</h4>
+                <p className="text-sm text-gray-600">Business targeting, risk modeling, customer analytics, digital transformation</p>
               </div>
               <div className="p-4 bg-gray-50 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">AI Product Leadership</h4>
-                <p className="text-sm text-gray-600">AI cross-functional teams, AI stakeholder management, AI strategic planning, AI product roadmaps</p>
+                <h4 className="font-bold text-gray-900 mb-2">Product Leadership</h4>
+                <p className="text-sm text-gray-600">Cross-functional teams, stakeholder management, strategic planning, product roadmaps</p>
               </div>
             </div>
           </Card>
@@ -2103,7 +2125,7 @@ export default function PresentationPage() {
             <div className="text-center">
               <h3 className="text-3xl font-bold mb-6">Let's Connect</h3>
               <p className="text-xl text-blue-200 mb-8 leading-relaxed">
-                Ready to discuss how my cross-functional experience and technical background can drive product success at your organization.
+                Open to discussing <span className="font-semibold text-white">Product Leadership opportunities</span> or <span className="font-semibold text-white">collaborative projects</span>. Let's explore how we can work together to build exceptional products.
               </p>
               
               {/* Contact Options */}
@@ -2112,9 +2134,9 @@ export default function PresentationPage() {
                   size="lg" 
                   className="text-lg px-6 py-4 bg-white text-blue-900 hover:bg-blue-50 shadow-2xl transform hover:scale-105 transition-all duration-300"
                   onClick={() => {
-                    trackCTAClick('navigation', 'Email Aroosh', 'hero')
-                    window.open('mailto:dayalaroosh@gmail.com?subject=Interested in Your AI Product Management Profile&body=Hi Aroosh,%0D%0A%0D%0AI came across your AI Product Strategy presentation and was impressed by your experience in AI product management at Eightfold and your multi-agent system work.%0D%0A%0D%0AI%27d love to discuss potential opportunities in [Company/Role].%0D%0A%0D%0ABest regards', '_blank')}
-                  }
+                    trackCTAClick('contact', 'Email Aroosh', 'about-bottom')
+                    window.open('mailto:dayalaroosh@gmail.com?subject=Interested in Your Product Management Profile&body=Hi Aroosh,%0D%0A%0D%0AI came across your Product Strategy presentation and was impressed by your experience in product management at Eightfold and your multi-agent system work.%0D%0A%0D%0AI%27d love to discuss potential opportunities in [Company/Role].%0D%0A%0D%0ABest regards', '_blank')
+                  }}
                 >
                   <Mail className="mr-2 h-5 w-5" />
                   Email Me
@@ -2123,17 +2145,23 @@ export default function PresentationPage() {
                 <Button 
                   size="lg" 
                   className="text-lg px-6 py-4 bg-green-600 hover:bg-green-700 text-white shadow-2xl transform hover:scale-105 transition-all duration-300"
-                  onClick={() => window.open('https://wa.me/919550132970?text=Hi%20Aroosh%2C%20I%20saw%20your%20AI%20Product%20Strategy%20presentation%20and%20was%20impressed%20by%20your%20experience%20at%20Eightfold%20AI%20and%20multi-agent%20systems%20work.%20I%27d%20love%20to%20discuss%20potential%20AI%20product%20management%20opportunities.%20Are%20you%20available%20for%20a%20quick%20chat%3F', '_blank')}
+                  onClick={() => {
+                    trackCTAClick('contact', 'WhatsApp', 'about-bottom')
+                    window.open('https://wa.me/919550132970?text=Hi%20Aroosh%2C%20I%20saw%20your%20Product%20Strategy%20presentation%20and%20was%20impressed%20by%20your%20experience%20at%20Eightfold%20and%20multi-agent%20systems%20work.%20I%27d%20love%20to%20discuss%20potential%20product%20management%20opportunities.%20Are%20you%20available%20for%20a%20quick%20chat%3F', '_blank')
+                  }}
                 >
                   <Phone className="mr-2 h-5 w-5" />
                   WhatsApp
                 </Button>
                 
                 <Button 
-                  variant="outline" 
                   size="lg" 
-                  className="text-lg px-6 py-4 border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm"
-                  onClick={() => window.open('https://www.linkedin.com/in/aroosh-dayal-a015b59a/', '_blank')}
+                  variant="outline"
+                  className="text-lg px-6 py-4 border-white text-white hover:bg-white hover:text-blue-900 shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  onClick={() => {
+                    trackCTAClick('social', 'LinkedIn', 'about-bottom')
+                    window.open('https://www.linkedin.com/in/aroosh-dayal-a015b59a/', '_blank')
+                  }}
                 >
                   <Linkedin className="mr-2 h-5 w-5" />
                   LinkedIn
@@ -2141,12 +2169,12 @@ export default function PresentationPage() {
               </div>
 
               {/* Resume Download */}
-              <div className="mb-8">
+              <div className="border-t border-white/20 pt-6">
                 <Button 
                   size="lg" 
                   className="text-lg px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white shadow-2xl transform hover:scale-105 transition-all duration-300"
                   onClick={() => {
-                    // Create and download resume PDF
+                    trackCTAClick('download', 'Resume PDF', 'about-bottom')
                     const link = document.createElement('a');
                     link.href = '/api/download-resume';
                     link.download = 'Aroosh_Dayal_Product_Manager_Resume.pdf';
@@ -2161,14 +2189,14 @@ export default function PresentationPage() {
                 <p className="text-sm text-blue-200 mt-2">One-page professional resume • Updated June 2025</p>
               </div>
               
-              <div className="flex flex-wrap items-center justify-center gap-8 text-blue-200">
+              <div className="flex flex-wrap items-center justify-center gap-8 text-blue-200 mt-6">
                 <div className="flex items-center gap-2">
                   <Target className="h-5 w-5 text-purple-400" />
                   <span>Principal PM | Group PM | Director</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Brain className="h-5 w-5 text-blue-400" />
-                  <span>AI/ML Products</span>
+                  <span>Product Strategy & Innovation</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Users className="h-5 w-5 text-green-400" />
@@ -2300,17 +2328,6 @@ export default function PresentationPage() {
                 </div>
                 <ArrowRight className="ml-3 h-6 w-6" />
               </Button>
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="text-xl px-12 py-6 border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm"
-                onClick={() => window.open('/council', '_blank')}
-              >
-                <div className="flex flex-col">
-                  <span>View Live Demo</span>
-                  <span className="text-xs text-gray-300 font-normal">(Beta Version)</span>
-                </div>
-              </Button>
             </div>
             
             <div className="mt-16 flex items-center justify-center gap-8 text-purple-200">
@@ -2343,8 +2360,7 @@ export default function PresentationPage() {
                 🚀 Ready to Discuss Product Opportunities?
               </h2>
               <p className="text-lg md:text-xl text-blue-100 mb-6 max-w-3xl mx-auto">
-                I'm actively seeking <span className="font-semibold text-white">Principal PM, Group PM, or Product Director</span> roles. 
-                Let's connect if you're building products that need experienced leadership.
+                Open to discussing <span className="font-semibold text-white">Product Leadership opportunities</span> or <span className="font-semibold text-white">collaborative projects</span>. Let's connect if you're building products that need experienced leadership.
               </p>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 justify-center items-center">
