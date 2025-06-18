@@ -4,12 +4,15 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Brain, Users, Zap, Shield, Play, CheckCircle, TrendingUp, Star, Award, Target, Building, UserX, Clock, DollarSign, AlertTriangle, Mic, MessageSquare, Database, Code, Lock, Globe, BarChart3, Settings, Headphones, Bot, User, GraduationCap, Briefcase, Lightbulb, Mail, Linkedin, Github, Rocket, ExternalLink, ArrowLeft, Phone, Download } from 'lucide-react';
+import { ArrowRight, Brain, Users, Zap, Shield, Play, CheckCircle, TrendingUp, Star, Award, Target, Building, UserX, Clock, DollarSign, AlertTriangle, Mic, MessageSquare, Database, Code, Lock, Globe, BarChart3, Settings, Headphones, Bot, User, GraduationCap, Briefcase, Lightbulb, Mail, Linkedin, Github, Rocket, ExternalLink, ArrowLeft, Phone, Download, GitBranch } from 'lucide-react';
+import FeedbackForm from "@/components/FeedbackForm"
+import Analytics, { trackCTAClick, trackSectionView } from "@/components/Analytics"
 
 export default function PresentationPage() {
   const [activeTab, setActiveTab] = useState('overview');
   const [activeDemo, setActiveDemo] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
@@ -20,6 +23,14 @@ export default function PresentationPage() {
     if (tab && ['overview', 'technology', 'features', 'enterprise', 'architecture', 'gtm', 'roadmap', 'about'].includes(tab)) {
       setActiveTab(tab);
     }
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleTryDemo = () => {
@@ -52,393 +63,355 @@ export default function PresentationPage() {
   };
 
   const renderOverviewTab = () => (
-    <div className="space-y-24">
-      {/* Hero Section */}
+    <div className="space-y-16 md:space-y-24">
+      {/* Hero Section - Mobile Optimized */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
         
         {/* Animated background elements */}
         <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full blur-xl animate-pulse"></div>
-          <div className="absolute top-3/4 right-1/4 w-48 h-48 bg-purple-500/10 rounded-full blur-xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-3/4 w-24 h-24 bg-pink-500/10 rounded-full blur-xl animate-pulse delay-500"></div>
+          <div className="absolute top-1/4 left-1/4 w-16 h-16 md:w-32 md:h-32 bg-blue-500/10 rounded-full blur-xl animate-pulse"></div>
+          <div className="absolute top-3/4 right-1/4 w-24 h-24 md:w-48 md:h-48 bg-purple-500/10 rounded-full blur-xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-3/4 w-12 h-12 md:w-24 md:h-24 bg-pink-500/10 rounded-full blur-xl animate-pulse delay-500"></div>
         </div>
         
-        <div className="relative container mx-auto px-4 py-24">
+        <div className="relative container mx-auto px-4 py-16 md:py-24">
           <div className={`text-center max-w-5xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2 rounded-full mb-8 animate-bounce">
-              <Award className="w-4 h-4 mr-2" />
-              AI-Powered Product Strategy for Early-Stage Companies
+            <div className="inline-flex items-center bg-blue-100 text-blue-800 text-xs md:text-sm font-medium px-3 md:px-4 py-2 rounded-full mb-6 md:mb-8 animate-bounce">
+              <Award className="w-3 h-3 md:w-4 md:h-4 mr-2 flex-shrink-0" />
+              <span className="text-center">AI-Powered Product Strategy for Early-Stage Companies</span>
             </div>
             
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 leading-tight animate-fade-in">
-              Product Strategy
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 leading-tight animate-fade-in">
+              AI Product Strategy
               <span className="block text-white">Council</span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
-              When you have <strong className="text-blue-400">limited customers</strong> and <strong className="text-purple-400">no access to real users</strong>, how do you make confident product decisions? Our AI expert council solves the early-stage PM's biggest challenge.
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 md:mb-12 max-w-4xl mx-auto leading-relaxed px-2">
+              When you have <strong className="text-blue-400">limited customers</strong> and <strong className="text-purple-400">no access to real users</strong>, how do you make confident AI-driven product decisions? Our multi-agent AI council solves the early-stage PM's biggest challenge.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center px-4">
               <Button 
                 size="lg" 
-                className="text-lg px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-2xl transform hover:scale-105 transition-all duration-300 group"
-                onClick={handleTryDemo}
+                className="w-full sm:w-auto text-lg px-6 md:px-8 py-3 md:py-4 bg-white text-blue-900 hover:bg-blue-50 shadow-2xl transform hover:scale-105 transition-all duration-300"
+                onClick={() => {
+                  trackCTAClick('product', 'Try the AI System', 'hero')
+                  window.open('https://product-strategy-council.vercel.app/', '_blank')
+                }}
               >
-                <Play className="mr-2 h-5 w-5 group-hover:animate-pulse" />
-                Experience Live Demo
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                <Rocket className="mr-2 h-5 w-5" />
+                <div className="flex flex-col">
+                  <span>Try the AI System</span>
+                  <span className="text-xs text-blue-700 font-normal">(Beta Version)</span>
+                </div>
+              </Button>
+              
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="w-full sm:w-auto text-lg px-6 md:px-8 py-3 md:py-4 border-white text-white hover:bg-white hover:text-blue-900 shadow-2xl transform hover:scale-105 transition-all duration-300"
+                onClick={() => {
+                  trackCTAClick('navigation', 'About Aroosh', 'hero')
+                  handleTabClick('about')
+                }}
+              >
+                <Users className="mr-2 h-5 w-5" />
+                About Aroosh
               </Button>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-12 md:mt-16 px-4">
               <div className="text-center transform hover:scale-105 transition-all duration-300">
-                <div className="text-3xl font-bold text-blue-400 mb-2 animate-pulse">0-50</div>
-                <div className="text-gray-400">Customers</div>
+                <div className="text-2xl md:text-3xl font-bold text-blue-400 mb-2 animate-pulse">0-50</div>
+                <div className="text-sm md:text-base text-gray-400">Customers</div>
               </div>
               <div className="text-center transform hover:scale-105 transition-all duration-300">
-                <div className="text-3xl font-bold text-purple-400 mb-2 animate-pulse delay-200">5 Experts</div>
-                <div className="text-gray-400">In 5 Minutes</div>
+                <div className="text-2xl md:text-3xl font-bold text-purple-400 mb-2 animate-pulse delay-200">5 AI Experts</div>
+                <div className="text-sm md:text-base text-gray-400">In 5 Minutes</div>
               </div>
               <div className="text-center transform hover:scale-105 transition-all duration-300">
-                <div className="text-3xl font-bold text-pink-400 mb-2 animate-pulse delay-500">10x</div>
-                <div className="text-gray-400">Faster Insights</div>
+                <div className="text-2xl md:text-3xl font-bold text-pink-400 mb-2 animate-pulse delay-500">10x</div>
+                <div className="text-sm md:text-base text-gray-400">Faster AI Insights</div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Problem Section */}
-      <div className="py-24 bg-white">
+      {/* Streamlined Problem-Solution Section - Mobile Optimized */}
+      <div className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              The Early-Stage PM's Nightmare
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 px-2">
+              The Product Manager's Challenge
             </h2>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-              Having worked at early-stage companies like Eightfold, I've experienced this firsthand. When you have limited customers and no user base, traditional product strategy approaches completely break down.
+            <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto px-2 leading-relaxed">
+              As a Product Manager at Eightfold, I've lived this reality: building products with limited user data requires a completely different approach to product strategy.
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto mb-16">
-            <Card className="p-8 shadow-2xl border-0 bg-gradient-to-br from-red-50 to-orange-50 card-hover">
+          {/* Problem vs AI Solution - Mobile Responsive */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto mb-12 md:mb-16">
+            <Card className="p-6 md:p-8 shadow-2xl border-0 bg-gradient-to-br from-red-50 to-orange-50 card-hover">
               <div className="text-red-600 mb-4 animate-float">
-                <AlertTriangle className="h-8 w-8" />
+                <AlertTriangle className="h-6 w-6 md:h-8 md:w-8" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">The Brutal Reality</h3>
-              <ul className="space-y-4">
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">The PM Reality</h3>
+              <ul className="space-y-3 md:space-y-4">
                 <li className="flex items-start gap-3 transform hover:translate-x-2 transition-transform duration-200">
-                  <UserX className="h-5 w-5 text-red-500 mt-1 flex-shrink-0" />
-                  <span className="text-gray-700"><strong>0-50 customers:</strong> Not enough for meaningful user research</span>
+                  <UserX className="h-4 w-4 md:h-5 md:w-5 text-red-500 mt-1 flex-shrink-0" />
+                  <span className="text-sm md:text-base text-gray-700"><strong>0-50 customers:</strong> Not enough for proper validation</span>
                 </li>
                 <li className="flex items-start gap-3 transform hover:translate-x-2 transition-transform duration-200">
-                  <Clock className="h-5 w-5 text-red-500 mt-1 flex-shrink-0" />
-                  <span className="text-gray-700"><strong>Weeks of research:</strong> for insights that may be completely wrong</span>
+                  <Clock className="h-4 w-4 md:h-5 md:w-5 text-red-500 mt-1 flex-shrink-0" />
+                  <span className="text-sm md:text-base text-gray-700"><strong>Weeks of research:</strong> for insights that may be wrong</span>
                 </li>
                 <li className="flex items-start gap-3 transform hover:translate-x-2 transition-transform duration-200">
-                  <DollarSign className="h-5 w-5 text-red-500 mt-1 flex-shrink-0" />
-                  <span className="text-gray-700"><strong>Expensive consultants:</strong> $200-500/hour for generic advice</span>
+                  <DollarSign className="h-4 w-4 md:h-5 md:w-5 text-red-500 mt-1 flex-shrink-0" />
+                  <span className="text-sm md:text-base text-gray-700"><strong>Consultants:</strong> $500-1000/hour for generic advice</span>
                 </li>
                 <li className="flex items-start gap-3 transform hover:translate-x-2 transition-transform duration-200">
-                  <Building className="h-5 w-5 text-red-500 mt-1 flex-shrink-0" />
-                  <span className="text-gray-700"><strong>Investor pressure:</strong> "Where's your product-market fit data?"</span>
+                  <Building className="h-4 w-4 md:h-5 md:w-5 text-red-500 mt-1 flex-shrink-0" />
+                  <span className="text-sm md:text-base text-gray-700"><strong>Investor pressure:</strong> "Where's your product-market fit?"</span>
                 </li>
               </ul>
             </Card>
             
-            <Card className="p-8 shadow-2xl border-0 bg-gradient-to-br from-blue-50 to-indigo-50 card-hover">
+            <Card className="p-6 md:p-8 shadow-2xl border-0 bg-gradient-to-br from-blue-50 to-indigo-50 card-hover">
               <div className="text-blue-600 mb-4 animate-float-delay">
-                <Target className="h-8 w-8" />
+                <Brain className="h-6 w-6 md:h-8 md:w-8" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">What You Really Need</h3>
-              <div className="space-y-6">
-                <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm transform hover:scale-105 transition-all duration-200">
-                  <span className="font-medium text-gray-700">Expert Perspectives</span>
-                  <span className="text-2xl font-bold text-green-600 animate-pulse">✓</span>
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">Multi-Agent AI Solution</h3>
+              <div className="space-y-4 md:space-y-6">
+                <div className="flex items-center justify-between p-3 md:p-4 bg-white rounded-lg shadow-sm transform hover:scale-105 transition-all duration-200">
+                  <span className="font-medium text-sm md:text-base text-gray-700">5 AI Expert Perspectives</span>
+                  <span className="text-xl md:text-2xl font-bold text-green-600 animate-pulse">✓</span>
                 </div>
-                <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm transform hover:scale-105 transition-all duration-200">
-                  <span className="font-medium text-gray-700">Fast Validation</span>
-                  <span className="text-2xl font-bold text-green-600 animate-pulse">✓</span>
+                <div className="flex items-center justify-between p-3 md:p-4 bg-white rounded-lg shadow-sm transform hover:scale-105 transition-all duration-200">
+                  <span className="font-medium text-sm md:text-base text-gray-700">Instant AI Validation</span>
+                  <span className="text-xl md:text-2xl font-bold text-green-600 animate-pulse">✓</span>
                 </div>
-                <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm transform hover:scale-105 transition-all duration-200">
-                  <span className="font-medium text-gray-700">Multiple Viewpoints</span>
-                  <span className="text-2xl font-bold text-green-600 animate-pulse">✓</span>
+                <div className="flex items-center justify-between p-3 md:p-4 bg-white rounded-lg shadow-sm transform hover:scale-105 transition-all duration-200">
+                  <span className="font-medium text-sm md:text-base text-gray-700">Conflicting AI Viewpoints</span>
+                  <span className="text-xl md:text-2xl font-bold text-green-600 animate-pulse">✓</span>
                 </div>
-                <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm transform hover:scale-105 transition-all duration-200">
-                  <span className="font-medium text-gray-700">Structured Analysis</span>
-                  <span className="text-2xl font-bold text-green-600 animate-pulse">✓</span>
+                <div className="flex items-center justify-between p-3 md:p-4 bg-white rounded-lg shadow-sm transform hover:scale-105 transition-all duration-200">
+                  <span className="font-medium text-sm md:text-base text-gray-700">Structured AI Analysis</span>
+                  <span className="text-xl md:text-2xl font-bold text-green-600 animate-pulse">✓</span>
                 </div>
               </div>
             </Card>
           </div>
 
-          {/* Use Cases */}
+          {/* AI Use Cases - Mobile Responsive */}
           <div className="max-w-6xl mx-auto">
-            <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Three Critical Scenarios I've Lived Through</h3>
-            <div className="grid md:grid-cols-3 gap-8">
-              <Card className="p-6 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8 text-center px-2">Product Management Scenarios We Solve</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+              <Card className="p-4 md:p-6 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
                 <div className="text-purple-600 mb-4">
-                  <Users className="h-6 w-6" />
+                  <Brain className="h-5 w-5 md:h-6 md:w-6" />
                 </div>
-                <h4 className="text-lg font-bold text-gray-900 mb-3">The Early-Stage PM</h4>
+                <h4 className="text-base md:text-lg font-bold text-gray-900 mb-3">The Early-Stage PM</h4>
                 <p className="text-gray-600 text-sm mb-4">
-                  "I have 15 customers, limited budget, and my CEO wants a roadmap. How do I prioritize features when I can't run proper user research?"
+                  "I have 15 customers, limited data, and my CEO wants a roadmap. How do I prioritize features without proper user validation?"
                 </p>
-                <div className="text-xs text-purple-600 font-medium">❌ Current: Guess and hope</div>
-                <div className="text-xs text-green-600 font-medium">✅ With PSC: Expert validation in 5 min</div>
+                <div className="text-xs text-purple-600 font-medium">❌ Current: Guess strategy</div>
+                <div className="text-xs text-green-600 font-medium">✅ With AI Council: Expert validation in 5 min</div>
               </Card>
 
-              <Card className="p-6 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
+              <Card className="p-4 md:p-6 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
                 <div className="text-blue-600 mb-4">
-                  <Building className="h-6 w-6" />
+                  <Zap className="h-5 w-5 md:h-6 md:w-6" />
                 </div>
-                <h4 className="text-lg font-bold text-gray-900 mb-3">The Founder/CTO</h4>
+                <h4 className="text-base md:text-lg font-bold text-gray-900 mb-3">The Startup Founder</h4>
                 <p className="text-gray-600 text-sm mb-4">
-                  "Should we pivot? Our metrics are flat, but is it the product or the market? I need multiple expert perspectives fast."
+                  "Should we pivot our product? Our metrics look good but adoption is flat. I need multiple expert perspectives fast."
                 </p>
                 <div className="text-xs text-purple-600 font-medium">❌ Current: Expensive consultants</div>
-                <div className="text-xs text-green-600 font-medium">✅ With PSC: 5 experts debate in real-time</div>
+                <div className="text-xs text-green-600 font-medium">✅ With AI Council: 5 experts debate in real-time</div>
               </Card>
 
-              <Card className="p-6 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
+              <Card className="p-4 md:p-6 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
                 <div className="text-green-600 mb-4">
-                  <TrendingUp className="h-6 w-6" />
+                  <TrendingUp className="h-5 w-5 md:h-6 md:w-6" />
                 </div>
-                <h4 className="text-lg font-bold text-gray-900 mb-3">The VC/Innovation Head</h4>
+                <h4 className="text-base md:text-lg font-bold text-gray-900 mb-3">The Innovation Head</h4>
                 <p className="text-gray-600 text-sm mb-4">
-                  "I need to evaluate 20 startup pitches this week. How do I quickly assess product-market fit potential without deep research?"
+                  "I need to evaluate 20 startup pitches this week. How do I assess product-market fit potential without deep research?"
                 </p>
                 <div className="text-xs text-purple-600 font-medium">❌ Current: Surface-level analysis</div>
-                <div className="text-xs text-green-600 font-medium">✅ With PSC: Deep expert analysis per pitch</div>
+                <div className="text-xs text-green-600 font-medium">✅ With AI Council: Deep expert analysis per pitch</div>
               </Card>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Multi-Agent Solution */}
-      <div className="py-24 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 text-white">
+      {/* Multi-Agent AI Deep Dive - Mobile Optimized */}
+      <div className="py-16 md:py-24 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-900 text-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 px-2">
               Why Multi-Agent AI Changes Everything
             </h2>
-            <p className="text-xl text-blue-200 max-w-4xl mx-auto leading-relaxed">
-              Traditional single LLM approaches give you one perspective. Our multi-agent framework creates actual expert debates with conflicting viewpoints, just like a real strategy council.
+            <p className="text-lg md:text-xl text-blue-200 max-w-4xl mx-auto leading-relaxed px-2">
+              Traditional single LLM approaches give you one AI perspective. Our multi-agent AI framework creates actual expert debates with conflicting viewpoints, just like a real AI strategy council.
             </p>
           </div>
 
-          {/* Animated Comparison Chart */}
-          <div className="mb-16 max-w-6xl mx-auto">
-            <Card className="p-8 bg-white/10 backdrop-blur-sm border border-white/20">
-              <h3 className="text-3xl font-bold text-center mb-8">Why Multi-Agent AI Outperforms Everything Else</h3>
-              <div className="grid md:grid-cols-3 gap-6">
+          {/* Mobile-Responsive Comparison */}
+          <div className="mb-12 md:mb-16 max-w-6xl mx-auto">
+            <Card className="p-6 md:p-8 bg-white/10 backdrop-blur-sm border border-white/20">
+              <h3 className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8 px-2">Why Multi-Agent AI Outperforms Everything</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <h4 className="text-lg font-semibold mb-4 text-red-300">Traditional PM Tools</h4>
-                  <div className="bg-red-500/20 rounded-lg p-4 mb-4">
-                    <div className="h-4 bg-red-500 rounded-full animate-pulse" style={{width: '30%'}}></div>
+                  <h4 className="text-sm md:text-lg font-semibold mb-4 text-red-300">Traditional PM Tools</h4>
+                  <div className="bg-red-500/20 rounded-lg p-3 md:p-4 mb-4">
+                    <div className="h-3 md:h-4 bg-red-500 rounded-full animate-pulse" style={{width: '30%'}}></div>
                   </div>
                   <div className="text-xs text-red-200 mb-3 space-y-1">
-                    <div>Productboard • Aha! • Roadmunk</div>
-                    <div>UserVoice • Hotjar • Mixpanel</div>
+                    <div>Productboard • Aha!</div>
+                    <div>UserVoice • Mixpanel</div>
                   </div>
-                  <ul className="text-sm text-red-200 space-y-1">
-                    <li>• Requires existing user data</li>
-                    <li>• Manual analysis & insights</li>
-                    <li>• No strategic guidance</li>
-                    <li>• Expensive for early-stage</li>
-                    <li>• Time-intensive setup</li>
+                  <ul className="text-xs md:text-sm text-red-200 space-y-1">
+                    <li>• Requires existing data</li>
+                    <li>• Manual analysis</li>
+                    <li>• No AI guidance</li>
+                    <li>• Expensive setup</li>
                   </ul>
                 </div>
                 
                 <div className="text-center">
-                  <h4 className="text-lg font-semibold mb-4 text-orange-300">Single AI Solutions</h4>
-                  <div className="bg-orange-500/20 rounded-lg p-4 mb-4">
-                    <div className="h-4 bg-orange-500 rounded-full animate-pulse" style={{width: '55%'}}></div>
+                  <h4 className="text-sm md:text-lg font-semibold mb-4 text-orange-300">Single AI Solutions</h4>
+                  <div className="bg-orange-500/20 rounded-lg p-3 md:p-4 mb-4">
+                    <div className="h-3 md:h-4 bg-orange-500 rounded-full animate-pulse" style={{width: '55%'}}></div>
                   </div>
                   <div className="text-xs text-orange-200 mb-3 space-y-1">
-                    <div>ChatGPT • Claude • Gemini</div>
+                    <div>ChatGPT • Claude</div>
                     <div>Pendo AI • Amplitude AI</div>
                   </div>
-                  <ul className="text-sm text-orange-200 space-y-1">
-                    <li>• One perspective only</li>
+                  <ul className="text-xs md:text-sm text-orange-200 space-y-1">
+                    <li>• One AI perspective</li>
                     <li>• Generic responses</li>
                     <li>• No domain expertise</li>
-                    <li>• Limited reasoning depth</li>
-                    <li>• No conflict resolution</li>
+                    <li>• Limited reasoning</li>
                   </ul>
                 </div>
                 
                 <div className="text-center">
-                  <h4 className="text-lg font-semibold mb-4 text-green-300">Multi-Agent Council</h4>
+                  <h4 className="text-sm md:text-lg font-semibold mb-4 text-green-300">Multi-Agent AI Council</h4>
                   <div className="space-y-2 mb-4">
-                    <div className="bg-green-500/20 rounded-lg p-2">
-                      <div className="h-2 bg-green-500 rounded-full animate-pulse" style={{width: '95%'}}></div>
+                    <div className="bg-green-500/20 rounded-lg p-1 md:p-2">
+                      <div className="h-1.5 md:h-2 bg-green-500 rounded-full animate-pulse" style={{width: '95%'}}></div>
                     </div>
-                    <div className="bg-blue-500/20 rounded-lg p-2">
-                      <div className="h-2 bg-blue-500 rounded-full animate-pulse delay-200" style={{width: '92%'}}></div>
+                    <div className="bg-blue-500/20 rounded-lg p-1 md:p-2">
+                      <div className="h-1.5 md:h-2 bg-blue-500 rounded-full animate-pulse delay-200" style={{width: '92%'}}></div>
                     </div>
-                    <div className="bg-purple-500/20 rounded-lg p-2">
-                      <div className="h-2 bg-purple-500 rounded-full animate-pulse delay-500" style={{width: '90%'}}></div>
+                    <div className="bg-purple-500/20 rounded-lg p-1 md:p-2">
+                      <div className="h-1.5 md:h-2 bg-purple-500 rounded-full animate-pulse delay-500" style={{width: '90%'}}></div>
                     </div>
                   </div>
                   <div className="text-xs text-green-200 mb-3">
-                    <div>Our Innovation</div>
+                    <div>Our AI Innovation</div>
                   </div>
-                  <ul className="text-sm text-green-200 space-y-1">
-                    <li>• 5 specialized experts debate</li>
-                    <li>• Deep domain knowledge</li>
-                    <li>• Conflicting viewpoints surface</li>
+                  <ul className="text-xs md:text-sm text-green-200 space-y-1">
+                    <li>• 5 specialized AI experts</li>
+                    <li>• Deep AI domain knowledge</li>
+                    <li>• AI viewpoints conflict</li>
                     <li>• Works with 0 customers</li>
-                    <li>• Instant strategic insights</li>
                   </ul>
-                </div>
-              </div>
-              
-              {/* Detailed Comparison Table */}
-              <div className="mt-8 bg-white/5 rounded-lg p-6">
-                <h4 className="text-xl font-bold text-center mb-6">Detailed Feature Comparison</h4>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
-                    <thead>
-                      <tr className="border-b border-white/20">
-                        <th className="text-left py-3 text-gray-300">Feature</th>
-                        <th className="text-center py-3 text-red-300">Traditional</th>
-                        <th className="text-center py-3 text-orange-300">Single AI</th>
-                        <th className="text-center py-3 text-green-300">Multi-Agent</th>
-                      </tr>
-                    </thead>
-                    <tbody className="space-y-2">
-                      <tr className="border-b border-white/10">
-                        <td className="py-3 text-gray-200">Works with 0-50 customers</td>
-                        <td className="text-center py-3 text-red-400">❌</td>
-                        <td className="text-center py-3 text-orange-400">⚠️</td>
-                        <td className="text-center py-3 text-green-400">✅</td>
-                      </tr>
-                      <tr className="border-b border-white/10">
-                        <td className="py-3 text-gray-200">Multiple expert perspectives</td>
-                        <td className="text-center py-3 text-red-400">❌</td>
-                        <td className="text-center py-3 text-orange-400">❌</td>
-                        <td className="text-center py-3 text-green-400">✅</td>
-                      </tr>
-                      <tr className="border-b border-white/10">
-                        <td className="py-3 text-gray-200">Real-time strategic analysis</td>
-                        <td className="text-center py-3 text-red-400">❌</td>
-                        <td className="text-center py-3 text-orange-400">⚠️</td>
-                        <td className="text-center py-3 text-green-400">✅</td>
-                      </tr>
-                      <tr className="border-b border-white/10">
-                        <td className="py-3 text-gray-200">Debate & conflict resolution</td>
-                        <td className="text-center py-3 text-red-400">❌</td>
-                        <td className="text-center py-3 text-orange-400">❌</td>
-                        <td className="text-center py-3 text-green-400">✅</td>
-                      </tr>
-                      <tr className="border-b border-white/10">
-                        <td className="py-3 text-gray-200">Cost for early-stage startups</td>
-                        <td className="text-center py-3 text-red-400">High</td>
-                        <td className="text-center py-3 text-orange-400">Medium</td>
-                        <td className="text-center py-3 text-green-400">Low</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 text-gray-200">Setup time</td>
-                        <td className="text-center py-3 text-red-400">Weeks</td>
-                        <td className="text-center py-3 text-orange-400">Minutes</td>
-                        <td className="text-center py-3 text-green-400">Minutes</td>
-                      </tr>
-                    </tbody>
-                  </table>
                 </div>
               </div>
             </Card>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card className="p-8 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 group card-hover">
-              <div className="text-blue-400 mb-6 transform group-hover:scale-110 transition-transform duration-300 animate-float">
-                <Brain className="h-12 w-12" />
+          {/* AI Expert Cards - Mobile Responsive */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+            <Card className="p-6 md:p-8 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 group card-hover">
+              <div className="text-blue-400 mb-4 md:mb-6 transform group-hover:scale-110 transition-transform duration-300 animate-float">
+                <Brain className="h-8 w-8 md:h-12 md:w-12" />
               </div>
-              <h3 className="text-2xl font-bold mb-4">5 Specialized AI Experts</h3>
-              <p className="text-blue-200 mb-6">
-                Each AI agent has deep domain expertise and argues from their specialized perspective, creating natural tension and comprehensive analysis.
+              <h3 className="text-lg md:text-2xl font-bold mb-3 md:mb-4">5 Specialized AI Experts</h3>
+              <p className="text-blue-200 mb-4 md:mb-6 text-sm md:text-base">
+                Each AI agent has deep domain expertise and argues from their specialized perspective, creating natural tension and comprehensive AI analysis.
               </p>
-              <ul className="space-y-2 text-blue-100">
+              <ul className="space-y-2 text-blue-100 text-sm md:text-base">
                 <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
-                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
-                  <span><strong>Market Research Expert:</strong> TAM, competition, trends</span>
+                  <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-green-400 animate-pulse flex-shrink-0" />
+                  <span><strong>AI Market Expert:</strong> TAM, AI competition</span>
                 </li>
                 <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
-                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
-                  <span><strong>Technical Architect:</strong> Feasibility, scalability</span>
+                  <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-green-400 animate-pulse flex-shrink-0" />
+                  <span><strong>ML Architect:</strong> AI feasibility, scalability</span>
                 </li>
                 <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
-                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
-                  <span><strong>Business Strategist:</strong> Revenue, partnerships</span>
+                  <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-green-400 animate-pulse flex-shrink-0" />
+                  <span><strong>AI Business Strategist:</strong> AI revenue models</span>
                 </li>
                 <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
-                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
-                  <span><strong>UX Researcher:</strong> User behavior, adoption</span>
+                  <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-green-400 animate-pulse flex-shrink-0" />
+                  <span><strong>AI UX Researcher:</strong> AI user adoption</span>
                 </li>
                 <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
-                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
-                  <span><strong>Financial Analyst:</strong> Unit economics, pricing</span>
+                  <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-green-400 animate-pulse flex-shrink-0" />
+                  <span><strong>AI Financial Analyst:</strong> AI unit economics</span>
                 </li>
               </ul>
             </Card>
             
-            <Card className="p-8 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 group card-hover">
-              <div className="text-purple-400 mb-6 transform group-hover:scale-110 transition-transform duration-300 animate-float-delay">
-                <Users className="h-12 w-12" />
+            <Card className="p-6 md:p-8 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 group card-hover">
+              <div className="text-purple-400 mb-4 md:mb-6 transform group-hover:scale-110 transition-transform duration-300 animate-float-delay">
+                <Users className="h-8 w-8 md:h-12 md:w-12" />
               </div>
-              <h3 className="text-2xl font-bold mb-4">Real Debate Dynamics</h3>
-              <p className="text-blue-200 mb-6">
-                Watch experts challenge each other's assumptions in structured rounds, surfacing blind spots you'd never find with a single AI response.
+              <h3 className="text-lg md:text-2xl font-bold mb-3 md:mb-4">Real AI Debate Dynamics</h3>
+              <p className="text-blue-200 mb-4 md:mb-6 text-sm md:text-base">
+                Watch AI experts challenge each other's assumptions in structured rounds, surfacing AI blind spots you'd never find with single AI responses.
               </p>
-              <ul className="space-y-2 text-blue-100">
+              <ul className="space-y-2 text-blue-100 text-sm md:text-base">
                 <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
-                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
-                  <span><strong>Opposing Viewpoints:</strong> Natural conflicts emerge</span>
+                  <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-green-400 animate-pulse flex-shrink-0" />
+                  <span><strong>Opposing AI Views:</strong> Natural conflicts emerge</span>
                 </li>
                 <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
-                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
-                  <span><strong>Evidence-Based Arguments:</strong> Each claim backed by reasoning</span>
+                  <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-green-400 animate-pulse flex-shrink-0" />
+                  <span><strong>Evidence-Based AI:</strong> Claims backed by reasoning</span>
                 </li>
                 <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
-                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
-                  <span><strong>Iterative Refinement:</strong> Ideas evolve through discussion</span>
+                  <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-green-400 animate-pulse flex-shrink-0" />
+                  <span><strong>Iterative AI Refinement:</strong> Ideas evolve through AI discussion</span>
                 </li>
                 <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
-                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
-                  <span><strong>Consensus Building:</strong> Final aligned recommendations</span>
+                  <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-green-400 animate-pulse flex-shrink-0" />
+                  <span><strong>AI Consensus Building:</strong> Final aligned AI recommendations</span>
                 </li>
               </ul>
             </Card>
             
-            <Card className="p-8 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 group card-hover">
-              <div className="text-yellow-400 mb-6 transform group-hover:scale-110 transition-transform duration-300 animate-float">
-                <Zap className="h-12 w-12" />
+            <Card className="p-6 md:p-8 bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 group card-hover">
+              <div className="text-yellow-400 mb-4 md:mb-6 transform group-hover:scale-110 transition-transform duration-300 animate-float">
+                <Zap className="h-8 w-8 md:h-12 md:w-12" />
               </div>
-              <h3 className="text-2xl font-bold mb-4">Tangible Outputs</h3>
-              <p className="text-blue-200 mb-6">
-                Get specific, actionable deliverables you can present to stakeholders, not generic AI responses.
+              <h3 className="text-lg md:text-2xl font-bold mb-3 md:mb-4">AI-Powered Outputs</h3>
+              <p className="text-blue-200 mb-4 md:mb-6 text-sm md:text-base">
+                Get specific, actionable AI deliverables you can present to stakeholders, not generic AI responses.
               </p>
-              <ul className="space-y-2 text-blue-100">
+              <ul className="space-y-2 text-blue-100 text-sm md:text-base">
                 <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
-                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
-                  <span><strong>RICE Scores:</strong> Prioritized feature ranking</span>
+                  <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-green-400 animate-pulse flex-shrink-0" />
+                  <span><strong>AI RICE Scores:</strong> Prioritized AI feature ranking</span>
                 </li>
                 <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
-                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
-                  <span><strong>Risk Assessment:</strong> What could go wrong</span>
+                  <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-green-400 animate-pulse flex-shrink-0" />
+                  <span><strong>AI Risk Assessment:</strong> What could go wrong with AI</span>
                 </li>
                 <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
-                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
-                  <span><strong>Market Positioning:</strong> Competitive analysis</span>
+                  <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-green-400 animate-pulse flex-shrink-0" />
+                  <span><strong>AI Market Positioning:</strong> Competitive AI analysis</span>
                 </li>
                 <li className="flex items-center gap-2 transform hover:translate-x-2 transition-transform duration-200">
-                  <CheckCircle className="h-4 w-4 text-green-400 animate-pulse" />
-                  <span><strong>Implementation Roadmap:</strong> Step-by-step plan</span>
+                  <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-green-400 animate-pulse flex-shrink-0" />
+                  <span><strong>AI Implementation Roadmap:</strong> Step-by-step AI plan</span>
                 </li>
               </ul>
             </Card>
@@ -449,139 +422,139 @@ export default function PresentationPage() {
   );
 
   const renderTechnologyTab = () => (
-    <div className="py-24 bg-gray-50">
+    <div className="py-16 md:py-24 bg-gray-50">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Technology Stack & Architecture Decisions
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 md:mb-6 px-2">
+            AI Technology Stack & Architecture Decisions
           </h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-            Every technology choice optimized for multi-agent conversations, real-time processing, and enterprise scale.
+          <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto px-2 leading-relaxed">
+            Every AI technology choice optimized for multi-agent conversations, real-time AI processing, and enterprise-scale AI deployment.
           </p>
         </div>
 
-        {/* AutoGen vs Others */}
-        <div className="mb-16">
-          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Why AutoGen for Multi-Agent Framework</h3>
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card className="p-6 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
+        {/* AutoGen vs Others - Mobile Responsive */}
+        <div className="mb-12 md:mb-16">
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8 text-center px-2">Why AutoGen for Multi-Agent AI Framework</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+            <Card className="p-4 md:p-6 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
               <div className="text-red-600 mb-4">
-                <AlertTriangle className="h-6 w-6" />
+                <AlertTriangle className="h-5 w-5 md:h-6 md:w-6" />
               </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-3">LangChain Approach</h4>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li>❌ Sequential agent execution</li>
-                <li>❌ Complex state management</li>
-                <li>❌ Limited conversation flow control</li>
-                <li>❌ Debugging nightmare</li>
+              <h4 className="text-base md:text-lg font-bold text-gray-900 mb-3">LangChain AI Approach</h4>
+              <ul className="space-y-2 text-xs md:text-sm text-gray-600">
+                <li>❌ Sequential AI agent execution</li>
+                <li>❌ Complex AI state management</li>
+                <li>❌ Limited AI conversation flow</li>
+                <li>❌ AI debugging nightmare</li>
               </ul>
             </Card>
 
-            <Card className="p-6 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
+            <Card className="p-4 md:p-6 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
               <div className="text-orange-600 mb-4">
-                <Settings className="h-6 w-6" />
+                <Settings className="h-5 w-5 md:h-6 md:w-6" />
               </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-3">CrewAI Framework</h4>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li>⚠️ Good for workflows</li>
-                <li>❌ Limited debate dynamics</li>
-                <li>❌ Rigid role definitions</li>
-                <li>❌ No real-time conversation</li>
+              <h4 className="text-base md:text-lg font-bold text-gray-900 mb-3">CrewAI Framework</h4>
+              <ul className="space-y-2 text-xs md:text-sm text-gray-600">
+                <li>⚠️ Good for AI workflows</li>
+                <li>❌ Limited AI debate dynamics</li>
+                <li>❌ Rigid AI role definitions</li>
+                <li>❌ No real-time AI conversation</li>
               </ul>
             </Card>
 
-            <Card className="p-6 shadow-xl border-0 hover:shadow-2xl transition-all duration-300 border-2 border-green-500">
+            <Card className="p-4 md:p-6 shadow-xl border-0 hover:shadow-2xl transition-all duration-300 border-2 border-green-500">
               <div className="text-green-600 mb-4">
-                <CheckCircle className="h-6 w-6" />
+                <CheckCircle className="h-5 w-5 md:h-6 md:w-6" />
               </div>
-              <h4 className="text-lg font-bold text-gray-900 mb-3">AutoGen (Our Choice)</h4>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li>✅ True conversational agents</li>
-                <li>✅ Dynamic turn-taking</li>
-                <li>✅ Flexible termination conditions</li>
-                <li>✅ Built-in debate patterns</li>
-                <li>✅ Microsoft research backing</li>
+              <h4 className="text-base md:text-lg font-bold text-gray-900 mb-3">AutoGen (Our AI Choice)</h4>
+              <ul className="space-y-2 text-xs md:text-sm text-gray-600">
+                <li>✅ True conversational AI agents</li>
+                <li>✅ Dynamic AI turn-taking</li>
+                <li>✅ Flexible AI termination conditions</li>
+                <li>✅ Built-in AI debate patterns</li>
+                <li>✅ Microsoft AI research backing</li>
               </ul>
             </Card>
           </div>
         </div>
 
-        {/* Full Stack */}
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          <Card className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+        {/* Full Stack - Mobile Responsive */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
+          <Card className="p-6 md:p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-3">
               <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-                <Code className="h-5 w-5 text-blue-600" />
+                <Code className="h-4 w-4 md:h-5 md:w-5 text-blue-600" />
               </div>
-              Frontend Excellence
+              <span>Frontend AI Excellence</span>
             </h3>
-            <div className="space-y-4">
-              <div className="p-4 bg-blue-50 rounded-lg">
+            <div className="space-y-3 md:space-y-4">
+              <div className="p-3 md:p-4 bg-blue-50 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-bold">Next.js 14 (App Router)</span>
-                  <span className="text-blue-600 font-bold">Latest</span>
+                  <span className="font-bold text-sm md:text-base">Next.js 14 (App Router)</span>
+                  <span className="text-blue-600 font-bold text-xs md:text-sm">AI-Ready</span>
                 </div>
-                <p className="text-sm text-gray-600">Server components + streaming for real-time agent responses</p>
+                <p className="text-xs md:text-sm text-gray-600">Server components + streaming for real-time AI agent responses</p>
               </div>
-              <div className="p-4 bg-blue-50 rounded-lg">
+              <div className="p-3 md:p-4 bg-blue-50 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-bold">TypeScript + Zod</span>
-                  <span className="text-blue-600 font-bold">100% Type Safe</span>
+                  <span className="font-bold text-sm md:text-base">TypeScript + Zod</span>
+                  <span className="text-blue-600 font-bold text-xs md:text-sm">AI Type Safe</span>
                 </div>
-                <p className="text-sm text-gray-600">Runtime validation for agent message schemas</p>
+                <p className="text-xs md:text-sm text-gray-600">Runtime validation for AI agent message schemas</p>
               </div>
-              <div className="p-4 bg-blue-50 rounded-lg">
+              <div className="p-3 md:p-4 bg-blue-50 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-bold">Tailwind CSS + shadcn/ui</span>
-                  <span className="text-blue-600 font-bold">Design System</span>
+                  <span className="font-bold text-sm md:text-base">Tailwind CSS + shadcn/ui</span>
+                  <span className="text-blue-600 font-bold text-xs md:text-sm">AI Design System</span>
                 </div>
-                <p className="text-sm text-gray-600">Consistent, accessible components</p>
+                <p className="text-xs md:text-sm text-gray-600">Consistent, accessible AI components</p>
               </div>
-              <div className="p-4 bg-blue-50 rounded-lg">
+              <div className="p-3 md:p-4 bg-blue-50 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-bold">WebSockets + Server-Sent Events</span>
-                  <span className="text-blue-600 font-bold">Real-time</span>
+                  <span className="font-bold text-sm md:text-base">WebSockets + Server-Sent Events</span>
+                  <span className="text-blue-600 font-bold text-xs md:text-sm">AI Real-time</span>
                 </div>
-                <p className="text-sm text-gray-600">Live agent conversation streaming</p>
+                <p className="text-xs md:text-sm text-gray-600">Live AI agent conversation streaming</p>
               </div>
             </div>
           </Card>
           
-          <Card className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+          <Card className="p-6 md:p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6 flex items-center gap-3">
               <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-                <Database className="h-5 w-5 text-purple-600" />
+                <Database className="h-4 w-4 md:h-5 md:w-5 text-purple-600" />
               </div>
-              Backend Power
+              <span>AI Backend Power</span>
             </h3>
-            <div className="space-y-4">
-              <div className="p-4 bg-purple-50 rounded-lg">
+            <div className="space-y-3 md:space-y-4">
+              <div className="p-3 md:p-4 bg-purple-50 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-bold">Python FastAPI + Pydantic</span>
-                  <span className="text-purple-600 font-bold">High Performance</span>
+                  <span className="font-bold text-sm md:text-base">Python FastAPI + Pydantic</span>
+                  <span className="text-purple-600 font-bold text-xs md:text-sm">AI Performance</span>
                 </div>
-                <p className="text-sm text-gray-600">Async endpoints with automatic API docs</p>
+                <p className="text-xs md:text-sm text-gray-600">Async AI endpoints with automatic API docs</p>
               </div>
-              <div className="p-4 bg-purple-50 rounded-lg">
+              <div className="p-3 md:p-4 bg-purple-50 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-bold">AutoGen + OpenAI GPT-4</span>
-                  <span className="text-purple-600 font-bold">Multi-Agent</span>
+                  <span className="font-bold text-sm md:text-base">AutoGen + OpenAI GPT-4</span>
+                  <span className="text-purple-600 font-bold text-xs md:text-sm">Multi-Agent AI</span>
                 </div>
-                <p className="text-sm text-gray-600">Conversational agent orchestration</p>
+                <p className="text-xs md:text-sm text-gray-600">Conversational AI agent orchestration</p>
               </div>
-              <div className="p-4 bg-purple-50 rounded-lg">
+              <div className="p-3 md:p-4 bg-purple-50 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-bold">PostgreSQL + Prisma</span>
-                  <span className="text-purple-600 font-bold">Type-Safe ORM</span>
+                  <span className="font-bold text-sm md:text-base">PostgreSQL + Prisma</span>
+                  <span className="text-purple-600 font-bold text-xs md:text-sm">AI Data Safe</span>
                 </div>
-                <p className="text-sm text-gray-600">Conversation history + user data</p>
+                <p className="text-xs md:text-sm text-gray-600">AI conversation history + user data</p>
               </div>
-              <div className="p-4 bg-purple-50 rounded-lg">
+              <div className="p-3 md:p-4 bg-purple-50 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="font-bold">Redis + Celery</span>
-                  <span className="text-purple-600 font-bold">Background Jobs</span>
+                  <span className="font-bold text-sm md:text-base">Redis + Celery</span>
+                  <span className="text-purple-600 font-bold text-xs md:text-sm">AI Background Jobs</span>
                 </div>
-                <p className="text-sm text-gray-600">Agent conversation queuing</p>
+                <p className="text-xs md:text-sm text-gray-600">AI agent conversation queuing</p>
               </div>
             </div>
           </Card>
@@ -1095,13 +1068,13 @@ export default function PresentationPage() {
 
         {/* Roadmap Timeline */}
         <div className="space-y-8">
-          {/* Q1 2024 */}
+          {/* Phase 1 */}
           <Card className="p-8 shadow-xl border-0 border-l-4 border-blue-500">
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold">Q1</span>
+                <span className="text-white font-bold">P1</span>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">Q1 2024 - Enhanced User Experience</h3>
+              <h3 className="text-2xl font-bold text-gray-900">Phase 1 - Enhanced User Experience</h3>
             </div>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
@@ -1125,13 +1098,13 @@ export default function PresentationPage() {
             </div>
           </Card>
 
-          {/* Q2 2024 */}
+          {/* Phase 2 */}
           <Card className="p-8 shadow-xl border-0 border-l-4 border-purple-500">
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold">Q2</span>
+                <span className="text-white font-bold">P2</span>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">Q2 2024 - Enterprise Features</h3>
+              <h3 className="text-2xl font-bold text-gray-900">Phase 2 - Enterprise Features</h3>
             </div>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
@@ -1155,13 +1128,13 @@ export default function PresentationPage() {
             </div>
           </Card>
 
-          {/* Q3 2024 */}
+          {/* Phase 3 */}
           <Card className="p-8 shadow-xl border-0 border-l-4 border-green-500">
             <div className="flex items-center gap-4 mb-6">
               <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold">Q3</span>
+                <span className="text-white font-bold">P3</span>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">Q3 2024 - AI Intelligence Boost</h3>
+              <h3 className="text-2xl font-bold text-gray-900">Phase 3 - AI Intelligence Boost</h3>
             </div>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
@@ -1192,6 +1165,36 @@ export default function PresentationPage() {
                 <span className="text-white font-bold">Q4</span>
               </div>
               <h3 className="text-2xl font-bold text-gray-900">Q4 2024 - Platform Ecosystem</h3>
+            </div>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 className="font-bold text-gray-900 mb-3">🔌 Integrations</h4>
+                <ul className="space-y-2 text-sm text-gray-600">
+                  <li>• Slack/Teams integration</li>
+                  <li>• Jira/Asana connectors</li>
+                  <li>• CRM system integration</li>
+                  <li>• Analytics platforms</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-gray-900 mb-3">🎯 Specialized Modules</h4>
+                <ul className="space-y-2 text-sm text-gray-600">
+                  <li>• Industry-specific agents</li>
+                  <li>• Custom workflow builder</li>
+                  <li>• Advanced analytics</li>
+                  <li>• White-label solutions</li>
+                </ul>
+              </div>
+            </div>
+          </Card>
+
+          {/* Phase 4 */}
+          <Card className="p-8 shadow-xl border-0 border-l-4 border-orange-500">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
+                <span className="text-white font-bold">P4</span>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900">Phase 4 - Platform Ecosystem</h3>
             </div>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
@@ -1609,14 +1612,65 @@ export default function PresentationPage() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent leading-tight">
             Aroosh Dayal
           </h2>
-          <p className="text-xl md:text-2xl text-blue-600 font-semibold mb-3 md:mb-4">Senior Product Manager</p>
+          <p className="text-xl md:text-2xl text-blue-600 font-semibold mb-3 md:mb-4">Senior AI Product Manager</p>
           <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 text-xs md:text-sm font-medium px-4 md:px-6 py-2 md:py-3 rounded-full mb-6 md:mb-8 shadow-lg mx-2">
             <Award className="w-3 h-3 md:w-4 md:h-4 mr-2 flex-shrink-0" />
-            <span className="text-center leading-tight">IIM Ahmedabad MBA • 9+ Years Experience • Open to Leadership Roles</span>
+            <span className="text-center leading-tight">IIM Ahmedabad MBA • 9+ Years AI/Product Experience • Open to AI Leadership Roles</span>
           </div>
           <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-2">
-            Proven product leader with a unique journey from engineering to business analytics to product management across enterprise and consumer domains. Ready to drive strategic product decisions at scale.
+            Proven AI product leader with a unique journey from engineering to business analytics to AI product management across enterprise and consumer domains. Ready to drive strategic AI product decisions at scale.
           </p>
+        </div>
+
+        {/* Let's Connect Section - Quick Contact */}
+        <div className="mb-12 md:mb-16">
+          <Card className="p-6 md:p-8 shadow-xl border-0 bg-gradient-to-r from-blue-600 to-purple-600 text-white max-w-4xl mx-auto">
+            <div className="text-center">
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">Let's Connect</h3>
+              <p className="text-lg md:text-xl text-blue-100 mb-6 leading-relaxed">
+                Ready to discuss <span className="font-semibold text-white">Principal PM, Group PM, or Product Director</span> opportunities? Let's talk!
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button 
+                  size="lg" 
+                  className="text-lg px-6 py-4 bg-white text-blue-900 hover:bg-blue-50 shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  onClick={() => {
+                    trackCTAClick('contact', 'Email Aroosh', 'about-top')
+                    window.open('mailto:dayalaroosh@gmail.com?subject=Interested in Your Product Management Profile&body=Hi Aroosh,%0D%0A%0D%0AI came across your Product Strategy presentation and was impressed by your experience in product management at Eightfold and your multi-agent system work.%0D%0A%0D%0AI%27d love to discuss potential opportunities in [Company/Role].%0D%0A%0D%0ABest regards', '_blank')
+                  }}
+                >
+                  <Mail className="mr-2 h-5 w-5" />
+                  Email Me
+                </Button>
+                
+                <Button 
+                  size="lg" 
+                  className="text-lg px-6 py-4 bg-green-600 hover:bg-green-700 text-white shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  onClick={() => {
+                    trackCTAClick('contact', 'WhatsApp', 'about-top')
+                    window.open('https://wa.me/919550132970?text=Hi%20Aroosh%2C%20I%20saw%20your%20Product%20Strategy%20presentation%20and%20was%20impressed%20by%20your%20experience%20at%20Eightfold%20and%20multi-agent%20systems%20work.%20I%27d%20love%20to%20discuss%20potential%20product%20management%20opportunities.%20Are%20you%20available%20for%20a%20quick%20chat%3F', '_blank')
+                  }}
+                >
+                  <Phone className="mr-2 h-5 w-5" />
+                  WhatsApp
+                </Button>
+                
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  className="text-lg px-6 py-4 border-white text-white hover:bg-white hover:text-blue-900 shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  onClick={() => {
+                    trackCTAClick('social', 'LinkedIn', 'about-top')
+                    window.open('https://www.linkedin.com/in/aroosh-dayal-a015b59a/', '_blank')
+                  }}
+                >
+                  <Linkedin className="mr-2 h-5 w-5" />
+                  LinkedIn
+                </Button>
+              </div>
+            </div>
+          </Card>
         </div>
 
         {/* Hero Section with Photo - Mobile Optimized */}
@@ -1632,9 +1686,9 @@ export default function PresentationPage() {
               </div>
               
               <div className="flex-1">
-                <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">Product Leadership Profile</h3>
+                <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">AI Product Leadership Profile</h3>
                 <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-4 md:mb-6">
-                  9+ years building products across enterprise SaaS, consumer mobile, gaming, and fintech. Started as a software developer at Oracle, earned an MBA from IIM Ahmedabad, evolved through business analytics at American Express, and now lead product management at scale. Proven track record of driving growth, optimizing user experiences, and managing complex stakeholder ecosystems.
+                  9+ years building AI and data-driven products across enterprise SaaS, consumer mobile, gaming, and fintech. Started as a software developer at Oracle, earned an MBA from IIM Ahmedabad, evolved through business analytics at American Express, and now lead AI product management at scale. Proven track record of driving AI adoption, optimizing ML-powered user experiences, and managing complex AI stakeholder ecosystems.
                 </p>
                 
                 <div className="flex flex-wrap justify-center md:justify-start gap-2 md:gap-4 mb-4 md:mb-6">
@@ -1647,8 +1701,8 @@ export default function PresentationPage() {
                     <span className="font-medium">IIT Guwahati B.Tech</span>
                   </div>
                   <div className="flex items-center gap-2 bg-purple-100 text-purple-800 px-3 md:px-4 py-1 md:py-2 rounded-full text-sm">
-                    <Briefcase className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
-                    <span className="font-medium">9+ Years Product Leadership</span>
+                    <Brain className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
+                    <span className="font-medium">9+ Years AI Product Leadership</span>
                   </div>
                 </div>
 
@@ -1753,79 +1807,79 @@ export default function PresentationPage() {
                 </div>
 
                 {/* Product Analytics to Product Management */}
-                <div className="flex items-center">
-                  <div className="w-1/2 pr-8 text-right">
-                    <Card className="p-6 shadow-lg border-0 bg-indigo-50 hover:shadow-xl transition-all duration-300">
-                      <h4 className="text-lg font-bold text-gray-900 mb-2">Lead Product Analyst</h4>
-                      <p className="text-indigo-600 font-medium mb-2">
+                <div className="md:flex md:items-center">
+                  <div className="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
+                    <Card className="p-4 md:p-6 shadow-lg border-0 bg-indigo-50 hover:shadow-xl transition-all duration-300">
+                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Lead Product Analyst</h4>
+                      <p className="text-indigo-600 font-medium mb-2 text-sm md:text-base">
                         <a 
                           href="https://www.airtel.in/" 
                           target="_blank" 
                           rel="noopener noreferrer" 
                           className="hover:underline cursor-pointer inline-flex items-center gap-1 text-indigo-700 hover:text-indigo-900 transition-colors duration-200"
                         >
-                          <ExternalLink className="h-4 w-4" />
+                          <ExternalLink className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
                           Bharti Airtel
                         </a> (2019-2021)
                       </p>
-                      <p className="text-sm text-gray-600">Led analytics for Airtel Thanks App (100M+ MAU), improved postpaid digital leads by 140%</p>
+                      <p className="text-xs md:text-sm text-gray-600">Led analytics for Airtel Thanks App (100M+ MAU), improved postpaid digital leads by 140%</p>
                     </Card>
                   </div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-indigo-500 rounded-full border-4 border-white"></div>
-                  <div className="w-1/2 pl-8">
-                    <Card className="p-6 shadow-lg border-0 bg-red-50 hover:shadow-xl transition-all duration-300">
-                      <h4 className="text-lg font-bold text-gray-900 mb-2">Senior Product Manager</h4>
-                      <p className="text-red-600 font-medium mb-2">
+                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-indigo-500 rounded-full border-4 border-white"></div>
+                  <div className="md:w-1/2 md:pl-8">
+                    <Card className="p-4 md:p-6 shadow-lg border-0 bg-red-50 hover:shadow-xl transition-all duration-300">
+                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Senior Product Manager</h4>
+                      <p className="text-red-600 font-medium mb-2 text-sm md:text-base">
                         <a 
                           href="https://www.airtel.in/" 
                           target="_blank" 
                           rel="noopener noreferrer" 
                           className="hover:underline cursor-pointer inline-flex items-center gap-1 text-red-700 hover:text-red-900 transition-colors duration-200"
                         >
-                          <ExternalLink className="h-4 w-4" />
+                          <ExternalLink className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
                           Bharti Airtel
                         </a> (2021-2023)
                       </p>
-                      <p className="text-sm text-gray-600">Managed Field Service Management platform (100K+ users, ₹700Cr+ account), won Chairman Award 2022</p>
+                      <p className="text-xs md:text-sm text-gray-600">Managed Field Service Management platform (100K+ users, ₹700Cr+ account), won Chairman Award 2022</p>
                     </Card>
                   </div>
                 </div>
 
                 {/* Gaming & AI Product Management */}
-                <div className="flex items-center">
-                  <div className="w-1/2 pr-8 text-right">
-                    <Card className="p-6 shadow-lg border-0 bg-yellow-50 hover:shadow-xl transition-all duration-300">
-                      <h4 className="text-lg font-bold text-gray-900 mb-2">Senior Product Manager</h4>
-                      <p className="text-yellow-600 font-medium mb-2">
+                <div className="md:flex md:items-center">
+                  <div className="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
+                    <Card className="p-4 md:p-6 shadow-lg border-0 bg-yellow-50 hover:shadow-xl transition-all duration-300">
+                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Senior Product Manager</h4>
+                      <p className="text-yellow-600 font-medium mb-2 text-sm md:text-base">
                         <a 
                           href="https://www.zynga.com/" 
                           target="_blank" 
                           rel="noopener noreferrer" 
                           className="hover:underline cursor-pointer inline-flex items-center gap-1 text-yellow-700 hover:text-yellow-900 transition-colors duration-200"
                         >
-                          <ExternalLink className="h-4 w-4" />
+                          <ExternalLink className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
                           Zynga
                         </a> (Feb 2023 - Sep 2023)
                       </p>
-                      <p className="text-sm text-gray-600">Centralized Compliance & Social products for 119+ game studios, redesigned opt-out flows saving $3M+ revenue</p>
+                      <p className="text-xs md:text-sm text-gray-600">Centralized Compliance & Social products for 119+ game studios, redesigned opt-out flows saving $3M+ revenue</p>
                     </Card>
                   </div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-yellow-500 rounded-full border-4 border-white"></div>
-                  <div className="w-1/2 pl-8">
-                    <Card className="p-6 shadow-lg border-0 bg-teal-50 hover:shadow-xl transition-all duration-300">
-                      <h4 className="text-lg font-bold text-gray-900 mb-2">Senior Product Manager</h4>
-                      <p className="text-teal-600 font-medium mb-2">
+                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-yellow-500 rounded-full border-4 border-white"></div>
+                  <div className="md:w-1/2 md:pl-8">
+                    <Card className="p-4 md:p-6 shadow-lg border-0 bg-teal-50 hover:shadow-xl transition-all duration-300">
+                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Senior AI Product Manager</h4>
+                      <p className="text-teal-600 font-medium mb-2 text-sm md:text-base">
                         <a 
                           href="https://eightfold.ai/" 
                           target="_blank" 
                           rel="noopener noreferrer" 
                           className="hover:underline cursor-pointer inline-flex items-center gap-1 text-teal-700 hover:text-teal-900 transition-colors duration-200"
                         >
-                          <ExternalLink className="h-4 w-4" />
+                          <ExternalLink className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
                           Eightfold AI
                         </a> (Jan 2024 - Jun 2025)
                       </p>
-                      <p className="text-sm text-gray-600">Resource Management AI product, launched 15+ features, scaled from 1 to 7 customers achieving $12M+ ARR</p>
+                      <p className="text-xs md:text-sm text-gray-600">AI Resource Management product, launched 15+ AI features, scaled from 1 to 7 customers achieving $12M+ ARR through AI-powered solutions</p>
                     </Card>
                   </div>
                 </div>
@@ -1908,11 +1962,21 @@ export default function PresentationPage() {
           <Card className="p-8 shadow-xl border-0 hover:shadow-2xl transition-all duration-300">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                <Code className="h-6 w-6 text-blue-600" />
+                <Brain className="h-6 w-6 text-blue-600" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">Technical Foundation</h3>
+              <h3 className="text-2xl font-bold text-gray-900">AI & Technical Foundation</h3>
             </div>
             <div className="space-y-4">
+              <div>
+                <h4 className="font-bold text-gray-900 mb-2">AI & Machine Learning</h4>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">AutoGen Multi-Agent</span>
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">OpenAI GPT-4</span>
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">LangChain</span>
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">XGBoost</span>
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Machine Learning</span>
+                </div>
+              </div>
               <div>
                 <h4 className="font-bold text-gray-900 mb-2">Engineering & Development</h4>
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -1924,28 +1988,18 @@ export default function PresentationPage() {
               <div>
                 <h4 className="font-bold text-gray-900 mb-2">Data Science & Analytics</h4>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">XGBoost</span>
-                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Machine Learning</span>
                   <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Business Analytics</span>
                   <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Customer Segmentation</span>
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Predictive Modeling</span>
                 </div>
               </div>
               <div>
-                <h4 className="font-bold text-gray-900 mb-2">AI & Emerging Technologies</h4>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">AutoGen</span>
-                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Multi-Agent Systems</span>
-                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">OpenAI GPT-4</span>
-                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">LangChain</span>
-                </div>
-              </div>
-              <div>
-                <h4 className="font-bold text-gray-900 mb-2">Product & Strategy</h4>
+                <h4 className="font-bold text-gray-900 mb-2">AI Product & Strategy</h4>
                 <div className="flex flex-wrap gap-2">
-                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Product Strategy</span>
-                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Stakeholder Management</span>
-                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Go-to-Market</span>
-                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">Cross-functional Leadership</span>
+                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">AI Product Strategy</span>
+                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">AI Stakeholder Management</span>
+                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">AI Go-to-Market</span>
+                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">AI Cross-functional Leadership</span>
                 </div>
               </div>
             </div>
@@ -1956,24 +2010,24 @@ export default function PresentationPage() {
               <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
                 <Target className="h-6 w-6 text-green-600" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">Domain Expertise</h3>
+              <h3 className="text-2xl font-bold text-gray-900">AI Domain Expertise</h3>
             </div>
             <div className="space-y-4">
               <div className="p-4 bg-gray-50 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">Enterprise SaaS & AI</h4>
-                <p className="text-sm text-gray-600">Resource Management, Field Service Management, Oracle CPQ, AI-driven products</p>
+                <h4 className="font-bold text-gray-900 mb-2">Enterprise AI & SaaS</h4>
+                <p className="text-sm text-gray-600">AI Resource Management, Field Service Management, Oracle CPQ, AI-driven products, ML-powered enterprise solutions</p>
               </div>
               <div className="p-4 bg-gray-50 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">Consumer Mobile & Gaming</h4>
-                <p className="text-sm text-gray-600">Mobile apps (100M+ MAU), Gaming platforms, Social products, Digital experiences</p>
+                <h4 className="font-bold text-gray-900 mb-2">Consumer AI & Gaming</h4>
+                <p className="text-sm text-gray-600">Mobile apps (100M+ MAU), Gaming platforms with AI features, Social products, AI-enhanced digital experiences</p>
               </div>
               <div className="p-4 bg-gray-50 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">Financial Services & Telecom</h4>
-                <p className="text-sm text-gray-600">Business targeting, Risk modeling, Customer analytics, Digital transformation</p>
+                <h4 className="font-bold text-gray-900 mb-2">AI in Financial Services & Telecom</h4>
+                <p className="text-sm text-gray-600">AI business targeting, ML risk modeling, AI customer analytics, AI-driven digital transformation</p>
               </div>
               <div className="p-4 bg-gray-50 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">B2B & B2C Product Leadership</h4>
-                <p className="text-sm text-gray-600">Cross-functional teams, Stakeholder management, Strategic planning, Product roadmaps</p>
+                <h4 className="font-bold text-gray-900 mb-2">AI Product Leadership</h4>
+                <p className="text-sm text-gray-600">AI cross-functional teams, AI stakeholder management, AI strategic planning, AI product roadmaps</p>
               </div>
             </div>
           </Card>
@@ -2057,7 +2111,10 @@ export default function PresentationPage() {
                 <Button 
                   size="lg" 
                   className="text-lg px-6 py-4 bg-white text-blue-900 hover:bg-blue-50 shadow-2xl transform hover:scale-105 transition-all duration-300"
-                  onClick={() => window.open('mailto:dayalaroosh@gmail.com', '_blank')}
+                  onClick={() => {
+                    trackCTAClick('navigation', 'Email Aroosh', 'hero')
+                    window.open('mailto:dayalaroosh@gmail.com?subject=Interested in Your AI Product Management Profile&body=Hi Aroosh,%0D%0A%0D%0AI came across your AI Product Strategy presentation and was impressed by your experience in AI product management at Eightfold and your multi-agent system work.%0D%0A%0D%0AI%27d love to discuss potential opportunities in [Company/Role].%0D%0A%0D%0ABest regards', '_blank')}
+                  }
                 >
                   <Mail className="mr-2 h-5 w-5" />
                   Email Me
@@ -2066,7 +2123,7 @@ export default function PresentationPage() {
                 <Button 
                   size="lg" 
                   className="text-lg px-6 py-4 bg-green-600 hover:bg-green-700 text-white shadow-2xl transform hover:scale-105 transition-all duration-300"
-                  onClick={() => window.open('https://wa.me/919550132970?text=Hi%20Aroosh%2C%20I%20saw%20your%20Product%20Strategy%20presentation%20and%20would%20like%20to%20connect%20regarding%20PM%20opportunities.', '_blank')}
+                  onClick={() => window.open('https://wa.me/919550132970?text=Hi%20Aroosh%2C%20I%20saw%20your%20AI%20Product%20Strategy%20presentation%20and%20was%20impressed%20by%20your%20experience%20at%20Eightfold%20AI%20and%20multi-agent%20systems%20work.%20I%27d%20love%20to%20discuss%20potential%20AI%20product%20management%20opportunities.%20Are%20you%20available%20for%20a%20quick%20chat%3F', '_blank')}
                 >
                   <Phone className="mr-2 h-5 w-5" />
                   WhatsApp
@@ -2127,6 +2184,7 @@ export default function PresentationPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      <Analytics page="presentation" />
       <style jsx>{`
         @keyframes fade-in {
           from { opacity: 0; transform: translateY(20px); }
@@ -2236,7 +2294,10 @@ export default function PresentationPage() {
                 className="text-xl px-12 py-6 bg-white text-purple-900 hover:bg-purple-50 shadow-2xl transform hover:scale-105 transition-all duration-300 font-bold"
                 onClick={handleGetStarted}
               >
-                Try Free Analysis
+                <div className="flex flex-col">
+                  <span>Try Free Analysis</span>
+                  <span className="text-xs text-purple-700 font-normal">(Beta Version)</span>
+                </div>
                 <ArrowRight className="ml-3 h-6 w-6" />
               </Button>
               <Button 
@@ -2245,7 +2306,10 @@ export default function PresentationPage() {
                 className="text-xl px-12 py-6 border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm"
                 onClick={() => window.open('/council', '_blank')}
               >
-                View Live Demo
+                <div className="flex flex-col">
+                  <span>View Live Demo</span>
+                  <span className="text-xs text-gray-300 font-normal">(Beta Version)</span>
+                </div>
               </Button>
             </div>
             
@@ -2262,6 +2326,88 @@ export default function PresentationPage() {
                 <Shield className="h-5 w-5 text-blue-400" />
                 <span>No Setup Required</span>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Feedback Form */}
+      <FeedbackForm context="presentation" />
+
+      {/* Ready to Discuss Section - Moved to Bottom */}
+      <div className="py-12 md:py-16 bg-gradient-to-r from-blue-600 to-purple-600">
+        <div className="max-w-6xl mx-auto px-4 md:px-8 text-center">
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/20">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              🚀 Ready to Discuss Product Opportunities?
+            </h2>
+            <p className="text-lg md:text-xl text-blue-100 mb-6 max-w-3xl mx-auto">
+              I'm actively seeking <span className="font-semibold text-white">Principal PM, Group PM, or Product Director</span> roles. 
+              Let's connect if you're building products that need experienced leadership.
+            </p>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 justify-center items-center">
+              <Button 
+                size="lg" 
+                className="text-lg px-6 py-4 bg-white text-blue-900 hover:bg-blue-50 shadow-2xl transform hover:scale-105 transition-all duration-300"
+                onClick={() => {
+                  trackCTAClick('contact', 'Email Aroosh', 'bottom-cta')
+                  window.open('mailto:dayalaroosh@gmail.com?subject=Interested in Your Product Management Profile&body=Hi Aroosh,%0D%0A%0D%0AI came across your Product Strategy presentation and was impressed by your experience in product management at Eightfold and your multi-agent system work.%0D%0A%0D%0AI%27d love to discuss potential opportunities in [Company/Role].%0D%0A%0D%0ABest regards', '_blank')
+                }}
+              >
+                <Mail className="mr-2 h-5 w-5" />
+                Email Me
+              </Button>
+              
+              <Button 
+                size="lg" 
+                className="text-lg px-6 py-4 bg-green-600 hover:bg-green-700 text-white shadow-2xl transform hover:scale-105 transition-all duration-300"
+                onClick={() => {
+                  trackCTAClick('contact', 'WhatsApp', 'bottom-cta')
+                  window.open('https://wa.me/919550132970?text=Hi%20Aroosh%2C%20I%20saw%20your%20Product%20Strategy%20presentation%20and%20was%20impressed%20by%20your%20experience%20at%20Eightfold%20and%20multi-agent%20systems%20work.%20I%27d%20love%20to%20discuss%20potential%20product%20management%20opportunities.%20Are%20you%20available%20for%20a%20quick%20chat%3F', '_blank')
+                }}
+              >
+                <Phone className="mr-2 h-5 w-5" />
+                WhatsApp
+              </Button>
+              
+              <Button 
+                size="lg" 
+                className="text-lg px-6 py-4 bg-blue-800 hover:bg-blue-900 text-white shadow-2xl transform hover:scale-105 transition-all duration-300"
+                onClick={() => {
+                  trackCTAClick('navigation', 'About Creator', 'bottom-cta')
+                  handleTabClick('about')
+                }}
+              >
+                <User className="mr-2 h-5 w-5" />
+                About Creator
+              </Button>
+              
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="text-lg px-6 py-4 border-white text-white hover:bg-white hover:text-blue-900 shadow-2xl transform hover:scale-105 transition-all duration-300"
+                onClick={() => {
+                  trackCTAClick('social', 'LinkedIn', 'bottom-cta')
+                  window.open('https://www.linkedin.com/in/aroosh-dayal-a015b59a/', '_blank')
+                }}
+              >
+                <Linkedin className="mr-2 h-5 w-5" />
+                LinkedIn
+              </Button>
+              
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="text-lg px-6 py-4 border-white text-white hover:bg-white hover:text-blue-900 shadow-2xl transform hover:scale-105 transition-all duration-300"
+                onClick={() => {
+                  trackCTAClick('download', 'Resume', 'bottom-cta')
+                  window.open('/api/download-resume', '_blank')
+                }}
+              >
+                <Download className="mr-2 h-5 w-5" />
+                Resume
+              </Button>
             </div>
           </div>
         </div>

@@ -1,9 +1,8 @@
 import { NextResponse } from 'next/server';
-import puppeteer from 'puppeteer';
 
 export async function GET() {
   try {
-    // Create a concise one-page HTML resume template
+    // Create a well-formatted HTML resume that can be easily converted to PDF by the browser
     const htmlContent = `
 <!DOCTYPE html>
 <html>
@@ -11,6 +10,11 @@ export async function GET() {
   <meta charset="UTF-8">
   <title>Aroosh Dayal - Senior Product Manager Resume</title>
   <style>
+    @page {
+      size: A4;
+      margin: 0.5in;
+    }
+    
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     body {
@@ -19,12 +23,14 @@ export async function GET() {
       color: #333;
       background: white;
       font-size: 9pt;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
     }
     
     .container {
       max-width: 8.5in;
       margin: 0 auto;
-      padding: 0.4in;
+      padding: 0.3in;
       background: white;
     }
     
@@ -70,27 +76,32 @@ export async function GET() {
     
     .experience-item {
       margin-bottom: 8px;
+      page-break-inside: avoid;
+    }
+    
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
     }
     
     .job-title {
       font-weight: bold;
       font-size: 9pt;
       color: #1f2937;
-      display: inline;
     }
     
     .company {
       font-weight: bold;
       color: #2563eb;
       font-size: 9pt;
-      display: inline;
     }
     
     .duration {
       color: #6b7280;
       font-size: 8pt;
       font-style: italic;
-      float: right;
     }
     
     .achievement {
@@ -188,17 +199,26 @@ export async function GET() {
     @media print {
       body { -webkit-print-color-adjust: exact; }
       .container { padding: 0.3in; }
+      .section { page-break-inside: avoid; }
     }
   </style>
+  <script>
+    window.onload = function() {
+      // Auto-trigger print dialog for PDF generation
+      setTimeout(function() {
+        window.print();
+      }, 1000);
+    }
+  </script>
 </head>
 <body>
   <div class="container">
     <!-- Header -->
     <div class="header">
       <div class="name">AROOSH DAYAL</div>
-      <div class="title">Senior Product Manager</div>
+      <div class="title">Senior Product Manager • AI & Data-Driven Products</div>
       <div class="contact">
-        dayalaroosh@gmail.com • +91-9550132970 • LinkedIn: aroosh-dayal-a015b59a • India
+        dayalaroosh@gmail.com • +91-9550132970 • LinkedIn: aroosh-dayal-a015b59a • About Creator: product-strategy-ai.vercel.app/presentation?tab=about
       </div>
     </div>
 
@@ -206,33 +226,33 @@ export async function GET() {
     <div class="section">
       <div class="section-title">Professional Summary</div>
       <div class="summary">
-        Results-driven Senior Product Manager with 9+ years across enterprise SaaS, consumer mobile, gaming, and fintech. Proven track record: $38M+ revenue impact, 100M+ users served, scaled products from 1 to 7 customers achieving $12M+ ARR. MBA from IIM Ahmedabad with strong technical foundation. Expertise in AI-driven products and cross-functional leadership.
+        Results-driven Senior Product Manager with 9+ years across enterprise SaaS, consumer mobile, gaming, and fintech. Proven track record: $38M+ cumulative revenue impact, 100M+ users served, scaled products from 1 to 7 customers achieving $12M+ ARR. MBA from IIM Ahmedabad with strong technical foundation. Expertise in AI-driven products and cross-functional leadership.
       </div>
     </div>
 
     <!-- Key Metrics -->
     <div class="section">
-      <div class="section-title">Impact & Achievements</div>
+      <div class="section-title">Career Impact & Achievements (Cumulative)</div>
       <div class="metrics">
         <div class="metric">
           <div class="metric-value">$38M+</div>
-          <div class="metric-label">Revenue Impact</div>
+          <div class="metric-label">Total Revenue Impact</div>
         </div>
         <div class="metric">
           <div class="metric-value">100M+</div>
-          <div class="metric-label">Users Served</div>
+          <div class="metric-label">Total Users Served</div>
         </div>
         <div class="metric">
           <div class="metric-value">24+</div>
-          <div class="metric-label">Stakeholders</div>
+          <div class="metric-label">Max Stakeholders (Single Role)</div>
         </div>
         <div class="metric">
           <div class="metric-value">15+</div>
-          <div class="metric-label">Features Launched</div>
+          <div class="metric-label">Features Launched (Recent)</div>
         </div>
         <div class="metric">
           <div class="metric-value">7x</div>
-          <div class="metric-label">Customer Growth</div>
+          <div class="metric-label">Customer Growth (Eightfold)</div>
         </div>
       </div>
     </div>
@@ -242,47 +262,65 @@ export async function GET() {
       <div class="section-title">Professional Experience</div>
       
       <div class="experience-item">
-        <div class="job-title">Senior Product Manager</div> at <div class="company">Eightfold AI</div>
-        <div class="duration">Jan 2024 - Jun 2025</div>
-        <div style="clear: both;"></div>
+        <div class="job-header">
+          <div>
+            <span class="job-title">Senior Product Manager</span> at <span class="company">Eightfold AI</span>
+          </div>
+          <div class="duration">Jan 2024 - Jun 2025</div>
+        </div>
         <div class="achievement">Led Resource Management AI product, launched 15+ features, scaled 1→7 customers ($12M+ ARR)</div>
         <div class="achievement">50+ recognition shoutouts for ownership and excellence</div>
       </div>
 
       <div class="experience-item">
-        <div class="job-title">Senior Product Manager</div> at <div class="company">Zynga</div>
-        <div class="duration">Feb - Sep 2023</div>
-        <div style="clear: both;"></div>
+        <div class="job-header">
+          <div>
+            <span class="job-title">Senior Product Manager</span> at <span class="company">Zynga</span>
+          </div>
+          <div class="duration">Feb - Sep 2023</div>
+        </div>
         <div class="achievement">Managed Compliance & Social products for 119+ game studios, saved $3M+ revenue</div>
         <div class="achievement">Redesigned opt-out flows, reduced operational overhead by 40%</div>
       </div>
 
       <div class="experience-item">
-        <div class="job-title">Senior Product Manager</div> at <div class="company">Bharti Airtel</div>
-        <div class="duration">2021 - 2023</div>
-        <div style="clear: both;"></div>
+        <div class="job-header">
+          <div>
+            <span class="job-title">Senior Product Manager</span> at <span class="company">Bharti Airtel</span>
+          </div>
+          <div class="duration">2021 - 2023</div>
+        </div>
         <div class="achievement">Managed Field Service Management platform (100K+ users, ₹700Cr+ account)</div>
         <div class="achievement">Won Chairman Award 2022 - 'Win with Digital', managed 24+ stakeholders</div>
       </div>
 
       <div class="experience-item">
-        <div class="job-title">Lead Product Analyst</div> at <div class="company">Bharti Airtel</div>
-        <div class="duration">2019 - 2021</div>
-        <div style="clear: both;"></div>
+        <div class="job-header">
+          <div>
+            <span class="job-title">Lead Product Analyst</span> at <span class="company">Bharti Airtel</span>
+          </div>
+          <div class="duration">2019 - 2021</div>
+        </div>
         <div class="achievement">Led analytics for Airtel Thanks App (100M+ MAU), improved postpaid leads by 140%</div>
       </div>
 
       <div class="experience-item">
-        <div class="job-title">Business Analyst II</div> at <div class="company">American Express</div>
-        <div class="duration">2017 - 2019</div>
-        <div style="clear: both;"></div>
+        <div class="job-header">
+          <div>
+            <span class="job-title">Business Analyst II</span> at <span class="company">American Express</span>
+          </div>
+          <div class="duration">2017 - 2019</div>
+        </div>
         <div class="achievement">Built XGBoost models driving $23M+ revenue, GCMA Superstar (Top 6/250+)</div>
       </div>
 
       <div class="experience-item">
-        <div class="job-title">Software Developer II</div> at <div class="company">Oracle</div>
-        <div class="duration">2014 - 2015</div>
-        <div style="clear: both;"></div>
+        <div class="job-header">
+          <div>
+            <span class="job-title">Software Developer II</span> at <span class="company">Oracle</span>
+          </div>
+          <div class="duration">2014 - 2015</div>
+        </div>
         <div class="achievement">Enhanced Oracle CPQ software, achieved 95% in product training</div>
       </div>
     </div>
@@ -372,53 +410,31 @@ export async function GET() {
 </body>
 </html>`;
 
-    // Generate PDF using Puppeteer
-    const browser = await puppeteer.launch({
-      headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox']
-    });
-    
-    const page = await browser.newPage();
-    await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
-    
-    const pdfBuffer = await page.pdf({
-      format: 'A4',
-      printBackground: true,
-      margin: {
-        top: '0.4in',
-        right: '0.4in',
-        bottom: '0.4in',
-        left: '0.4in'
-      }
-    });
-    
-    await browser.close();
-
-    // Return proper PDF response
-    return new NextResponse(pdfBuffer, {
+    // Return HTML that auto-triggers print dialog for PDF generation
+    return new NextResponse(htmlContent, {
       status: 200,
       headers: {
-        'Content-Type': 'application/pdf',
-        'Content-Disposition': 'attachment; filename="Aroosh_Dayal_Product_Manager_Resume.pdf"',
-        'Content-Length': pdfBuffer.length.toString(),
+        'Content-Type': 'text/html; charset=utf-8',
+        'Content-Disposition': 'inline; filename="Aroosh_Dayal_Resume.html"',
       },
     });
   } catch (error) {
-    console.error('Error generating PDF resume:', error);
+    console.error('Error generating resume:', error);
     
-    // Fallback to HTML if PDF generation fails
+    // Fallback error page
     const fallbackHtml = `
-    <html><body style="font-family: Arial; padding: 20px;">
-      <h1>Resume Generation Error</h1>
-      <p>Unable to generate PDF. Please contact dayalaroosh@gmail.com for the latest resume.</p>
-      <p>Error: ${error}</p>
+    <html><body style="font-family: Arial; padding: 20px; text-align: center;">
+      <h1>Resume Download</h1>
+      <p>Please contact <a href="mailto:dayalaroosh@gmail.com">dayalaroosh@gmail.com</a> for the latest resume.</p>
+      <p style="color: #666; font-size: 12px;">Technical issue: ${error}</p>
+      <button onclick="window.close()" style="padding: 10px 20px; margin-top: 20px;">Close</button>
     </body></html>`;
     
     return new NextResponse(fallbackHtml, {
       status: 200,
       headers: {
         'Content-Type': 'text/html',
-        'Content-Disposition': 'attachment; filename="Resume_Error.html"',
+        'Content-Disposition': 'inline; filename="Resume_Contact.html"',
       },
     });
   }
