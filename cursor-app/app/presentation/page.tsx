@@ -1595,28 +1595,28 @@ export default function PresentationPage() {
   const renderAboutTab = () => (
     <div className="py-12 md:py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       <div className="container mx-auto px-4">
-        {/* Professional Header - B2B AI Product Leader */}
+        {/* Professional Header */}
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent leading-tight">
             Aroosh Dayal
           </h2>
-          <p className="text-xl md:text-2xl text-blue-600 font-semibold mb-3 md:mb-4">Senior AI Product Manager | B2B SaaS Expert</p>
+          <p className="text-xl md:text-2xl text-blue-600 font-semibold mb-3 md:mb-4">Senior AI Product Manager</p>
           <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 text-xs md:text-sm font-medium px-4 md:px-6 py-2 md:py-3 rounded-full mb-6 md:mb-8 shadow-lg mx-2">
             <Award className="w-3 h-3 md:w-4 md:h-4 mr-2 flex-shrink-0" />
-            <span className="text-center leading-tight">IIM Ahmedabad MBA • 9+ Years B2B Product Leadership • AI/ML Specialist</span>
+            <span className="text-center leading-tight">IIM Ahmedabad MBA • 9+ Years Product Leadership • AI/ML Specialist</span>
           </div>
           <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-2">
-            Enterprise AI Product Leader with deep expertise in B2B SaaS platforms, machine learning products, and complex stakeholder ecosystems. Proven track record of scaling AI-powered solutions from concept to $50M+ ARR in enterprise markets.
+            Product Leader with expertise in AI/ML platforms, enterprise solutions, and complex stakeholder management. Proven track record of scaling products from concept to $50M+ ARR across diverse markets and industries.
           </p>
         </div>
 
-        {/* Let's Connect Section - B2B Focus */}
+        {/* Let's Connect Section */}
         <div className="mb-12 md:mb-16">
           <Card className="p-6 md:p-8 shadow-xl border-0 bg-gradient-to-r from-blue-600 to-purple-600 text-white max-w-4xl mx-auto">
             <div className="text-center">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4">Ready for B2B Product Leadership Opportunities</h3>
+              <h3 className="text-2xl md:text-3xl font-bold mb-4">Ready for Product Leadership Opportunities</h3>
               <p className="text-lg md:text-xl text-blue-100 mb-6 leading-relaxed">
-                Seeking <span className="font-semibold text-white">Principal PM, Group PM, or Product Director roles</span> in <span className="font-semibold text-white">B2B SaaS companies</span> building AI-powered enterprise solutions. Let's discuss how I can drive product success at scale.
+                Seeking <span className="font-semibold text-white">Principal PM, Group PM, or Product Director roles</span> in companies building AI-powered solutions. Let's discuss how I can drive product success at scale.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
@@ -1625,7 +1625,7 @@ export default function PresentationPage() {
                   className="text-lg px-6 py-4 bg-white text-blue-900 hover:bg-blue-50 shadow-2xl transform hover:scale-105 transition-all duration-300"
                   onClick={() => {
                     trackCTAClick('contact', 'Email Aroosh', 'about-top')
-                    window.open('mailto:dayalaroosh@gmail.com?subject=B2B Product Management Opportunity&body=Hi Aroosh,%0D%0A%0D%0AI came across your B2B AI product strategy presentation and would like to discuss potential opportunities in enterprise product management.%0D%0A%0D%0ABest regards', '_blank')
+                    window.open('mailto:dayalaroosh@gmail.com?subject=Product Management Opportunity&body=Hi Aroosh,%0D%0A%0D%0AI came across your product strategy presentation and would like to discuss potential opportunities.%0D%0A%0D%0ABest regards', '_blank')
                   }}
                 >
                   <Mail className="mr-2 h-5 w-5" />
@@ -1637,7 +1637,7 @@ export default function PresentationPage() {
                   className="text-lg px-6 py-4 bg-green-600 hover:bg-green-700 text-white shadow-2xl transform hover:scale-105 transition-all duration-300"
                   onClick={() => {
                     trackCTAClick('contact', 'WhatsApp', 'about-top')
-                    window.open('https://wa.me/919550132970?text=Hi%20Aroosh%2C%20I%20saw%20your%20B2B%20AI%20product%20strategy%20presentation%20and%20would%20like%20to%20discuss%20product%20leadership%20opportunities.%20Are%20you%20available%20for%20a%20quick%20chat%3F', '_blank')
+                    window.open('https://wa.me/919550132970?text=Hi%20Aroosh%2C%20I%20saw%20your%20product%20strategy%20presentation%20and%20would%20like%20to%20discuss%20opportunities.%20Are%20you%20available%20for%20a%20quick%20chat%3F', '_blank')
                   }}
                 >
                   <Phone className="mr-2 h-5 w-5" />
@@ -1670,7 +1670,7 @@ export default function PresentationPage() {
                   }}
                 >
                   <Download className="mr-2 h-5 w-5" />
-                  Download ATS Resume PDF
+                  Download Resume PDF
                 </Button>
                 <p className="text-sm text-blue-200 mt-2">ATS-optimized for AI Product Manager roles • Updated January 2025</p>
               </div>
@@ -1678,7 +1678,7 @@ export default function PresentationPage() {
           </Card>
         </div>
 
-        {/* Hero Section with Photo - B2B AI Product Leader */}
+        {/* Hero Section with Photo */}
         <div className="mb-12 md:mb-16">
           <Card className="p-6 md:p-8 shadow-2xl border-0 bg-gradient-to-br from-white to-blue-50 max-w-5xl mx-auto">
             <div className="flex flex-col items-center text-center md:flex-row md:items-start md:text-left gap-6 md:gap-8">
@@ -1691,9 +1691,9 @@ export default function PresentationPage() {
               </div>
               
               <div className="flex-1">
-                <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">B2B AI Product Leadership Profile</h3>
+                <h3 className="text-2xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">AI Product Leadership Profile</h3>
                 <p className="text-gray-600 text-base md:text-lg leading-relaxed mb-4 md:mb-6">
-                  9+ years specializing in enterprise B2B SaaS products with deep AI/ML expertise. Led product strategy for AI-powered platforms serving 300+ enterprise customers, driving $50M+ ARR growth. Expert in complex stakeholder management, enterprise sales cycles, and scaling ML products from 0-1 to market leadership. Proven track record in Resource Management, Talent Intelligence, Field Service Management, and enterprise compliance platforms.
+                  9+ years specializing in AI/ML products and enterprise solutions. Led product strategy for platforms serving 300+ enterprise customers, driving $50M+ ARR growth. Expert in stakeholder management, complex product cycles, and scaling ML products from 0-1 to market leadership. Experience across Resource Management, Talent Intelligence, Field Service Management, and compliance platforms.
                 </p>
                 
                 <div className="flex flex-wrap justify-center md:justify-start gap-2 md:gap-4 mb-4 md:mb-6">
@@ -1711,10 +1711,10 @@ export default function PresentationPage() {
                   </div>
                 </div>
 
-                {/* B2B Career Focus */}
+                {/* Career Focus */}
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-3 md:p-4 rounded-lg">
                   <p className="text-gray-700 text-sm leading-relaxed">
-                    <strong>B2B Product Leadership Focus:</strong> Seeking Principal PM, Group PM, or Product Director roles in enterprise SaaS companies building AI-powered solutions. Expert in managing complex B2B sales cycles, enterprise customer success, and scaling products to $100M+ ARR.
+                    <strong>Product Leadership Focus:</strong> Seeking Principal PM, Group PM, or Product Director roles in companies building AI-powered solutions. Expert in managing complex product cycles, enterprise customers, and scaling products to significant revenue milestones.
                   </p>
                 </div>
               </div>
@@ -1722,18 +1722,18 @@ export default function PresentationPage() {
           </Card>
         </div>
 
-        {/* B2B Enterprise Experience Timeline */}
+        {/* Enterprise Experience Timeline */}
         <div className="mb-12 md:mb-16">
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8 text-center">B2B Enterprise Product Journey</h3>
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 md:mb-8 text-center">Product Leadership Journey</h3>
           <div className="max-w-6xl mx-auto">
             {/* Mobile: Vertical Timeline, Desktop: Horizontal */}
             <div className="md:relative">
               {/* Desktop Timeline line */}
               <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-200"></div>
               
-              {/* Timeline items - Focus on B2B Experience */}
+              {/* Timeline items */}
               <div className="space-y-8 md:space-y-12">
-                {/* Current: AI Enterprise SaaS */}
+                {/* Current: AI Enterprise */}
                 <div className="md:flex md:items-center">
                   <div className="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
                     <Card className="p-4 md:p-6 shadow-lg border-0 bg-teal-50 hover:shadow-xl transition-all duration-300">
@@ -1755,7 +1755,7 @@ export default function PresentationPage() {
                   <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-teal-500 rounded-full border-4 border-white"></div>
                   <div className="md:w-1/2 md:pl-8">
                     <Card className="p-4 md:p-6 shadow-lg border-0 bg-yellow-50 hover:shadow-xl transition-all duration-300">
-                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Senior Product Manager - Gaming SaaS</h4>
+                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Senior Product Manager - Gaming</h4>
                       <p className="text-yellow-600 font-medium mb-2 text-sm md:text-base">
                         <a 
                           href="https://www.zynga.com/" 
@@ -1776,7 +1776,7 @@ export default function PresentationPage() {
                 <div className="md:flex md:items-center">
                   <div className="md:w-1/2 md:pr-8 md:text-right mb-4 md:mb-0">
                     <Card className="p-4 md:p-6 shadow-lg border-0 bg-red-50 hover:shadow-xl transition-all duration-300">
-                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Senior Product Manager - Enterprise SaaS</h4>
+                      <h4 className="text-base md:text-lg font-bold text-gray-900 mb-2">Senior Product Manager - Enterprise</h4>
                       <p className="text-red-600 font-medium mb-2 text-sm md:text-base">
                         <a 
                           href="https://www.airtel.in/" 
