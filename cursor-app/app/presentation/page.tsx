@@ -1604,27 +1604,18 @@ export default function PresentationPage() {
   const renderAboutTab = () => (
     <div className="py-24 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       <div className="container mx-auto px-4">
+        {/* Professional Header - More Profile Focused */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 text-sm font-medium px-6 py-3 rounded-full mb-8 shadow-lg">
-            <Award className="w-4 h-4 mr-2" />
-            Senior Product Manager • IIM Ahmedabad MBA • 9+ Years Experience
-          </div>
           <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent leading-tight">
             Aroosh Dayal
           </h2>
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full font-semibold text-lg shadow-lg">
-              Principal PM Ready
-            </span>
-            <span className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-2 rounded-full font-semibold text-lg shadow-lg">
-              Group PM Ready
-            </span>
-            <span className="bg-gradient-to-r from-green-500 to-teal-500 text-white px-6 py-2 rounded-full font-semibold text-lg shadow-lg">
-              Product Director Ready
-            </span>
+          <p className="text-2xl text-blue-600 font-semibold mb-4">Senior Product Manager</p>
+          <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 text-sm font-medium px-6 py-3 rounded-full mb-8 shadow-lg">
+            <Award className="w-4 h-4 mr-2" />
+            IIM Ahmedabad MBA • 9+ Years Experience • Open to Leadership Roles
           </div>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Proven journey from engineering to business analytics to product management across enterprise and consumer domains. Ready to lead at the next level.
+            Proven product leader with a unique journey from engineering to business analytics to product management across enterprise and consumer domains. Ready to drive strategic product decisions at scale.
           </p>
         </div>
 
@@ -1641,15 +1632,12 @@ export default function PresentationPage() {
               </div>
               
               <div className="flex-1">
-                <h3 className="text-4xl font-bold text-gray-900 mb-4">Aroosh Dayal</h3>
-                <p className="text-2xl text-blue-600 font-semibold mb-4">Senior Product Manager</p>
-                <p className="text-xl text-purple-600 font-medium mb-6">Open to Principal PM | Group PM | Product Director Roles</p>
-                
+                <h3 className="text-4xl font-bold text-gray-900 mb-4">Product Leadership Profile</h3>
                 <p className="text-gray-600 text-lg leading-relaxed mb-6">
                   9+ years building products across enterprise SaaS, consumer mobile, gaming, and fintech. Started as a software developer at Oracle, earned an MBA from IIM Ahmedabad, evolved through business analytics at American Express, and now lead product management at scale. Proven track record of driving growth, optimizing user experiences, and managing complex stakeholder ecosystems.
                 </p>
                 
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-4 mb-6">
                   <div className="flex items-center gap-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full">
                     <GraduationCap className="h-5 w-5" />
                     <span className="font-medium">IIM Ahmedabad PGDM</span>
@@ -1663,12 +1651,19 @@ export default function PresentationPage() {
                     <span className="font-medium">9+ Years Product Leadership</span>
                   </div>
                 </div>
+
+                {/* Career Interest - Subtle Mention */}
+                <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-lg">
+                  <p className="text-gray-700 text-sm">
+                    <strong>Career Focus:</strong> Seeking opportunities in Principal PM, Group PM, or Product Director roles where I can leverage my cross-functional experience and technical background to drive product success at scale.
+                  </p>
+                </div>
               </div>
             </div>
           </Card>
         </div>
 
-        {/* Career Journey - Corrected Titles */}
+        {/* Career Journey - Enhanced Clickable Links */}
         <div className="mb-16">
           <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Professional Journey</h3>
           <div className="max-w-6xl mx-auto">
@@ -1681,10 +1676,16 @@ export default function PresentationPage() {
                 {/* Engineering Foundation */}
                 <div className="flex items-center">
                   <div className="w-1/2 pr-8 text-right">
-                    <Card className="p-6 shadow-lg border-0 bg-green-50">
+                    <Card className="p-6 shadow-lg border-0 bg-green-50 hover:shadow-xl transition-all duration-300">
                       <h4 className="text-lg font-bold text-gray-900 mb-2">Engineering Foundation</h4>
                       <p className="text-green-600 font-medium mb-2">
-                        <a href="https://www.iitg.ac.in/" target="_blank" rel="noopener noreferrer" className="hover:underline cursor-pointer">
+                        <a 
+                          href="https://www.iitg.ac.in/" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="hover:underline cursor-pointer inline-flex items-center gap-1 text-green-700 hover:text-green-900 transition-colors duration-200"
+                        >
+                          <ExternalLink className="h-4 w-4" />
                           IIT Guwahati
                         </a> (2010-2014)
                       </p>
@@ -1693,10 +1694,16 @@ export default function PresentationPage() {
                   </div>
                   <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-green-500 rounded-full border-4 border-white"></div>
                   <div className="w-1/2 pl-8">
-                    <Card className="p-6 shadow-lg border-0 bg-blue-50">
+                    <Card className="p-6 shadow-lg border-0 bg-blue-50 hover:shadow-xl transition-all duration-300">
                       <h4 className="text-lg font-bold text-gray-900 mb-2">Software Developer II</h4>
                       <p className="text-blue-600 font-medium mb-2">
-                        <a href="https://www.oracle.com/" target="_blank" rel="noopener noreferrer" className="hover:underline cursor-pointer">
+                        <a 
+                          href="https://www.oracle.com/" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="hover:underline cursor-pointer inline-flex items-center gap-1 text-blue-700 hover:text-blue-900 transition-colors duration-200"
+                        >
+                          <ExternalLink className="h-4 w-4" />
                           Oracle
                         </a> (2014-2015)
                       </p>
@@ -1708,10 +1715,16 @@ export default function PresentationPage() {
                 {/* Business School Transition */}
                 <div className="flex items-center">
                   <div className="w-1/2 pr-8 text-right">
-                    <Card className="p-6 shadow-lg border-0 bg-purple-50">
+                    <Card className="p-6 shadow-lg border-0 bg-purple-50 hover:shadow-xl transition-all duration-300">
                       <h4 className="text-lg font-bold text-gray-900 mb-2">Business School</h4>
                       <p className="text-purple-600 font-medium mb-2">
-                        <a href="https://www.iima.ac.in/" target="_blank" rel="noopener noreferrer" className="hover:underline cursor-pointer">
+                        <a 
+                          href="https://www.iima.ac.in/" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="hover:underline cursor-pointer inline-flex items-center gap-1 text-purple-700 hover:text-purple-900 transition-colors duration-200"
+                        >
+                          <ExternalLink className="h-4 w-4" />
                           IIM Ahmedabad
                         </a> (2015-2017)
                       </p>
@@ -1720,10 +1733,16 @@ export default function PresentationPage() {
                   </div>
                   <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-purple-500 rounded-full border-4 border-white"></div>
                   <div className="w-1/2 pl-8">
-                    <Card className="p-6 shadow-lg border-0 bg-orange-50">
+                    <Card className="p-6 shadow-lg border-0 bg-orange-50 hover:shadow-xl transition-all duration-300">
                       <h4 className="text-lg font-bold text-gray-900 mb-2">Business Analyst II</h4>
                       <p className="text-orange-600 font-medium mb-2">
-                        <a href="https://www.americanexpress.com/" target="_blank" rel="noopener noreferrer" className="hover:underline cursor-pointer">
+                        <a 
+                          href="https://www.americanexpress.com/" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="hover:underline cursor-pointer inline-flex items-center gap-1 text-orange-700 hover:text-orange-900 transition-colors duration-200"
+                        >
+                          <ExternalLink className="h-4 w-4" />
                           American Express
                         </a> (2017-2019)
                       </p>
@@ -1735,10 +1754,16 @@ export default function PresentationPage() {
                 {/* Product Analytics to Product Management */}
                 <div className="flex items-center">
                   <div className="w-1/2 pr-8 text-right">
-                    <Card className="p-6 shadow-lg border-0 bg-indigo-50">
+                    <Card className="p-6 shadow-lg border-0 bg-indigo-50 hover:shadow-xl transition-all duration-300">
                       <h4 className="text-lg font-bold text-gray-900 mb-2">Lead Product Analyst</h4>
                       <p className="text-indigo-600 font-medium mb-2">
-                        <a href="https://www.airtel.in/" target="_blank" rel="noopener noreferrer" className="hover:underline cursor-pointer">
+                        <a 
+                          href="https://www.airtel.in/" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="hover:underline cursor-pointer inline-flex items-center gap-1 text-indigo-700 hover:text-indigo-900 transition-colors duration-200"
+                        >
+                          <ExternalLink className="h-4 w-4" />
                           Bharti Airtel
                         </a> (2019-2021)
                       </p>
@@ -1747,10 +1772,16 @@ export default function PresentationPage() {
                   </div>
                   <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-indigo-500 rounded-full border-4 border-white"></div>
                   <div className="w-1/2 pl-8">
-                    <Card className="p-6 shadow-lg border-0 bg-red-50">
+                    <Card className="p-6 shadow-lg border-0 bg-red-50 hover:shadow-xl transition-all duration-300">
                       <h4 className="text-lg font-bold text-gray-900 mb-2">Senior Product Manager</h4>
                       <p className="text-red-600 font-medium mb-2">
-                        <a href="https://www.airtel.in/" target="_blank" rel="noopener noreferrer" className="hover:underline cursor-pointer">
+                        <a 
+                          href="https://www.airtel.in/" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="hover:underline cursor-pointer inline-flex items-center gap-1 text-red-700 hover:text-red-900 transition-colors duration-200"
+                        >
+                          <ExternalLink className="h-4 w-4" />
                           Bharti Airtel
                         </a> (2021-2023)
                       </p>
@@ -1762,10 +1793,16 @@ export default function PresentationPage() {
                 {/* Gaming & AI Product Management */}
                 <div className="flex items-center">
                   <div className="w-1/2 pr-8 text-right">
-                    <Card className="p-6 shadow-lg border-0 bg-yellow-50">
+                    <Card className="p-6 shadow-lg border-0 bg-yellow-50 hover:shadow-xl transition-all duration-300">
                       <h4 className="text-lg font-bold text-gray-900 mb-2">Senior Product Manager</h4>
                       <p className="text-yellow-600 font-medium mb-2">
-                        <a href="https://www.zynga.com/" target="_blank" rel="noopener noreferrer" className="hover:underline cursor-pointer">
+                        <a 
+                          href="https://www.zynga.com/" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="hover:underline cursor-pointer inline-flex items-center gap-1 text-yellow-700 hover:text-yellow-900 transition-colors duration-200"
+                        >
+                          <ExternalLink className="h-4 w-4" />
                           Zynga
                         </a> (Feb 2023 - Sep 2023)
                       </p>
@@ -1774,10 +1811,16 @@ export default function PresentationPage() {
                   </div>
                   <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-yellow-500 rounded-full border-4 border-white"></div>
                   <div className="w-1/2 pl-8">
-                    <Card className="p-6 shadow-lg border-0 bg-teal-50">
+                    <Card className="p-6 shadow-lg border-0 bg-teal-50 hover:shadow-xl transition-all duration-300">
                       <h4 className="text-lg font-bold text-gray-900 mb-2">Senior Product Manager</h4>
                       <p className="text-teal-600 font-medium mb-2">
-                        <a href="https://eightfold.ai/" target="_blank" rel="noopener noreferrer" className="hover:underline cursor-pointer">
+                        <a 
+                          href="https://eightfold.ai/" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="hover:underline cursor-pointer inline-flex items-center gap-1 text-teal-700 hover:text-teal-900 transition-colors duration-200"
+                        >
+                          <ExternalLink className="h-4 w-4" />
                           Eightfold AI
                         </a> (Jan 2024 - Jun 2025)
                       </p>
@@ -2005,7 +2048,7 @@ export default function PresentationPage() {
             <div className="text-center">
               <h3 className="text-3xl font-bold mb-6">Let's Connect</h3>
               <p className="text-xl text-blue-200 mb-8 leading-relaxed">
-                Open to Principal PM, Group PM, and Product Director opportunities where I can leverage my cross-functional experience and technical background to drive product success.
+                Ready to discuss how my cross-functional experience and technical background can drive product success at your organization.
               </p>
               
               {/* Contact Options */}
