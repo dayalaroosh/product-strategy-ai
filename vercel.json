@@ -1,6 +1,24 @@
 {
-  "buildCommand": "cd cursor-app && npm run build",
-  "outputDirectory": "cursor-app/.next",
-  "framework": "nextjs",
-  "installCommand": "cd cursor-app && npm install"
+  "version": 2,
+  "name": "memory-orchestration-platform",
+  "builds": [
+    {
+      "src": "memory-platform-clean/frontend/package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "memory-platform-clean/frontend/$1"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  },
+  "functions": {
+    "memory-platform-clean/frontend/src/app/**": {
+      "runtime": "nodejs18.x"
+    }
+  }
 } 
