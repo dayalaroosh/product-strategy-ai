@@ -1,0 +1,13 @@
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+startCommand = "uvicorn production_mem0_server:app --host 0.0.0.0 --port $PORT --workers 1 --timeout-keep-alive 30"
+healthcheckPath = "/health"
+healthcheckTimeout = 60
+restartPolicyType = "never"
+
+[services.memory-platform]
+source.repo = "dayalaroosh/memory-orchestration-platform"
+variables.PORT = "8090"
+variables.HOST = "0.0.0.0" 

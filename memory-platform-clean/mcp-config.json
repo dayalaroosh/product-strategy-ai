@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "memory-orchestration": {
+      "command": "node",
+      "args": ["memory-mcp-server.js"],
+      "cwd": ".",
+      "env": {
+        "MEMORY_API_URL": "https://memory-orchestration-platform.onrender.com",
+        "MEMORY_API_KEY": "memory-gpt-2025-key"
+      }
+    }
+  }
+} 

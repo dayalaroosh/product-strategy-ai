@@ -1,0 +1,116 @@
+openapi: 3.1.0
+info:
+  title: Memory Orchestration Platform
+  description: Memory management with Mem0 integration - Simplified for Custom GPT
+  version: 1.0.0
+servers:
+  - url: https://memory-orchestration-platform.onrender.com
+
+paths:
+  /health:
+    get:
+      operationId: checkHealth
+      summary: Health check
+      description: Check if the service is running
+      responses:
+        "200":
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+                required:
+                  - status
+                  - message
+
+  /gpt/memories:
+    post:
+      operationId: addMemory
+      summary: Add a memory
+      description: Store a new memory in the system
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: The memory content to store
+                metadata:
+                  type: object
+                  description: Optional metadata for the memory
+              required:
+                - content
+      responses:
+        "200":
+          description: Memory added successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  memory_id:
+                    type: string
+                  content:
+                    type: string
+                required:
+                  - message
+                  - memory_id
+                  - content
+
+  /gpt/search:
+    post:
+      operationId: searchMemories
+      summary: Search memories
+      description: Search for memories using a query
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  description: Search query to find relevant memories
+              required:
+                - query
+      responses:
+        "200":
+          description: Search results
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        memory:
+                          type: string
+                        score:
+                          type: number
+                        created_at:
+                          type: string
+                      required:
+                        - memory
+                        - score
+                  total_results:
+                    type: integer
+                  query:
+                    type: string
+                required:
+                  - results
+                  - total_results
+                  - query 
